@@ -3,5 +3,5 @@ statut: mesuré
 domain: peuplement
 period: [1000, 1200]
 geo: { lat: -18.9, lng: 47.5, route: austronesien, label: "Hautes Terres" }
-sources: [cox-2012, pierron-2017]
-note: "Convergence des datations d'admixture sur l'ADN autosomal et mitochondrial."
+sources: [cox-2012, pierron-2018]
+note: "Convergence des datations d'admixture (ADN autosomal, mitochondrial) et du signal de sélection récente."

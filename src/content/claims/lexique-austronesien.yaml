@@ -1,6 +1,6 @@
-statement: "Le lexique de base du malgache est massivement austronésien (~90 %), rattaché aux langues barito du sud-est de Bornéo."
+statement: "Le lexique de base du malgache est massivement austronésien (~90 %), rattaché aux langues barito du sud-est de Bornéo — la plus proche étant le ma'anyan."
 statut: reconstruit
 domain: peuplement
 geo: { lat: -2.2, lng: 114.6, route: austronesien, label: "Sud-est de Bornéo" }
-sources: [adelaar-2009]
-note: "Reconstruction par la linguistique historique comparée."
+sources: [dahl-1951, adelaar-1995, serva-2012]
+note: "Établi par la linguistique historique comparée, depuis Dahl (1951)."
