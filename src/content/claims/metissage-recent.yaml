@@ -1,5 +1,6 @@
 statement: "Le métissage entre lignées austronésiennes et bantoues est récent, concentré sur le dernier millénaire (env. 1000–1200 de n.è.)."
 statut: mesuré
+discipline: génétique
 domain: peuplement
 period: [1000, 1200]
 geo: { lat: -18.9, lng: 47.5, route: austronesien, label: "Hautes Terres" }

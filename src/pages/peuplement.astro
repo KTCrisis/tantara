@@ -1,10 +1,19 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Claim from '../components/Claim.astro';
 import HypothesisCompare from '../components/HypothesisCompare.astro';
 import Timeline from '../components/Timeline.astro';
 import MapRoutes from '../components/MapRoutes.astro';
 import SourceIndex from '../components/SourceIndex.astro';
+import { DISCIPLINES } from '../content.config';
+
+const claims = (await getCollection('claims')).filter((c) => c.data.domain === 'peuplement');
+// Le registre est groupé par démarche scientifique : comment on sait, pas ce qu'on croit.
+const parDiscipline = DISCIPLINES.map((d) => ({
+  discipline: d,
+  items: claims.filter((c) => c.data.discipline === d),
+})).filter((g) => g.items.length > 0);
 ---
 <Base title="Le peuplement de Madagascar — tantara.art">
   <article class="wrap">
@@ -22,10 +31,19 @@ import SourceIndex from '../components/SourceIndex.astro';
       <Claim id="metissage-recent" />
     </p>
 
-    <h2>Les assertions, par statut de preuve</h2>
-    <Claim id="lexique-austronesien" block />
-    <Claim id="metissage-recent" block />
-    <Claim id="date-arrivee" block />
+    <h2>Le registre, par discipline</h2>
+    <p>
+      Chaque démarche scientifique apporte sa pièce — et son degré de certitude.
+      La même histoire, vue par {parDiscipline.length} familles de preuves.
+    </p>
+    {parDiscipline.map((g) => (
+      <section>
+        <h3 style="font-family:var(--mono);font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:36px 0 8px;">
+          {g.discipline} · {g.items.length}
+        </h3>
+        {g.items.map((c) => <Claim id={c.id} block />)}
+      </section>
+    ))}
 
     <h2>Un point débattu : la date d'arrivée</h2>
     <p>

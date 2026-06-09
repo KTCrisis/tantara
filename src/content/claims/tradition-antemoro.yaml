@@ -1,0 +1,8 @@
+statement: "Les sorabe — manuscrits malgaches en caractères arabes conservés chez les Antemoro du Sud-Est — consignent la tradition d'une origine remontant à des migrants islamisés se réclamant de La Mecque."
+statut: récit
+discipline: histoire
+domain: peuplement
+period: [1400, 1700]
+geo: { lat: -22.8, lng: 47.8, route: arabo-swahili, label: "Pays antemoro (Sud-Est)" }
+sources: [faublee-1970]
+note: "L'existence des manuscrits est un fait matériel ; leur contenu généalogique est un récit d'origine, pas une preuve de celle-ci."

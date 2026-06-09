@@ -9,6 +9,8 @@ import { glob } from 'astro/loaders';
  */
 export const STATUTS = ['mesuré', 'daté-débattu', 'reconstruit', 'récit', 'conjectural'] as const;
 export const ROUTES = ['austronesien', 'bantou', 'arabo-swahili', 'europeen'] as const;
+// La discipline dit COMMENT on sait (la démarche), là où la route dit ce qui s'est passé.
+export const DISCIPLINES = ['histoire', 'archéologie', 'génétique', 'linguistique', 'autre'] as const;
 
 // ── Sources : la bibliographie ──
 const sources = defineCollection({
@@ -48,6 +50,7 @@ const claims = defineCollection({
     .object({
       statement: z.string(),
       statut: z.enum(STATUTS),
+      discipline: z.enum(DISCIPLINES),
       domain: z.string(),
       period: z.tuple([z.number(), z.number()]).optional(), // années ; négatif = av. n.è.
       geo: z

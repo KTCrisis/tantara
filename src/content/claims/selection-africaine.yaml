@@ -1,0 +1,7 @@
+statement: "Le génome malgache porte un signal de sélection naturelle en faveur de l'ascendance africaine au cours du dernier millénaire."
+statut: mesuré
+discipline: génétique
+domain: peuplement
+period: [1000, 2000]
+sources: [pierron-2018]
+note: "Le signal est mesuré ; son mécanisme (résistance au paludisme, avantage des variants africains) reste une hypothèse interprétative."

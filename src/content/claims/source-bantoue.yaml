@@ -1,0 +1,7 @@
+statement: "La composante africaine du génome malgache se rattache aux populations bantoues d'Afrique de l'Est et du Sud-Est, de l'autre côté du canal du Mozambique."
+statut: mesuré
+discipline: génétique
+domain: peuplement
+geo: { lat: -15.0, lng: 39.5, route: bantou, label: "Côte est-africaine bantoue" }
+sources: [pierron-2017]
+note: "Le second courant fondateur : l'ascendance africaine n'est pas diffuse, elle pointe vers le monde bantou côtier."

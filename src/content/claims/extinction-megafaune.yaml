@@ -1,0 +1,13 @@
+statement: "La mégafaune malgache — lémuriens géants, oiseaux-éléphants, hippopotames nains — disparaît après l'arrivée humaine, selon une chronologie débattue."
+statut: daté-débattu
+discipline: autre
+domain: peuplement
+period: [-500, 1500]
+note: "Paléoécologie : spores de champignons coprophiles (Sporormiella), datations radiocarbone, charbons. Le fait de l'extinction est établi ; son rythme et ses causes ne le sont pas."
+hypotheses:
+  - label: "Déclin rapide d'origine humaine"
+    statement: "L'effondrement du Sporormiella (déclin des grands herbivores) suivi de pics de charbons (feux) vers la fin du Ier millénaire signe un impact humain rapide — chasse et transformation du paysage."
+    sources: [burney-2004]
+  - label: "Processus long, causes multiples"
+    statement: "Des datations tardives de mégafaune et l'aridification du Sud-Ouest suggèrent une coexistence de plusieurs siècles et un déclin étalé, combinant pressions climatique et humaine."
+    sources: [burney-2004, corps-2019]
