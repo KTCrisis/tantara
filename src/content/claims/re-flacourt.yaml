@@ -1,0 +1,8 @@
+statement: "Étienne de Flacourt, gouverneur de Fort-Dauphin (1648-1655), publie en 1658 la première description française d'ensemble de Madagascar : géographie, mœurs du Sud-Est, lexique, faune et flore — dont la première mention du vorompatra, l'oiseau-éléphant."
+statut: récit
+discipline: histoire
+domain: regards-exterieurs
+period: [1648, 1660]
+geo: { lat: -25.03, lng: 46.99, label: "Fort-Dauphin" }
+sources: [flacourt-1658]
+note: "Source fondatrice et témoignage situé : un administrateur de compagnie en guerre contre les populations qu'il décrit. Sa mention du vorompatra nourrit aujourd'hui le dossier de la mégafaune éteinte (cf Peuplement)."

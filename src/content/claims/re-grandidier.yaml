@@ -1,0 +1,8 @@
+statement: "Alfred Grandidier traverse trois fois l'île entre 1865 et 1870, puis dirige l'Histoire physique, naturelle et politique de Madagascar — une somme de 39 volumes (1885-1901) qui fonde la connaissance savante de l'île."
+statut: récit
+discipline: autre
+domain: regards-exterieurs
+period: [1865, 1901]
+geo: { lat: -18.9, lng: 47.52, label: "Base d'exploration (Antananarivo)" }
+sources: [grandidier-1885, pouvoir-colonial-2012]
+note: "Œuvre monumentale et naturaliste, mais inséparable du projet colonial : la science qui inventorie l'île est aussi celle qui prépare son annexion (1896)."
