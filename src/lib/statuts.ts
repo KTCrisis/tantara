@@ -1,6 +1,7 @@
 // Couleur par statut de preuve — source unique, partagée par badge / claim / frise / carte.
 export const STATUT_COLOR: Record<string, string> = {
   'mesuré': '#2f7d4f',
+  'attesté': '#2a9d8f',
   'reconstruit': '#2f6fb0',
   'daté-débattu': '#b07d1a',
   'récit': '#7a5ba6',

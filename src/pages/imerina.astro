@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Timeline from '../components/Timeline.astro';
+import Registre from '../components/Registre.astro';
+import SourceIndex from '../components/SourceIndex.astro';
+---
+<Base title="L'Imerina et ses souverains — tantara.art">
+  <article class="wrap">
+    <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">04 · L'Imerina et ses souverains</div>
+    <h1>Les rois et reines de l'Imerina</h1>
+    <p class="lead" style="color:var(--ink-2);font-size:1.1rem;">
+      Une dynastie des Hautes Terres qui, en trois siècles, passe d'une colline
+      fortifiée à un royaume de toute l'île. Son histoire change de nature en
+      chemin : longtemps tradition, elle devient archive.
+    </p>
+
+    <h2>1810, l'entrée dans l'écrit</h2>
+    <p>
+      Ce n'est pas un hasard si la frise change de couleur autour de 1810.
+      Avant, les souverains ne nous sont connus que par le <em>Tantara ny
+      Andriana</em>, la tradition compilée bien plus tard — statut
+      <strong style="color:var(--st-recit)">récit</strong>. À partir de Radama Ier,
+      qui adopte l'alphabet latin et accueille traités et missionnaires, le
+      royaume produit et conserve ses propres documents — statut
+      <strong style="color:var(--st-atteste)">attesté</strong>. Le savoir ne
+      devient pas plus vrai, il devient vérifiable.
+    </p>
+
+    <h2>La dynastie, règne après règne</h2>
+    <Timeline domain="imerina-souverains" />
+
+    <h2>Le registre</h2>
+    <Registre domain="imerina-souverains" />
+
+    <h2 id="sources">Sources</h2>
+    <SourceIndex />
+  </article>
+</Base>

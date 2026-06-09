@@ -1,0 +1,8 @@
+statement: "Ranavalona III (1883-1897), dernière souveraine, voit la France conquérir le royaume ; elle est déposée et exilée, d'abord à La Réunion puis à Alger, où elle meurt en 1917."
+statut: attesté
+discipline: histoire
+domain: imerina-souverains
+period: [1883, 1897]
+geo: { lat: -18.92, lng: 47.53, route: europeen, label: "Antananarivo — fin de la monarchie (1897)" }
+sources: [gha-v]
+note: "1897 clôt près de quatre siècles de royauté merina et ouvre la colonie française."

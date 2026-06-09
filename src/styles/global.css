@@ -10,6 +10,7 @@
 
   /* couleurs par statut de preuve (du solide au ténu) */
   --st-mesure:     #2f7d4f;  /* vert — mesuré */
+  --st-atteste:    #2a9d8f;  /* sarcelle — attesté (archives écrites) */
   --st-reconstruit:#2f6fb0;  /* bleu — reconstruit */
   --st-debattu:    #b07d1a;  /* ambre — daté-débattu */
   --st-recit:      #7a5ba6;  /* violet — récit */
@@ -67,6 +68,7 @@ p { margin: 0 0 1rem; }
 }
 .badge::before { content: '●'; margin-right: 5px; font-size: 0.7em; }
 .badge.mesuré { color: var(--st-mesure); }
+.badge.attesté { color: var(--st-atteste); }
 .badge.reconstruit { color: var(--st-reconstruit); }
 .badge\[debattu\], .badge.debattu { color: var(--st-debattu); }
 .badge.récit { color: var(--st-recit); }
@@ -83,6 +85,7 @@ p { margin: 0 0 1rem; }
 .claim-block .statement { }
 .claim-block .meta { font-family: var(--sans); font-size: 0.74rem; color: var(--ink-2); margin-top: 6px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .claim-block.s-mesuré { border-left-color: var(--st-mesure); }
+.claim-block.s-attesté { border-left-color: var(--st-atteste); }
 .claim-block.s-reconstruit { border-left-color: var(--st-reconstruit); }
 .claim-block.s-daté-débattu { border-left-color: var(--st-debattu); }
 .claim-block.s-récit { border-left-color: var(--st-recit); }

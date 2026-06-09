@@ -7,7 +7,7 @@ import { glob } from 'astro/loaders';
  * Les contraintes ci-dessous sont vérifiées au build : la rigueur n'est pas
  * une intention, elle est imposée.
  */
-export const STATUTS = ['mesuré', 'daté-débattu', 'reconstruit', 'récit', 'conjectural'] as const;
+export const STATUTS = ['mesuré', 'attesté', 'reconstruit', 'daté-débattu', 'récit', 'conjectural'] as const;
 export const ROUTES = ['austronesien', 'bantou', 'arabo-swahili', 'europeen'] as const;
 // La discipline dit COMMENT on sait (la démarche), là où la route dit ce qui s'est passé.
 export const DISCIPLINES = ['histoire', 'archéologie', 'génétique', 'linguistique', 'autre'] as const;
