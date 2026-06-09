@@ -7,12 +7,18 @@ import Timeline from '../components/Timeline.astro';
 import MapRoutes from '../components/MapRoutes.astro';
 import SourceIndex from '../components/SourceIndex.astro';
 import { DISCIPLINES } from '../content.config';
+import { DISCIPLINE_DESC } from '../lib/statuts';
 
 const claims = (await getCollection('claims')).filter((c) => c.data.domain === 'peuplement');
 // Le registre est groupé par démarche scientifique : comment on sait, pas ce qu'on croit.
+// À l'intérieur d'un groupe : chronologie croissante (début puis fin), non datées à la fin.
+const debut = (c: (typeof claims)[number]) => c.data.period?.[0] ?? Infinity;
+const fin = (c: (typeof claims)[number]) => c.data.period?.[1] ?? Infinity;
 const parDiscipline = DISCIPLINES.map((d) => ({
   discipline: d,
-  items: claims.filter((c) => c.data.discipline === d),
+  items: claims
+    .filter((c) => c.data.discipline === d)
+    .sort((a, b) => debut(a) - debut(b) || fin(a) - fin(b)),
 })).filter((g) => g.items.length > 0);
 ---
 <Base title="Le peuplement de Madagascar — tantara.art">
@@ -37,10 +43,11 @@ const parDiscipline = DISCIPLINES.map((d) => ({
       La même histoire, vue par {parDiscipline.length} familles de preuves.
     </p>
     {parDiscipline.map((g) => (
-      <section>
-        <h3 style="font-family:var(--mono);font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:36px 0 8px;">
-          {g.discipline} · {g.items.length}
+      <section class="registre-section">
+        <h3 class="registre-head">
+          {g.discipline} <span class="registre-count">{g.items.length}</span>
         </h3>
+        <p class="registre-desc">{DISCIPLINE_DESC[g.discipline]}</p>
         {g.items.map((c) => <Claim id={c.id} block />)}
       </section>
     ))}

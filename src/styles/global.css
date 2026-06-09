@@ -88,6 +88,16 @@ p { margin: 0 0 1rem; }
 .claim-block.s-récit { border-left-color: var(--st-recit); }
 .claim-block.s-conjectural { border-left-color: var(--st-conjectural); }
 
+/* ── registre par discipline ── */
+.registre-section { border-top: 1px solid var(--rule); margin-top: 2.2rem; padding-top: 0.4rem; }
+.registre-head {
+  font-family: var(--mono); font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ocean);
+  margin: 1rem 0 0.1rem;
+}
+.registre-count { color: var(--ink-2); font-weight: 400; margin-left: 6px; }
+.registre-desc { font-family: var(--sans); font-size: 0.8rem; color: var(--ink-2); font-style: italic; margin: 0 0 1rem; }
+
 /* ── hypothesis compare ── */
 .hyp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.4rem 0; }
 .hyp { border: 1px solid var(--rule); border-top: 3px solid var(--st-debattu); border-radius: 4px; padding: 16px 18px; background: var(--paper-2); }

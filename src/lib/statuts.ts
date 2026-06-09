@@ -21,6 +21,15 @@ export const ROUTE_LABEL: Record<string, string> = {
   'europeen': 'européen',
 };
 
+// Sous-titre de chaque discipline : la démarche, en une ligne.
+export const DISCIPLINE_DESC: Record<string, string> = {
+  'histoire': 'ce que les textes et les traditions rapportent',
+  'archéologie': 'ce que le sol et les vestiges datent',
+  'génétique': 'ce que les génomes mesurent',
+  'linguistique': 'ce que la langue reconstruit',
+  'autre': 'paléoécologie, modélisations',
+};
+
 /** Affiche une année signée : -500 → "500 av. n.è.", 1200 → "1200". */
 export function annee(y: number): string {
   return y < 0 ? `${-y} av. n.è.` : `${y}`;
