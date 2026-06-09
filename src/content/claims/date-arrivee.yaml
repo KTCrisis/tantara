@@ -1,0 +1,12 @@
+statement: "La date de la première présence humaine à Madagascar reste débattue."
+statut: daté-débattu
+domain: peuplement
+period: [-500, 700]
+note: "Le débat oppose des datations tardives, solidement établies, à des revendications anciennes contestées."
+hypotheses:
+  - label: "Peuplement du milieu du Ier millénaire"
+    statement: "Les preuves archéologiques robustes situent l'installation durable vers le milieu du Ier millénaire de n.è."
+    sources: [dewar-wright-1993]
+  - label: "Présence ancienne (contestée)"
+    statement: "Des indices d'une présence bien plus ancienne (os portant des traces de découpe) ont été avancés, mais restent contestés."
+    sources: [corps-2019]

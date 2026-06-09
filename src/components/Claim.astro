@@ -1,0 +1,37 @@
+---
+import { getCollection, getEntries } from 'astro:content';
+import StatusBadge from './StatusBadge.astro';
+import { annee } from '../lib/statuts';
+
+interface Props { id: string; block?: boolean; }
+const { id, block = false } = Astro.props;
+
+const claims = await getCollection('claims');
+const entry = claims.find((c) => c.id === id);
+if (!entry) throw new Error(`Claim introuvable : "${id}"`);
+const c = entry.data;
+const sources = c.sources.length ? await getEntries(c.sources) : [];
+---
+{block ? (
+  <div class={`claim-block s-${c.statut}`}>
+    <span class="statement">{c.statement}</span>
+    <div class="meta">
+      <StatusBadge statut={c.statut} />
+      {c.period && <span>{annee(c.period[0])} – {annee(c.period[1])}</span>}
+      {sources.length > 0 && (
+        <span class="claim-sources">
+          {sources.map((s, i) => (
+            <Fragment>{i > 0 ? <span> · </span> : null}<a href={`#src-${s.id}`}>{s.data.auteur}{s.data.annee ? ` (${s.data.annee})` : ''}</a></Fragment>
+          ))}
+        </span>
+      )}
+    </div>
+    {c.note && <div class="meta" style="font-style:italic">{c.note}</div>}
+  </div>
+) : (
+  <span class="claim">{c.statement} <StatusBadge statut={c.statut} />{sources.length > 0 && (
+    <sup class="claim-sources"> {sources.map((s, i) => (
+      <Fragment>{i > 0 ? ',' : ''}<a href={`#src-${s.id}`}>{s.data.auteur.split(',')[0]}</a></Fragment>
+    ))}</sup>
+  )}</span>
+)}

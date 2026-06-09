@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+const sources = (await getCollection('sources')).sort((a, b) =>
+  (a.data.auteur).localeCompare(b.data.auteur));
+---
+<ul class="src-list">
+  {sources.map((s) => (
+    <li id={`src-${s.id}`}>
+      <span class="src-tag {s.data.poids}">{s.data.poids}</span>
+      {s.data.acces === 'paywall' && <span class="src-tag paywall">paywall</span>}
+      <span>
+        <strong>{s.data.auteur}</strong>{s.data.annee ? ` (${s.data.annee})` : ''}.
+        {' '}{s.data.url ? <a href={s.data.url} target="_blank" rel="noopener">{s.data.titre}</a> : <em>{s.data.titre}</em>}
+      </span>
+    </li>
+  ))}
+</ul>

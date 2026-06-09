@@ -1,0 +1,7 @@
+---
+import { STATUT_COLOR } from '../lib/statuts';
+interface Props { statut: string; }
+const { statut } = Astro.props;
+const color = STATUT_COLOR[statut] ?? 'var(--ink-2)';
+---
+<span class="badge" style={`color:${color}`}>{statut}</span>

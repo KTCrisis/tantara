@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import { ROUTE_COLOR, ROUTE_LABEL } from '../lib/statuts';
+
+interface Props { domain?: string; }
+const { domain } = Astro.props;
+
+// projection équirectangulaire grossière sur l'océan Indien
+const W = 800, H = 380;
+const LNG0 = 38, LNG1 = 120, LAT0 = 12, LAT1 = -28;
+const px = (lng: number) => ((lng - LNG0) / (LNG1 - LNG0)) * W;
+const py = (lat: number) => ((LAT0 - lat) / (LAT0 - LAT1)) * H;
+
+const points = (await getCollection('claims'))
+  .filter((c) => (domain ? c.data.domain === domain : true))
+  .filter((c) => c.data.geo)
+  .map((c) => ({ ...c.data.geo!, statement: c.data.statement }));
+
+const routesUsed = [...new Set(points.map((p) => p.route).filter(Boolean))] as string[];
+
+// repères géographiques (décor)
+const MADA = { x: px(47), y: py(-19) };
+const BORNEO = { x: px(114), y: py(-2) };
+const AFRICA = { x: px(39.5), y: py(-6) };
+---
+<div class="map-wrap">
+  <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label="Routes de peuplement de Madagascar">
+    <rect x="0" y="0" width={W} height={H} fill="#e7ddc8" rx="4" />
+    <!-- routes (décor, depuis les régions d'origine vers Madagascar) -->
+    <defs>
+      <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L6,3 L0,6 Z" fill="#b0552f" />
+      </marker>
+      <marker id="arrb" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L6,3 L0,6 Z" fill="#2f6fb0" />
+      </marker>
+    </defs>
+    <path d={`M${BORNEO.x},${BORNEO.y} Q ${(BORNEO.x+MADA.x)/2},${BORNEO.y-60} ${MADA.x+14},${MADA.y-6}`}
+      fill="none" stroke="#2f6fb0" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrb)" opacity="0.8" />
+    <path d={`M${AFRICA.x},${AFRICA.y} Q ${(AFRICA.x+MADA.x)/2},${AFRICA.y+50} ${MADA.x-12},${MADA.y}`}
+      fill="none" stroke="#b0552f" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arr)" opacity="0.8" />
+    <!-- repères -->
+    <text x={MADA.x} y={MADA.y + 26} font-size="13" fill="#5a5346" font-family="sans-serif" text-anchor="middle">Madagascar</text>
+    <text x={BORNEO.x} y={BORNEO.y - 10} font-size="12" fill="#5a5346" font-family="sans-serif" text-anchor="middle">Bornéo</text>
+    <text x={AFRICA.x + 4} y={AFRICA.y - 8} font-size="12" fill="#5a5346" font-family="sans-serif">Afrique de l'Est</text>
+    <!-- points dérivés des claims -->
+    {points.map((p) => (
+      <g>
+        <circle cx={px(p.lng)} cy={py(p.lat)} r="6" fill={p.route ? ROUTE_COLOR[p.route] : '#6b6256'} stroke="#fff" stroke-width="1.5">
+          <title>{p.label ?? p.statement}</title>
+        </circle>
+      </g>
+    ))}
+  </svg>
+  <div class="map-legend">
+    {routesUsed.map((r) => (<span style={`color:${ROUTE_COLOR[r]}`}>route {ROUTE_LABEL[r]}</span>))}
+    <span style="color:var(--ink-2)">carte schématique — dérivée des coordonnées des assertions</span>
+  </div>
+</div>

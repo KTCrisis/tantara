@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import { STATUT_COLOR, annee } from '../lib/statuts';
+
+interface Props { domain?: string; }
+const { domain } = Astro.props;
+
+const claims = (await getCollection('claims'))
+  .filter((c) => (domain ? c.data.domain === domain : true))
+  .filter((c) => c.data.period)
+  .map((c) => ({ ...c.data, mid: (c.data.period![0] + c.data.period![1]) / 2 }))
+  .sort((a, b) => a.mid - b.mid);
+
+const lo = Math.min(...claims.map((c) => c.period![0]));
+const hi = Math.max(...claims.map((c) => c.period![1]));
+const span = hi - lo || 1;
+const pos = (y: number) => ((y - lo) / span) * 100;
+const trunc = (s: string, n = 28) => (s.length > n ? s.slice(0, n) + '…' : s);
+---
+<div class="timeline">
+  <div style="font-family:var(--sans);font-size:0.78rem;color:var(--ink-2);text-transform:uppercase;letter-spacing:0.08em;">Frise — dérivée des assertions datées</div>
+  <div class="timeline-axis">
+    {claims.map((c) => (
+      <div class="tl-item" style={`left:${pos(c.mid)}%`}>
+        <div class="tl-year">{annee(Math.round(c.mid))}</div>
+        <div class="tl-dot" style={`background:${STATUT_COLOR[c.statut]}`}></div>
+        <div class="tl-label">{trunc(c.statement)}</div>
+      </div>
+    ))}
+  </div>
+  <div style="display:flex;justify-content:space-between;font-family:var(--sans);font-size:0.66rem;color:var(--ink-2);">
+    <span>{annee(lo)}</span><span>{annee(hi)}</span>
+  </div>
+</div>

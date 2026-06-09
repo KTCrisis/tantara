@@ -1,0 +1,29 @@
+---
+import { getCollection, getEntries } from 'astro:content';
+
+interface Props { id: string; }
+const { id } = Astro.props;
+
+const claims = await getCollection('claims');
+const entry = claims.find((c) => c.id === id);
+if (!entry) throw new Error(`Claim introuvable : "${id}"`);
+const c = entry.data;
+
+// résout les sources de chaque hypothèse
+const hyps = await Promise.all(
+  c.hypotheses.map(async (h) => ({ ...h, srcs: h.sources.length ? await getEntries(h.sources) : [] }))
+);
+---
+<div class="hyp-grid">
+  {hyps.map((h) => (
+    <div class="hyp">
+      <h4>{h.label}</h4>
+      <p>{h.statement}</p>
+      <div class="claim-sources">
+        {h.srcs.map((s, i) => (
+          <Fragment>{i > 0 ? <span> · </span> : null}<a href={`#src-${s.id}`}>{s.data.auteur}{s.data.annee ? ` (${s.data.annee})` : ''}</a></Fragment>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>

@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+interface Props { title: string; description?: string; }
+const { title, description = "L'état des preuves sur le peuplement et l'histoire de Madagascar." } = Astro.props;
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>" />
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="inner">
+        <a href="/" class="brand">tantara<em>.art</em></a>
+        <nav>
+          <a href="/peuplement">Peuplement</a>
+          <a href="/#methode">Méthode</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-foot">
+      tantara.art — l'état des preuves, pas le verdict · sources ouvertes quand elles existent
+    </footer>
+  </body>
+</html>

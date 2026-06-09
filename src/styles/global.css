@@ -1,0 +1,122 @@
+:root {
+  /* papier / encre — registre savant, lisible */
+  --paper:   #f6f2e9;
+  --paper-2: #efe9db;
+  --ink:     #1d1a16;
+  --ink-2:   #6b6256;
+  --rule:    #d8cfbd;
+  --ocean:   #1c6f76;   /* teinte océan Indien — accent */
+  --ocean-d: #134e54;
+
+  /* couleurs par statut de preuve (du solide au ténu) */
+  --st-mesure:     #2f7d4f;  /* vert — mesuré */
+  --st-reconstruit:#2f6fb0;  /* bleu — reconstruit */
+  --st-debattu:    #b07d1a;  /* ambre — daté-débattu */
+  --st-recit:      #7a5ba6;  /* violet — récit */
+  --st-conjectural:#8a8276;  /* gris — conjectural */
+
+  --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, sans-serif;
+  --mono: ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+.wrap-wide { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+a { color: var(--ocean-d); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--ocean); }
+
+h1, h2, h3 { font-family: var(--sans); line-height: 1.2; letter-spacing: -0.01em; }
+h1 { font-size: 2.4rem; font-weight: 700; }
+h2 { font-size: 1.5rem; font-weight: 700; margin: 2.4rem 0 1rem; }
+h3 { font-size: 1.1rem; font-weight: 600; margin: 1.6rem 0 0.6rem; }
+p { margin: 0 0 1rem; }
+
+/* ── header / footer ── */
+.site-head {
+  border-bottom: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 85%, transparent);
+  backdrop-filter: blur(4px);
+  position: sticky; top: 0; z-index: 10;
+}
+.site-head .inner { display: flex; align-items: baseline; justify-content: space-between; padding: 14px 24px; max-width: 1040px; margin: 0 auto; }
+.brand { font-family: var(--sans); font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+.brand em { color: var(--ocean); font-style: normal; }
+.site-head nav { display: flex; gap: 22px; font-family: var(--sans); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.site-head nav a { color: var(--ink-2); text-decoration: none; }
+.site-head nav a:hover { color: var(--ocean); }
+.site-foot { border-top: 1px solid var(--rule); margin-top: 80px; padding: 32px 24px; font-family: var(--sans); font-size: 0.78rem; color: var(--ink-2); text-align: center; }
+
+/* ── status badge ── */
+.badge {
+  font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 1px 7px 2px; border-radius: 3px; white-space: nowrap;
+  border: 1px solid currentColor; vertical-align: middle;
+}
+.badge::before { content: '●'; margin-right: 5px; font-size: 0.7em; }
+.badge.mesuré { color: var(--st-mesure); }
+.badge.reconstruit { color: var(--st-reconstruit); }
+.badge\[debattu\], .badge.debattu { color: var(--st-debattu); }
+.badge.récit { color: var(--st-recit); }
+.badge.conjectural { color: var(--st-conjectural); }
+
+/* ── claim ── */
+.claim { display: inline; }
+.claim-sources { font-family: var(--sans); font-size: 0.7rem; }
+.claim-sources a { color: var(--ink-2); text-decoration: none; }
+.claim-sources a:hover { color: var(--ocean); }
+.claim-block {
+  border-left: 3px solid var(--rule); padding: 4px 0 4px 18px; margin: 1.4rem 0;
+}
+.claim-block .statement { }
+.claim-block .meta { font-family: var(--sans); font-size: 0.74rem; color: var(--ink-2); margin-top: 6px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.claim-block.s-mesuré { border-left-color: var(--st-mesure); }
+.claim-block.s-reconstruit { border-left-color: var(--st-reconstruit); }
+.claim-block.s-daté-débattu { border-left-color: var(--st-debattu); }
+.claim-block.s-récit { border-left-color: var(--st-recit); }
+.claim-block.s-conjectural { border-left-color: var(--st-conjectural); }
+
+/* ── hypothesis compare ── */
+.hyp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.4rem 0; }
+.hyp { border: 1px solid var(--rule); border-top: 3px solid var(--st-debattu); border-radius: 4px; padding: 16px 18px; background: var(--paper-2); }
+.hyp h4 { font-family: var(--sans); font-size: 0.92rem; margin: 0 0 8px; }
+.hyp p { font-size: 0.92rem; margin: 0 0 10px; }
+@media (max-width: 640px) { .hyp-grid { grid-template-columns: 1fr; } }
+
+/* ── timeline ── */
+.timeline { border: 1px solid var(--rule); border-radius: 4px; padding: 24px; background: var(--paper-2); margin: 1.6rem 0; font-family: var(--sans); }
+.timeline-axis { position: relative; height: 2px; background: var(--rule); margin: 40px 8px 28px; }
+.tl-item { position: absolute; transform: translateX(-50%); top: -8px; }
+.tl-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--paper-2); }
+.tl-label { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); font-size: 0.66rem; color: var(--ink-2); white-space: nowrap; }
+.tl-year { position: absolute; top: -28px; left: 50%; transform: translateX(-50%); font-size: 0.66rem; font-weight: 600; }
+
+/* ── map ── */
+.map-wrap { border: 1px solid var(--rule); border-radius: 4px; background: var(--paper-2); padding: 8px; margin: 1.6rem 0; }
+.map-legend { font-family: var(--sans); font-size: 0.7rem; color: var(--ink-2); display: flex; gap: 16px; padding: 6px 12px 2px; flex-wrap: wrap; }
+.map-legend span::before { content: '●'; margin-right: 5px; }
+
+/* ── source index ── */
+.src-list { list-style: none; font-family: var(--sans); font-size: 0.86rem; }
+.src-list li { padding: 12px 0; border-bottom: 1px solid var(--rule); display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.src-tag { font-family: var(--mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 1px 6px; border: 1px solid var(--rule); border-radius: 3px; color: var(--ink-2); }
+.src-tag.primaire { color: var(--st-mesure); border-color: currentColor; }
+.src-tag.paywall { color: var(--st-debattu); }
+
+/* ── hero ── */
+.hero { padding: 90px 0 50px; border-bottom: 1px solid var(--rule); }
+.hero .kicker { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ocean); margin-bottom: 18px; }
+.hero p.lead { font-size: 1.15rem; color: var(--ink-2); max-width: 620px; margin-top: 18px; }
+.legend-key { display: flex; gap: 14px; flex-wrap: wrap; margin: 24px 0; font-family: var(--sans); font-size: 0.78rem; }

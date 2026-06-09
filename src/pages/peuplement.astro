@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import Claim from '../components/Claim.astro';
+import HypothesisCompare from '../components/HypothesisCompare.astro';
+import Timeline from '../components/Timeline.astro';
+import MapRoutes from '../components/MapRoutes.astro';
+import SourceIndex from '../components/SourceIndex.astro';
+---
+<Base title="Le peuplement de Madagascar — tantara.art">
+  <article class="wrap">
+    <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">01 · Peuplement</div>
+    <h1>Le peuplement de Madagascar</h1>
+    <p class="lead" style="color:var(--ink-2);font-size:1.1rem;">
+      Deux courants, séparés par tout un océan, qui se rencontrent sur une île longtemps
+      vide d'humains. Voici ce que les preuves disent — et où elles s'arrêtent.
+    </p>
+
+    <h2>Une double origine</h2>
+    <p>
+      Le malgache est une langue austronésienne : <Claim id="lexique-austronesien" />
+      Pourtant, la population est aussi profondément africaine.
+      <Claim id="metissage-recent" />
+    </p>
+
+    <h2>Les assertions, par statut de preuve</h2>
+    <Claim id="lexique-austronesien" block />
+    <Claim id="metissage-recent" block />
+    <Claim id="date-arrivee" block />
+
+    <h2>Un point débattu : la date d'arrivée</h2>
+    <p>
+      C'est l'exemple type d'une question que le site n'arbitre pas. Les deux lectures,
+      avec leur appui :
+    </p>
+    <HypothesisCompare id="date-arrivee" />
+
+    <h2>Chronologie</h2>
+    <Timeline domain="peuplement" />
+
+    <h2>Les routes</h2>
+    <MapRoutes domain="peuplement" />
+
+    <h2 id="sources">Sources</h2>
+    <SourceIndex />
+  </article>
+</Base>

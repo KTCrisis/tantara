@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import StatusBadge from '../components/StatusBadge.astro';
+import { STATUTS } from '../content.config';
+
+const defs: Record<string, string> = {
+  'mesuré': 'établi par la mesure — datations génétiques, archéobotanique.',
+  'reconstruit': 'inféré par méthode — linguistique historique, comparaison.',
+  'daté-débattu': 'la communauté ne tranche pas : hypothèses concurrentes exposées.',
+  'récit': 'tradition orale, tantara, mémoire — pas une preuve matérielle.',
+  'conjectural': 'avancé, non établi : à prendre comme piste.',
+};
+---
+<Base title="tantara.art — l'histoire de Madagascar, par les preuves">
+  <section class="hero">
+    <div class="wrap">
+      <div class="kicker">Madagascar · l'état des preuves</div>
+      <h1>D'où viennent les Malgaches ?</h1>
+      <p class="lead">
+        Une île peuplée tardivement, au carrefour de l'Asie du Sud-Est et de l'Afrique.
+        Ce site ne tranche pas l'origine : il <strong>cartographie l'état des preuves</strong>,
+        chaque affirmation portant son statut et ses sources.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap" id="methode">
+    <h2>La méthode</h2>
+    <p>
+      Sur un sujet où le mesuré, le débattu et le mythifié se mélangent vite, chaque
+      assertion est étiquetée par son <strong>statut de preuve</strong>. Un point
+      contesté n'est jamais arbitré : on montre les hypothèses concurrentes côte à côte.
+    </p>
+    <div class="legend-key" style="flex-direction:column;gap:10px;align-items:flex-start;">
+      {STATUTS.map((s) => (
+        <div><StatusBadge statut={s} /> <span style="color:var(--ink-2);font-size:0.92rem;"> — {defs[s]}</span></div>
+      ))}
+    </div>
+    <p style="margin-top:24px;">
+      <a href="/peuplement"><strong>→ Commencer par le peuplement</strong></a>
+    </p>
+  </section>
+</Base>
