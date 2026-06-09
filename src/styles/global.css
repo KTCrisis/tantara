@@ -95,13 +95,22 @@ p { margin: 0 0 1rem; }
 .hyp p { font-size: 0.92rem; margin: 0 0 10px; }
 @media (max-width: 640px) { .hyp-grid { grid-template-columns: 1fr; } }
 
-/* ── timeline ── */
-.timeline { border: 1px solid var(--rule); border-radius: 4px; padding: 24px; background: var(--paper-2); margin: 1.6rem 0; font-family: var(--sans); }
-.timeline-axis { position: relative; height: 2px; background: var(--rule); margin: 40px 8px 28px; }
-.tl-item { position: absolute; transform: translateX(-50%); top: -8px; }
-.tl-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--paper-2); }
-.tl-label { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); font-size: 0.66rem; color: var(--ink-2); white-space: nowrap; }
-.tl-year { position: absolute; top: -28px; left: 50%; transform: translateX(-50%); font-size: 0.66rem; font-weight: 600; }
+/* ── timeline (verticale, label-safe) ── */
+.timeline { border: 1px solid var(--rule); border-radius: 4px; padding: 22px 26px; background: var(--paper-2); margin: 1.6rem 0; font-family: var(--sans); }
+.tl-head { font-size: 0.74rem; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.tl-list { list-style: none; position: relative; }
+.tl-list::before { content: ''; position: absolute; left: calc(130px + 5px); top: 14px; bottom: 14px; width: 1px; background: var(--rule); }
+.tl-row { display: grid; grid-template-columns: 130px 12px 1fr; align-items: baseline; column-gap: 14px; padding: 9px 0; }
+.tl-range { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-2); text-align: right; white-space: nowrap; }
+.tl-marker { width: 11px; height: 11px; border-radius: 50%; align-self: center; border: 2px solid var(--paper-2); position: relative; z-index: 1; }
+.tl-text { font-size: 0.94rem; line-height: 1.5; }
+.tl-statut { font-family: var(--mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.07em; margin-left: 6px; white-space: nowrap; }
+@media (max-width: 560px) {
+  .tl-list::before { display: none; }
+  .tl-row { grid-template-columns: 1fr; row-gap: 2px; }
+  .tl-range { text-align: left; }
+  .tl-marker { display: none; }
+}
 
 /* ── map ── */
 .map-wrap { border: 1px solid var(--rule); border-radius: 4px; background: var(--paper-2); padding: 8px; margin: 1.6rem 0; }
