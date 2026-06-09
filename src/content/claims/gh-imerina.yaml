@@ -1,0 +1,8 @@
+statement: "L'Imerina se structure en royaume sur les Hautes Terres à partir du XVIe siècle ; Antananarivo en devient la capitale au XVIIe."
+statut: récit
+discipline: histoire
+domain: geographie-historique
+period: [1540, 1810]
+geo: { lat: -18.9, lng: 47.52, label: "Imerina (Antananarivo)" }
+sources: [gha-v]
+note: "Chronologie portée par les traditions royales compilées au XIXe siècle (Tantara ny Andriana) — précises en généalogies, fragiles en dates absolues."

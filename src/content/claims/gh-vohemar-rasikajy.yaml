@@ -1,0 +1,8 @@
+statement: "Vohémar, au nord-est, abrite la civilisation rasikajy : une nécropole de plus de 600 tombes riches en céramiques chinoises, bijoux et pierre ollaire, florissante du XIVe au XVIe siècle."
+statut: mesuré
+discipline: archéologie
+domain: geographie-historique
+period: [1300, 1600]
+geo: { lat: -13.37, lng: 50.0, route: arabo-swahili, label: "Vohémar (Rasikajy)" }
+sources: [schreurs-2011]
+note: "Le mobilier funéraire est mesuré ; l'hypothèse d'une communauté d'origine chinoise, elle, reste conjecturale. Déclin dans la seconde moitié du XVIe siècle."

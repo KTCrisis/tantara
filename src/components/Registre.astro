@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import Claim from './Claim.astro';
+import { DISCIPLINES } from '../content.config';
+import { DISCIPLINE_DESC } from '../lib/statuts';
+
+interface Props { domain: string; }
+const { domain } = Astro.props;
+
+const claims = (await getCollection('claims')).filter((c) => c.data.domain === domain);
+// Groupé par démarche scientifique : comment on sait, pas ce qu'on croit.
+// À l'intérieur d'un groupe : chronologie croissante (début puis fin), non datées à la fin.
+const debut = (c: (typeof claims)[number]) => c.data.period?.[0] ?? Infinity;
+const fin = (c: (typeof claims)[number]) => c.data.period?.[1] ?? Infinity;
+const parDiscipline = DISCIPLINES.map((d) => ({
+  discipline: d,
+  items: claims
+    .filter((c) => c.data.discipline === d)
+    .sort((a, b) => debut(a) - debut(b) || fin(a) - fin(b)),
+})).filter((g) => g.items.length > 0);
+---
+<p>
+  Chaque démarche scientifique apporte sa pièce — et son degré de certitude.
+  La même histoire, vue par {parDiscipline.length} familles de preuves.
+</p>
+{parDiscipline.map((g) => (
+  <section class="registre-section">
+    <h3 class="registre-head">
+      {g.discipline} <span class="registre-count">{g.items.length}</span>
+    </h3>
+    <p class="registre-desc">{DISCIPLINE_DESC[g.discipline]}</p>
+    {g.items.map((c) => <Claim id={c.id} block />)}
+  </section>
+))}

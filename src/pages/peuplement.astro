@@ -1,25 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Claim from '../components/Claim.astro';
 import HypothesisCompare from '../components/HypothesisCompare.astro';
 import Timeline from '../components/Timeline.astro';
 import MapRoutes from '../components/MapRoutes.astro';
+import Registre from '../components/Registre.astro';
 import SourceIndex from '../components/SourceIndex.astro';
-import { DISCIPLINES } from '../content.config';
-import { DISCIPLINE_DESC } from '../lib/statuts';
-
-const claims = (await getCollection('claims')).filter((c) => c.data.domain === 'peuplement');
-// Le registre est groupé par démarche scientifique : comment on sait, pas ce qu'on croit.
-// À l'intérieur d'un groupe : chronologie croissante (début puis fin), non datées à la fin.
-const debut = (c: (typeof claims)[number]) => c.data.period?.[0] ?? Infinity;
-const fin = (c: (typeof claims)[number]) => c.data.period?.[1] ?? Infinity;
-const parDiscipline = DISCIPLINES.map((d) => ({
-  discipline: d,
-  items: claims
-    .filter((c) => c.data.discipline === d)
-    .sort((a, b) => debut(a) - debut(b) || fin(a) - fin(b)),
-})).filter((g) => g.items.length > 0);
 ---
 <Base title="Le peuplement de Madagascar — tantara.art">
   <article class="wrap">
@@ -38,19 +24,7 @@ const parDiscipline = DISCIPLINES.map((d) => ({
     </p>
 
     <h2>Le registre, par discipline</h2>
-    <p>
-      Chaque démarche scientifique apporte sa pièce — et son degré de certitude.
-      La même histoire, vue par {parDiscipline.length} familles de preuves.
-    </p>
-    {parDiscipline.map((g) => (
-      <section class="registre-section">
-        <h3 class="registre-head">
-          {g.discipline} <span class="registre-count">{g.items.length}</span>
-        </h3>
-        <p class="registre-desc">{DISCIPLINE_DESC[g.discipline]}</p>
-        {g.items.map((c) => <Claim id={c.id} block />)}
-      </section>
-    ))}
+    <Registre domain="peuplement" />
 
     <h2>Un point débattu : la date d'arrivée</h2>
     <p>

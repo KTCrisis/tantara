@@ -1,0 +1,8 @@
+statement: "Le royaume sakalava du Menabe, fondé au XVIIe siècle par la dynastie Maroseraña, est la première grande construction politique de la côte ouest."
+statut: récit
+discipline: histoire
+domain: geographie-historique
+period: [1650, 1900]
+geo: { lat: -20.3, lng: 44.3, label: "Menabe (Morondava)" }
+sources: [gha-v]
+note: "Connu par les traditions dynastiques et les témoignages européens ; expansion appuyée sur le commerce des bovins et des esclaves contre les armes à feu."

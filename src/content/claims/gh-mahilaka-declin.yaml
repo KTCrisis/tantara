@@ -1,0 +1,8 @@
+statement: "Mahilaka, cité marchande islamisée du nord-ouest, est active du Xe au XIVe siècle puis décline et s'efface — la première entité urbaine de l'île disparaît avant l'émergence des grands royaumes."
+statut: mesuré
+discipline: archéologie
+domain: geographie-historique
+period: [900, 1400]
+geo: { lat: -13.7, lng: 48.2, route: arabo-swahili, label: "Mahilaka" }
+sources: [radimilahy-1998]
+note: "Stratigraphie et céramiques importées datent l'occupation ; les causes de l'abandon restent ouvertes."

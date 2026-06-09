@@ -1,0 +1,8 @@
+statement: "Après Mahilaka, un chapelet de comptoirs islamisés (Antalaotra) jalonne la côte nord-ouest — dont Langany puis la baie de Majunga — reliés aux réseaux swahili."
+statut: mesuré
+discipline: archéologie
+domain: geographie-historique
+period: [1400, 1700]
+geo: { lat: -15.7, lng: 46.3, route: arabo-swahili, label: "Côte nord-ouest (Antalaotra)" }
+sources: [gha-iv, radimilahy-1998]
+note: "Comptoirs attestés par l'archéologie et les premières descriptions portugaises ; des cités-États, pas des royaumes territoriaux."

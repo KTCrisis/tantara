@@ -1,0 +1,8 @@
+statement: "Avant le XVIe siècle, aucun État n'est attesté dans l'intérieur de l'île : une paysannerie dispersée, des chefferies locales, pas de pouvoir territorial connu."
+statut: conjectural
+discipline: archéologie
+domain: geographie-historique
+period: [800, 1540]
+geo: { lat: -19.5, lng: 46.8, label: "Intérieur des terres" }
+sources: [dewar-wright-1993, gha-iv]
+note: "Conjecture par absence de preuve — l'archéologie de l'intérieur reste peu explorée ; l'absence d'État attesté n'est pas la preuve d'une absence d'État."

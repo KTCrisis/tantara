@@ -1,0 +1,110 @@
+---
+import { getCollection } from 'astro:content';
+import { STATUT_COLOR } from '../lib/statuts';
+
+interface Props { domain: string; start?: number; }
+// 1337 par défaut : l'année de départ d'un certain jeu de stratégie...
+const { domain, start = 1337 } = Astro.props;
+
+const points = (await getCollection('claims'))
+  .filter((c) => c.data.domain === domain)
+  .filter((c) => c.data.geo && c.data.period)
+  .map((c) => ({
+    ...c.data.geo!,
+    period: c.data.period!,
+    statut: c.data.statut,
+    statement: c.data.statement,
+  }));
+
+const min = Math.min(...points.map((p) => p.period[0]));
+const max = Math.max(...points.map((p) => p.period[1]));
+const payload = JSON.stringify({ points, colors: STATUT_COLOR, min, max, start });
+---
+<div class="map-wrap">
+  <div class="chrono-bar">
+    <input type="range" class="chrono-slider" aria-label="Année affichée" />
+    <span class="chrono-year"></span>
+  </div>
+  <div class="map-chrono" data-map={payload} aria-label="Carte chronologique des entités politiques connues"></div>
+  <div class="map-legend">
+    <span style="color:var(--ink-2)">déplacer le curseur — chaque halo est un foyer d'influence, pas une frontière : on ne les connaît pas</span>
+  </div>
+</div>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  function fmt(y) {
+    return y < 0 ? `${-y} av. n.è.` : `${y}`;
+  }
+
+  for (const el of document.querySelectorAll('.map-chrono')) {
+    const { points, colors, min, max, start } = JSON.parse(el.dataset.map);
+
+    const map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5 });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 10,
+    }).addTo(map);
+    map.fitBounds([[-11.5, 42.0], [-26.0, 51.5]]);
+
+    const layers = points.map((p) => {
+      const color = colors[p.statut] ?? '#6b6256';
+      const g = L.layerGroup();
+      L.circle([p.lat, p.lng], {
+        radius: 60000,
+        color,
+        weight: 1,
+        opacity: 0.5,
+        dashArray: p.statut === 'conjectural' ? '4 6' : undefined,
+        fillColor: color,
+        fillOpacity: 0.1,
+      }).addTo(g);
+      L.circleMarker([p.lat, p.lng], {
+        radius: 6,
+        color: '#fff',
+        weight: 1.5,
+        fillColor: color,
+        fillOpacity: 1,
+      })
+        .bindPopup(
+          `<strong>${p.label ?? ''}</strong> <em>${fmt(p.period[0])} – ${fmt(p.period[1])}</em><br>${p.statement}`,
+          { maxWidth: 280 },
+        )
+        .addTo(g);
+      return { p, g };
+    });
+
+    const wrap = el.closest('.map-wrap');
+    const slider = wrap.querySelector('.chrono-slider');
+    const label = wrap.querySelector('.chrono-year');
+    slider.min = String(Math.floor(min / 50) * 50);
+    slider.max = String(Math.ceil(max / 50) * 50);
+    slider.step = '10';
+    slider.value = String(start);
+
+    function update() {
+      const y = Number(slider.value);
+      label.textContent = fmt(y);
+      for (const { p, g } of layers) {
+        const visible = p.period[0] <= y && y <= p.period[1];
+        if (visible && !map.hasLayer(g)) g.addTo(map);
+        if (!visible && map.hasLayer(g)) map.removeLayer(g);
+      }
+    }
+    slider.addEventListener('input', update);
+    update();
+  }
+</script>
+
+<style is:global>
+  .map-chrono { height: 520px; border-radius: 3px; z-index: 0; }
+  .map-chrono .leaflet-tile { filter: sepia(0.22) saturate(0.85); }
+  .map-chrono .leaflet-popup-content { font-family: var(--sans); font-size: 0.8rem; line-height: 1.45; }
+  .chrono-bar { display: flex; align-items: center; gap: 14px; padding: 6px 12px 10px; }
+  .chrono-slider { flex: 1; accent-color: var(--ocean); }
+  .chrono-year { font-family: var(--mono); font-size: 0.9rem; color: var(--ocean); min-width: 5.5ch; text-align: right; }
+</style>

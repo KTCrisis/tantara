@@ -1,0 +1,8 @@
+statement: "Le royaume sakalava du Boina, issu du Menabe, s'établit au nord-ouest vers 1700 et prend le contrôle des ports antalaotra, dont Majunga."
+statut: récit
+discipline: histoire
+domain: geographie-historique
+period: [1690, 1840]
+geo: { lat: -15.85, lng: 46.0, label: "Boina (Majunga)" }
+sources: [gha-v]
+note: "Les cités-États marchandes passent sous tutelle d'un royaume de l'intérieur — inversion du rapport de force côtier."

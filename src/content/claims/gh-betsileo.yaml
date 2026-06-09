@@ -1,0 +1,8 @@
+statement: "Les principautés betsileo du sud des Hautes Terres se forment aux XVIIe-XVIIIe siècles, avant d'être absorbées par l'expansion merina au début du XIXe."
+statut: récit
+discipline: histoire
+domain: geographie-historique
+period: [1650, 1815]
+geo: { lat: -21.45, lng: 47.08, label: "Pays betsileo (Fianarantsoa)" }
+sources: [gha-v]
+note: "Plusieurs principautés rivales (Lalangina, Isandra...), jamais un État betsileo unifié."
