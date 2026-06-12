@@ -8,7 +8,7 @@ import { glob } from 'astro/loaders';
  * une intention, elle est imposée.
  */
 export const STATUTS = ['mesuré', 'attesté', 'reconstruit', 'daté-débattu', 'récit', 'conjectural'] as const;
-export const ROUTES = ['austronesien', 'bantou', 'arabo-swahili', 'europeen'] as const;
+export const ROUTES = ['austronesien', 'bantou', 'arabo-swahili', 'indien', 'europeen'] as const;
 // La discipline dit COMMENT on sait (la démarche), là où la route dit ce qui s'est passé.
 export const DISCIPLINES = ['histoire', 'archéologie', 'génétique', 'linguistique', 'autre'] as const;
 

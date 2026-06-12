@@ -12,6 +12,7 @@ export const ROUTE_COLOR: Record<string, string> = {
   'austronesien': '#2f6fb0',
   'bantou': '#b0552f',
   'arabo-swahili': '#7a5ba6',
+  'indien': '#3d7d57',
   'europeen': '#6b6256',
 };
 
@@ -19,6 +20,7 @@ export const ROUTE_LABEL: Record<string, string> = {
   'austronesien': 'austronésien',
   'bantou': 'bantou',
   'arabo-swahili': 'arabo-swahili',
+  'indien': 'indien',
   'europeen': 'européen',
 };
 
