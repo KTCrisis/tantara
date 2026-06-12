@@ -1,0 +1,8 @@
+statement: "Les communautés commerçantes d'origine indienne — dites Karana (musulmanes, khoja et bohra) et Banians (hindoues) — venues du Gujarat (Kutch, Surat), s'implantent à Madagascar au XIXe siècle par les ports de la côte ouest, Mahajanga en tête."
+statut: attesté
+discipline: histoire
+domain: peuplement
+period: [1840, 1900]
+geo: { lat: -15.72, lng: 46.32, route: indien, label: "Mahajanga (comptoirs indiens)" }
+sources: [blanchy-1995]
+note: "Les deux noms génériques recouvrent en réalité cinq communautés distinctes (Blanchy). Migration commerçante tardive, sans commune mesure démographique avec les vagues austronésienne et bantoue — mais durablement structurante pour le commerce de l'île."
