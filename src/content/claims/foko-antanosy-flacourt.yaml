@@ -1,0 +1,8 @@
+statement: "Le pays antanosy (région de Tôlanaro / Fort-Dauphin) fut le théâtre de la première colonie française durable de Madagascar, à partir de 1642 ; l'Histoire de la grande isle Madagascar (1658) d'Étienne de Flacourt, gouverneur du fort, en reste l'ouvrage de base pour le Sud-Est au XVIIe siècle."
+statut: attesté
+discipline: histoire
+domain: foko
+period: [1642, 1674]
+geo: { lat: -25.03, lng: 46.99, label: "Fort-Dauphin / Tôlanaro" }
+sources: [faublee-1996, flacourt-1658]
+scope: [antanosy]

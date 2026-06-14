@@ -1,0 +1,8 @@
+statement: "Les Makoa de l'Ouest malgache descendent d'esclaves importés d'Afrique orientale (nord du Mozambique) par la traite au XIXe siècle ; leur nom dérive de celui des Makhuwa, principal groupe du Mozambique actuel, et ils se sont intégrés à l'aire sakalava."
+statut: attesté
+discipline: histoire
+domain: foko
+period: [1800, 1900]
+geo: { lat: -16.0, lng: 44.5, label: "Ouest de Madagascar, pays sakalava" }
+sources: [boyer-rossol-2010]
+scope: [makoa, sakalava]

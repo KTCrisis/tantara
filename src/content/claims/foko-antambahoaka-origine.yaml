@@ -1,0 +1,8 @@
+statement: "La tradition d'origine des Antambahoaka du Sud-Est les rattache à des migrants musulmans installés à l'embouchure de la Matitanana à la fin du XVe siècle, et à des Zafiraminia islamisés arrivés sur la côte est vers le XIIIe siècle ; cette aristocratie conserve des manuscrits sacrés en graphie arabico-malgache (sorabe)."
+statut: attesté
+discipline: histoire
+domain: foko
+period: [1200, 1500]
+geo: { lat: -21.23, lng: 48.34, label: "Mananjary / embouchure de la Matitanana" }
+sources: [beaujard-2020]
+scope: [antambahoaka, antaimoro]

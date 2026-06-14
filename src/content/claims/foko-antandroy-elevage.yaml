@@ -1,0 +1,7 @@
+statement: "Dans l'Androy, extrême sud aride de Madagascar, un pays difficilement cultivable contraint les Antandroy à vivre surtout d'un élevage extensif d'ovins et de bovins."
+statut: attesté
+discipline: histoire
+domain: foko
+geo: { lat: -25.03, lng: 46.0, label: "Androy, extrême sud" }
+sources: [fierro-2009]
+scope: [antandroy]

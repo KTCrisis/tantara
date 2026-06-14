@@ -1,0 +1,8 @@
+statement: "L'interdiction coloniale du tavy (riziculture sur brûlis), à partir de 1914, priva les Tanala de leurs moyens de subsistance et provoqua des départs vers l'Ouest et le Sud de l'île."
+statut: attesté
+discipline: histoire
+domain: foko
+period: [1914, 1930]
+geo: { lat: -21.87, lng: 47.43, label: "Pays tanala" }
+sources: [defos-du-rau-1959]
+scope: [tanala]

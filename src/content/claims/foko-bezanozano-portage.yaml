@@ -1,0 +1,9 @@
+statement: "Sous la domination merina au XIXe siècle, l'Ankay (pays bezanozano) se trouvait sur l'axe du portage impérial des marchandises entre Antananarivo et la côte est ; ce système de portage par corvée (fanompoana) ne disparut qu'avec l'arrivée du rail et de la route coloniaux, à partir de 1895."
+statut: attesté
+discipline: histoire
+domain: foko
+period: [1810, 1895]
+geo: { lat: -18.95, lng: 48.2, label: "Vallée du Mangoro / Ankay, Moramanga" }
+sources: [campbell-1980]
+scope: [bezanozano]
+note: "La source atteste le système de portage impérial et sa fin en 1895 ; la localisation Ankay / Bezanozano relève de l'historiographie standard (confiance moyenne)."

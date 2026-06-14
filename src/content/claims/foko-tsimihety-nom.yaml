@@ -1,0 +1,8 @@
+statement: "Le nom « Tsimihety » signifie « ceux qui ne se coupent pas les cheveux », étymologie rattachée à un refus de soumission, notamment vis-à-vis du royaume sakalava."
+statut: attesté
+discipline: linguistique
+domain: foko
+geo: { lat: -16.0, lng: 48.8, label: "Nord-centre intérieur" }
+sources: [wilson-1992]
+scope: [tsimihety]
+note: "Étymologie largement admise ; contenu interne de la source non vérifié en ligne (confiance moyenne)."
