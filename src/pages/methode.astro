@@ -1,0 +1,110 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import StatusBadge from '../components/StatusBadge.astro';
+import { STATUTS } from '../content.config';
+import { DISCIPLINE_DESC } from '../lib/statuts';
+
+const defs: Record<string, string> = {
+  'mesuré': 'établi par la mesure — datations radiométriques, génétiques, archéobotanique.',
+  'attesté': 'documenté par des sources écrites concordantes — archives, traités, correspondances.',
+  'reconstruit': 'inféré par méthode — linguistique historique, comparaison, modélisation.',
+  'daté-débattu': 'la communauté ne tranche pas : les hypothèses concurrentes sont exposées côte à côte.',
+  'récit': 'tradition orale, tantara, mémoire — un témoignage, pas une preuve matérielle.',
+  'conjectural': 'avancé mais non établi : à prendre comme une piste.',
+};
+
+// L'état de la recherche, famille par famille. Chaque section renvoie aux assertions du site.
+const familles = [
+  {
+    cle: 'géologie',
+    etat: "Le décor, et le plus solide de tout le site. La formation de l'île se lit dans les roches et se date au radiomètre : séparation de l'Afrique lors de l'éclatement du Gondwana, puis de l'Inde il y a près de 88 millions d'années, et insularité continue depuis. Presque tout y est mesuré ; les débats résiduels portent sur le calage fin des phases de rifting, pas sur le fait de l'isolement. C'est lui qui impose le reste : une île isolée si tôt ne pouvait être peuplée que tard, et par la mer.",
+    statut: 'mesuré',
+    lien: { href: '/geographie', label: 'La géographie physique' },
+  },
+  {
+    cle: 'archéologie',
+    etat: "Le sol date la présence humaine. Un peuplement durable tardif, autour du VIIIe-Xe siècle, est aujourd'hui bien établi par les assemblages et les cultures importées (Dewar & Wright 1993 ; Crowther 2016). Les revendications d'une présence bien plus ancienne — ossements portant des traces de découpe — restent contestées et non confirmées par une installation durable : c'est le point typiquement daté-débattu du dossier.",
+    statut: 'daté-débattu',
+    lien: { href: '/peuplement', label: 'Le peuplement' },
+  },
+  {
+    cle: 'génétique',
+    etat: "Les génomes mesurent l'origine et le métissage. Ils établissent une double ascendance — austronésienne (rattachée à Bornéo) et bantoue africaine — et datent le brassage du dernier millénaire (Cox 2012 ; Pierron 2017, 2018), avec une sélection marquée pour l'ascendance africaine. Restent discutés le nombre de vagues d'arrivée et leurs routes exactes.",
+    statut: 'mesuré',
+    lien: { href: '/peuplement', label: 'Le peuplement' },
+  },
+  {
+    cle: 'linguistique',
+    etat: "La langue reconstruit la parenté. Le malgache se rattache aux langues barito du sud-est de Bornéo (Dahl 1951 ; Adelaar) — l'origine austronésienne est solidement reconstruite —, avec des apports bantous puis arabo-swahili bien documentés. L'histoire dialectale interne, elle, reste discutée (Serva 2012). Une preuve indirecte mais puissante : la langue se souvient de trajets que ni le sol ni les textes ne gardent.",
+    statut: 'reconstruit',
+    lien: { href: '/peuplement', label: 'Le peuplement' },
+  },
+  {
+    cle: 'histoire',
+    etat: "Deux régimes de preuve sous un même mot. L'archive écrite — traités, missionnaires, administration, à partir de l'adoption de l'écriture latine en Imerina vers 1810 — donne de l'attesté. La tradition orale, le tantara compilé tard (Callet), donne du récit : une mémoire, pas une preuve matérielle. Quant aux récits extérieurs (Flacourt, Grandidier), ce sont des regards situés, à lire comme tels.",
+    statut: 'récit',
+    lien: { href: '/regards-exterieurs', label: 'Regards extérieurs' },
+  },
+  {
+    cle: 'autre',
+    etat: "Paléoécologie et modélisations complètent le tableau : l'extinction de la mégafaune et le basculement des paysages (feux, défrichements) bornent l'anthropisation de l'île (Burney 2004).",
+    statut: 'conjectural',
+    lien: { href: '/peuplement', label: 'Le peuplement' },
+  },
+];
+
+const claims = await getCollection('claims');
+const countDisc = (d: string) => claims.filter((c) => c.data.discipline === d).length;
+---
+<Base title="Méthode — tantara.art">
+  <article class="wrap">
+    <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">Méthode</div>
+    <h1>Comment ce site sait ce qu'il avance</h1>
+    <p class="lead" style="color:var(--ink-2);font-size:1.1rem;">
+      Sur un sujet où le mesuré, le débattu et le mythifié se mélangent vite, tantara
+      ne tranche pas l'origine : il cartographie l'état des preuves. Chaque assertion
+      porte deux étiquettes — <strong>par quelle démarche</strong> on la connaît, et
+      <strong>à quel degré de certitude</strong>. Une contrainte de fabrication les
+      impose : une assertion sans source casse la construction du site ; un point
+      débattu sans hypothèses concurrentes sourcées aussi.
+    </p>
+
+    <h2>Le degré de certitude — le statut</h2>
+    <div class="legend-key" style="flex-direction:column;gap:10px;align-items:flex-start;">
+      {STATUTS.map((s) => (
+        <div><StatusBadge statut={s} /> <span style="color:var(--ink-2);font-size:0.92rem;"> — {defs[s]}</span></div>
+      ))}
+    </div>
+
+    <h2 style="margin-top:48px;">Les familles de preuve — où en est la recherche</h2>
+    <p style="color:var(--ink-2);">
+      Aucune discipline ne suffit seule ; elles se corroborent ou se contredisent. La
+      langue et les génomes convergent sur l'Asie du Sud-Est ; le sol fixe les dates ;
+      les textes éclairent le dernier millénaire. Voici ce que chacune apporte — et son
+      état actuel.
+    </p>
+
+    {familles.map((f) => (
+      <section class="famille">
+        <h3 class="famille-head">
+          {f.cle} <span class="famille-sub">{DISCIPLINE_DESC[f.cle]}</span>
+          <span class="famille-count">{countDisc(f.cle)} assertion{countDisc(f.cle) > 1 ? 's' : ''}</span>
+        </h3>
+        <p>{f.etat}</p>
+        <p class="famille-meta">
+          Statut dominant : <StatusBadge statut={f.statut} /> ·
+          <a href={f.lien.href}>{f.lien.label} →</a>
+        </p>
+      </section>
+    ))}
+  </article>
+</Base>
+
+<style>
+  .famille { border-top: 1px solid var(--line); padding: 22px 0; }
+  .famille-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px; text-transform: capitalize; }
+  .famille-sub { font-weight: 400; font-size: 0.9rem; color: var(--ink-2); font-style: italic; }
+  .famille-count { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ocean); margin-left: auto; }
+  .famille-meta { font-size: 0.9rem; color: var(--ink-2); display: flex; align-items: center; gap: 8px; }
+</style>
