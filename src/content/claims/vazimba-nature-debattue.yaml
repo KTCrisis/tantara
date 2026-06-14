@@ -1,0 +1,14 @@
+statement: "La nature des Vazimba reste débattue : population humaine antérieure réellement distincte, ou catégorie de la tradition projetée sur le passé des Hautes Terres."
+statut: daté-débattu
+discipline: histoire
+domain: peuplement
+period: [800, 1600]
+note: "Le mot a d'abord désigné les ancêtres et les esprits du sol d'avant les royaumes ; la lecture coloniale en a fait un « peuple premier » distinct, que la recherche récente nuance."
+hypotheses:
+  - label: "Un peuplement antérieur réel"
+    statement: "Archéologie et génétique des Hautes Terres documentent des occupations anciennes et des lignées que la tradition rattache aux Vazimba : des populations installées avant l'essor des royaumes merina."
+    sources: [mafmad-vazimba, deschamps-1959]
+  - label: "Une catégorie de la tradition"
+    statement: "« Vazimba » désigne d'abord, dans la tradition, les ancêtres d'avant les royaumes ; l'idée d'un peuple premier ethniquement distinct doit autant à la reconstruction coloniale qu'à un souvenir historique."
+    sources: [randrianja-ellis-2009]
+scope: [vazimba, merina, ile-madagascar]
