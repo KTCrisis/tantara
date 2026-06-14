@@ -5,4 +5,4 @@ domain: peuplement
 period: [1000, 2000]
 sources: [pierron-2018]
 note: "Le signal est mesuré ; son mécanisme (résistance au paludisme, avantage des variants africains) reste une hypothèse interprétative."
-scope: [ile-madagascar]
+scope: [bantous, ile-madagascar]

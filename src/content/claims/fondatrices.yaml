@@ -5,4 +5,4 @@ domain: peuplement
 period: [600, 1000]
 sources: [cox-2012]
 note: "Estimation par simulation à partir des lignées mitochondriales actuelles ; l'intervalle temporel reste large. Un peuplement durable peut commencer par une poignée de pirogues."
-scope: [ile-madagascar]
+scope: [austronesiens, ile-madagascar]
