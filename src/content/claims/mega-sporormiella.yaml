@@ -1,0 +1,7 @@
+statement: "Une chute des spores du champignon coprophile Sporormiella (indicateur de l'abondance des grands herbivores) vers 230 à 410 de n.è. signale l'effondrement de la mégafaune, suivie quelques siècles plus tard d'une forte hausse des charbons, signe de feux liés à la transformation humaine du milieu."
+statut: mesuré
+discipline: autre
+domain: megafaune
+period: [230, 410]
+sources: [burney-2004]
+scope: [ile-madagascar]

@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+
+const lieux = (await getCollection('entities')).filter(
+  (e) => e.data.kind === 'lieu' && e.data.categorie && e.data.lat != null && e.data.lng != null,
+);
+const claims = await getCollection('claims');
+const countScope = (id: string) => claims.filter((c) => c.data.scope.some((s) => s.id === id)).length;
+
+const points = lieux.map((e) => ({
+  nom: e.data.nom,
+  region: e.data.region ?? '',
+  cat: e.data.categorie,
+  lat: e.data.lat,
+  lng: e.data.lng,
+  n: countScope(e.id),
+  slug: e.id,
+}));
+const payload = JSON.stringify(points);
+---
+<div class="lieux-map" data-lieux={payload} aria-label="Carte des lieux qui concentrent l'histoire de Madagascar"></div>
+<p class="lieux-map-legend">
+  <span class="lg-dot lg-ville"></span> villes &nbsp;·&nbsp;
+  <span class="lg-dot lg-site"></span> sites naturels chargés d'histoire
+</p>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const COL = { ville: '#1c6f76', 'site-naturel': '#2f7d4f' };
+
+  for (const el of document.querySelectorAll('.lieux-map')) {
+    const points = JSON.parse(el.dataset.lieux);
+    const map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5 });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 10,
+    }).addTo(map);
+    map.fitBounds([[-11.5, 42.5], [-26.0, 51.0]]);
+
+    for (const p of points) {
+      const color = COL[p.cat] ?? '#6b6256';
+      L.circleMarker([p.lat, p.lng], {
+        radius: 5,
+        color: '#fff',
+        weight: 1.5,
+        fillColor: color,
+        fillOpacity: 0.95,
+      })
+        .bindPopup(
+          `<strong>${p.nom}</strong><br>${p.region}<br><em>${p.n} assertion${p.n > 1 ? 's' : ''}</em> · <a href="/lieux/${p.slug}">voir</a>`,
+          { maxWidth: 240 },
+        )
+        .bindTooltip(p.nom, { permanent: true, direction: 'right', offset: [6, 0], className: 'lieu-label' })
+        .addTo(map);
+    }
+  }
+</script>
+
+<style is:global>
+  .lieux-map { height: 560px; border-radius: 3px; z-index: 0; margin-top: 8px; }
+  .lieux-map .leaflet-tile { filter: sepia(0.22) saturate(0.85); }
+  .lieux-map .leaflet-popup-content { font-family: var(--sans); font-size: 0.8rem; line-height: 1.45; }
+  .lieu-label {
+    background: transparent; border: none; box-shadow: none; padding: 0;
+    color: var(--ink); font-family: var(--sans); font-size: 0.64rem; font-weight: 600;
+    text-shadow: 0 0 3px var(--paper), 0 0 3px var(--paper), 0 0 2px var(--paper);
+  }
+  .lieux-map-legend { color: var(--ink-2); font-size: 0.85rem; margin-top: 10px; }
+  .lg-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #fff; vertical-align: middle; }
+  .lg-ville { background: #1c6f76; }
+  .lg-site { background: #2f7d4f; }
+</style>

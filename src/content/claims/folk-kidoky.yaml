@@ -1,0 +1,8 @@
+statement: "La même enquête recueille la description d'un animal nommé kidoky, comparé au sifaka mais bien plus grand (environ 25 kg), à face humaine et se déplaçant au sol, que les auteurs rapprochent d'un grand lémurien subfossile."
+statut: récit
+discipline: histoire
+domain: megafaune
+period: [1995, 1995]
+geo: { lat: -20.74, lng: 44.0, label: "Belo-sur-Mer (Sud-Ouest)" }
+sources: [burney-ramilisonina-1998]
+scope: [ile-madagascar]

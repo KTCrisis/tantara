@@ -1,0 +1,8 @@
+statement: "Madagascar abritait des hippopotames nains endémiques (dont Hippopotamus lemerlei), issus d'un nanisme insulaire ; ils figurent parmi les taxons de mégafaune datés au radiocarbone et disparaissent au cours du dernier millénaire."
+statut: mesuré
+discipline: autre
+domain: megafaune
+period: [-2400, 1000]
+geo: { lat: -20.74, lng: 44.0, label: "Belo-sur-Mer (Ouest)" }
+sources: [burney-2004]
+scope: [ile-madagascar]

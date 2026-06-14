@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import LieuxMap from '../components/LieuxMap.astro';
 
 const lieux = (await getCollection('entities')).filter((e) => e.data.kind === 'lieu' && e.data.categorie);
 const claims = await getCollection('claims');
@@ -23,6 +24,8 @@ const groupes = [
       enfoui, une colline devenue capitale, un tsingy changé en refuge. On ne retient
       ici un lieu, ville ou site naturel, que pour ce qu'il dit de l'histoire malgache.
     </p>
+
+    <LieuxMap />
 
     {groupes.map((g) => (
       <section>

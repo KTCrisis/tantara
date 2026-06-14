@@ -1,0 +1,9 @@
+statement: "En 1658, le gouverneur Étienne de Flacourt rapporte le récit malgache d'un animal du Sud, le tretretretre (ou tratratratra), de la taille d'un veau, à face humaine et queue courte. Des paléontologues y voient le souvenir d'un lémurien géant subfossile, l'identification précise restant débattue."
+statut: récit
+discipline: histoire
+domain: megafaune
+period: [1658, 1658]
+geo: { lat: -24.99, lng: 46.5, label: "Ampatres (Androy), Sud" }
+sources: [flacourt-1658]
+scope: [ile-madagascar]
+note: "Identification à Megaladapis ou Palaeopropithecus conjecturale ; une tradition recueillie au XIXe s. par Ferrand pointe aussi vers Palaeopropithecus."
