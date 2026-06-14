@@ -62,19 +62,26 @@ p { margin: 0 0 1rem; }
 .content { margin-left: 232px; }
 .site-foot { border-top: 1px solid var(--rule); margin-top: 80px; padding: 32px 24px; font-family: var(--sans); font-size: 0.78rem; color: var(--ink-2); text-align: center; }
 
-/* burger + scrim : mobile uniquement */
-.nav-burger, .nav-scrim { display: none; }
+/* barre mobile + burger + scrim : mobile uniquement (zéro JS) */
+.mobile-bar, .nav-burger, .nav-scrim { display: none; }
 @media (max-width: 880px) {
-  .sidebar { transform: translateX(-100%); transition: transform .25s ease; }
-  .nav-toggle:checked ~ .sidebar { transform: translateX(0); box-shadow: 0 0 40px rgba(0,0,0,0.25); }
-  .content { margin-left: 0; }
+  .mobile-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    position: fixed; top: 0; left: 0; right: 0; height: 52px; z-index: 25;
+    padding: 0 10px 0 18px; background: var(--paper); border-bottom: 1px solid var(--rule);
+  }
+  .brand-m { font-family: var(--sans); font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+  .brand-m em { color: var(--ocean); font-style: normal; }
   .nav-burger {
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-    position: fixed; top: 14px; right: 14px; z-index: 30; width: 42px; height: 42px;
-    background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; cursor: pointer;
+    width: 40px; height: 40px; background: none; border: none; cursor: pointer;
   }
   .nav-burger span { display: block; width: 18px; height: 2px; background: var(--ink); }
-  .nav-toggle:checked ~ .nav-scrim { display: block; position: fixed; inset: 0; z-index: 19; background: rgba(0,0,0,0.25); }
+
+  .content { margin-left: 0; padding-top: 52px; }
+  .sidebar { transform: translateX(-100%); transition: transform .25s ease; z-index: 30; }
+  .nav-toggle:checked ~ .sidebar { transform: translateX(0); box-shadow: 0 0 40px rgba(0,0,0,0.25); }
+  .nav-toggle:checked ~ .nav-scrim { display: block; position: fixed; inset: 0; z-index: 26; background: rgba(0,0,0,0.25); }
 }
 
 /* ── status badge ── */

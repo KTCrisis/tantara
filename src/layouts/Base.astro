@@ -18,7 +18,10 @@ const active = (href: string) => (path === href || path.startsWith(href + '/') ?
   </head>
   <body>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
-    <label for="nav-toggle" class="nav-burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></label>
+    <header class="mobile-bar">
+      <a href="/" class="brand-m">tantara<em>.art</em></a>
+      <label for="nav-toggle" class="nav-burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></label>
+    </header>
     <label for="nav-toggle" class="nav-scrim" aria-hidden="true"></label>
 
     <aside class="sidebar">
