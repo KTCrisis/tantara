@@ -5,5 +5,5 @@ domain: geographie-historique
 period: [800, 1540]
 geo: { lat: -19.5, lng: 46.8, label: "Intérieur des terres" }
 sources: [dewar-wright-1993, gha-iv]
-note: "Conjecture par absence de preuve — l'archéologie de l'intérieur reste peu explorée ; l'absence d'État attesté n'est pas la preuve d'une absence d'État."
+note: "Conjecture par absence de preuve, l'archéologie de l'intérieur reste peu explorée ; l'absence d'État attesté n'est pas la preuve d'une absence d'État."
 scope: [ile-madagascar]

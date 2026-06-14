@@ -5,5 +5,5 @@ domain: geographie-historique
 period: [1540, 1810]
 geo: { lat: -18.9, lng: 47.52, label: "Imerina (Antananarivo)" }
 sources: [gha-v]
-note: "Chronologie portée par les traditions royales compilées au XIXe siècle (Tantara ny Andriana) — précises en généalogies, fragiles en dates absolues."
+note: "Chronologie portée par les traditions royales compilées au XIXe siècle (Tantara ny Andriana), précises en généalogies, fragiles en dates absolues."
 scope: [royaume-imerina, merina]

@@ -6,7 +6,7 @@ period: [-500, 700]
 note: "Le débat oppose des datations tardives, solidement établies, à des revendications anciennes contestées."
 hypotheses:
   - label: "Peuplement du milieu du Ier millénaire"
-    statement: "Les preuves matérielles robustes — assemblages archéologiques, cultures asiatiques importées (riz, haricot mungo) — situent l'installation durable autour du VIIIe–Xe siècle de n.è."
+    statement: "Les preuves matérielles robustes, assemblages archéologiques, cultures asiatiques importées (riz, haricot mungo), situent l'installation durable autour du VIIIe–Xe siècle de n.è."
     sources: [dewar-wright-1993, crowther-2016]
   - label: "Présence ancienne (contestée)"
     statement: "Des indices d'une présence bien plus ancienne (os portant des traces de découpe) ont été avancés, mais restent contestés et non confirmés par un peuplement durable."
