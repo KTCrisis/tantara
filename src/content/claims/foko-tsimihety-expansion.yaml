@@ -1,0 +1,8 @@
+statement: "Aux XIXe et XXe siècles, les Tsimihety se sont lentement répandus du Nord-Est de l'île vers le Nord-Ouest, par une expansion migratoire continue « en tache d'huile »."
+statut: attesté
+discipline: histoire
+domain: foko
+period: [1800, 1959]
+geo: { lat: -16.0, lng: 48.8, label: "Mandritsara, nord-centre" }
+sources: [deschamps-1959]
+scope: [tsimihety]

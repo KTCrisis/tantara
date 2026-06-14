@@ -1,0 +1,8 @@
+statement: "Chez les Antambahoaka de la région de Mananjary, la circoncision collective (sambatra) est célébrée selon un cycle septennal, lors de l'« année du vendredi »."
+statut: attesté
+discipline: autre
+domain: foko
+geo: { lat: -21.23, lng: 48.34, label: "Mananjary" }
+sources: [pacaud-2004]
+scope: [antambahoaka]
+note: "Cycle septennal ; source de vulgarisation, à conforter par une étude dédiée (confiance moyenne)."

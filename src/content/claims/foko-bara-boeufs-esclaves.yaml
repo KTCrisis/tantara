@@ -1,0 +1,8 @@
+statement: "À l'époque des royaumes bara, les bœufs et les esclaves constituaient les principales richesses des souverains comme des hommes libres."
+statut: attesté
+discipline: histoire
+domain: foko
+period: [1800, 1895]
+geo: { lat: -22.4, lng: 46.12, label: "Pays bara, Centre-Sud" }
+sources: [manjakahery-2019]
+scope: [bara]

@@ -1,0 +1,7 @@
+statement: "Le nom Tanala (ou Antanala) signifie « ceux de la forêt » (ala) ; ce groupe de la lisière forestière du Sud-Est associe traditionnellement cueillette et riziculture sur brûlis (tavy)."
+statut: attesté
+discipline: histoire
+domain: foko
+geo: { lat: -21.87, lng: 47.43, label: "Ikongo, lisière forestière orientale" }
+sources: [beaujard-1983]
+scope: [tanala]

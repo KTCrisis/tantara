@@ -1,0 +1,8 @@
+statement: "Au XIXe siècle, face à la conquête merina, des Antaisaka se réfugièrent dans les forêts de la falaise puis franchirent le seuil d'Ihosy en repoussant les Bara, certains s'installant jusqu'au bas Mangoky."
+statut: attesté
+discipline: histoire
+domain: foko
+period: [1800, 1895]
+geo: { lat: -23.35, lng: 47.6, label: "Pays antaisaka, Vangaindrano" }
+sources: [defos-du-rau-1959]
+scope: [antaisaka]

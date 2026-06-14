@@ -1,0 +1,8 @@
+statement: "Au XIXe siècle, les Bara des plateaux du Centre-Sud étaient organisés en quatre grands royaumes issus de la dynastie Zafimanely : Iantsantsa (Ivohibe), Be (Ihosy, Ranohira), Imamono (Ankazoabo) et Vinda (Benenitra)."
+statut: attesté
+discipline: histoire
+domain: foko
+period: [1800, 1900]
+geo: { lat: -22.4, lng: 46.12, label: "Ihosy, pays bara" }
+sources: [manjakahery-2019]
+scope: [bara]

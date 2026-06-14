@@ -1,0 +1,7 @@
+statement: "Le pays mahafaly, plateau du Sud-Ouest entre l'Onilahy et la Menarandra, se prête presque exclusivement à l'élevage : le Mahafaly est avant tout un éleveur de zébus, le bœuf y constituant la richesse première."
+statut: attesté
+discipline: histoire
+domain: foko
+geo: { lat: -24.5, lng: 44.3, label: "Plateau mahafaly, Sud-Ouest" }
+sources: [escargueil-1936]
+scope: [mahafaly]

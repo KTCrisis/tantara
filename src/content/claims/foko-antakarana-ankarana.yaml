@@ -1,0 +1,9 @@
+statement: "Face à l'expansion merina, le roi antakarana Tsimiaro conduisit son peuple se réfugier dans les rochers (tsingy) de l'Ankarana en 1837-1838, où il demeura plus d'un an."
+statut: attesté
+discipline: histoire
+domain: foko
+period: [1837, 1838]
+geo: { lat: -12.9, lng: 49.1, label: "Massif de l'Ankarana, Nord" }
+sources: [campbell-2012]
+scope: [antakarana]
+note: "La tradition hésite entre 1837 et 1838 pour l'année du refuge."
