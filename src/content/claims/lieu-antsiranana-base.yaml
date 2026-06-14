@@ -1,0 +1,8 @@
+statement: "La flotte française occupe la baie de Diego-Suarez (Antsiranana) en 1884 ; un traité de 1885, à l'issue de la guerre franco-hova, l'attribue à la France, qui y développe ensuite une importante base militaire."
+statut: attesté
+discipline: histoire
+domain: lieu
+period: [1884, 1900]
+geo: { lat: -12.28, lng: 49.29, route: europeen, label: "Antsiranana (Diego-Suarez)" }
+sources: [rossi-1973]
+scope: [antsiranana, ile-madagascar]

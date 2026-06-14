@@ -1,0 +1,8 @@
+statement: "Le pays bara du Centre-Sud, où se situe le massif de l'Isalo, est marqué par un mégalithisme funéraire : pierres dressées commémoratives (orimbato) et tombeaux en pierre sèche."
+statut: attesté
+discipline: archéologie
+domain: lieu
+geo: { lat: -22.55, lng: 45.35, label: "Massif de l'Isalo (pays bara)" }
+sources: [manjakahery-2017]
+scope: [isalo, bara, ile-madagascar]
+note: "La source documente le mégalithisme funéraire bara de la région ; l'image des sépultures dans les parois mêmes de l'Isalo, courante, n'est pas confirmée par une source académique (confiance moyenne)."

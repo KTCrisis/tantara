@@ -1,0 +1,8 @@
+statement: "Après sa prise en 1817 par Radama Ier, Toamasina (Tamatave) devient le principal port du royaume merina, fonction qu'elle conserve comme premier port du pays ouvert sur l'océan Indien."
+statut: attesté
+discipline: histoire
+domain: lieu
+period: [1817, 1895]
+geo: { lat: -18.15, lng: 49.4, route: europeen, label: "Toamasina (Tamatave)" }
+sources: [columbia-encyclopedia]
+scope: [toamasina, ile-madagascar]

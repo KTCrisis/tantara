@@ -1,0 +1,8 @@
+statement: "Fianarantsoa a été fondée vers 1830 par les Merina comme capitale administrative des royaumes betsileo nouvellement conquis ; son nom signifie « bonne éducation » en malgache."
+statut: attesté
+discipline: histoire
+domain: lieu
+period: [1830, 1830]
+geo: { lat: -21.45, lng: 47.09, label: "Fianarantsoa" }
+sources: [mosca-2022]
+scope: [fianarantsoa, betsileo, ile-madagascar]
