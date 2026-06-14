@@ -1,0 +1,9 @@
+statement: "Au XVIIe siècle, la cartographie européenne fixe le nom Madagascar : la carte de Joan Blaeu (1662) porte le titre latin Insula S. Laurentii, vulgo Madagascar, soit l'île de Saint-Laurent communément appelée Madagascar."
+statut: attesté
+discipline: histoire
+domain: regards-exterieurs
+period: [1602, 1662]
+geo: { lat: -18.9, lng: 47.5, route: europeen, label: "Madagascar (carte Blaeu, 1662)" }
+sources: [blaeu-1662]
+scope: [ile-madagascar]
+note: "La carte de Blaeu s'appuie en partie sur celle du Français Flacourt ; la fixation du nom passe par la cartographie néerlandaise."

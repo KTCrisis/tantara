@@ -1,0 +1,8 @@
+statement: "Les récits et cartes portugais du XVIe siècle, après l'approche de Diogo Dias en 1500, nomment l'île Ilha de São Lourenço (Saint-Laurent) et y reconnaissent le caractère austronésien des habitants."
+statut: attesté
+discipline: histoire
+domain: regards-exterieurs
+period: [1500, 1600]
+geo: { lat: -16.0, lng: 50.5, route: europeen, label: "Approche portugaise (1500)" }
+sources: [thomaz-2009]
+scope: [ile-madagascar]

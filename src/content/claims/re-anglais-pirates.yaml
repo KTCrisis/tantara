@@ -1,0 +1,8 @@
+statement: "Madagascar entre dans l'imaginaire anglais au début du XVIIIe siècle par la chronique des pirates de Charles Johnson (A General History of the Pyrates, 1724), qui y place la république utopique de Libertalia, récit tenu pour largement fictif."
+statut: récit
+discipline: histoire
+domain: regards-exterieurs
+period: [1690, 1724]
+geo: { lat: -16.8, lng: 49.9, route: europeen, label: "Sainte-Marie / nord-est (repaires pirates)" }
+sources: [johnson-1724]
+scope: [ile-madagascar]
