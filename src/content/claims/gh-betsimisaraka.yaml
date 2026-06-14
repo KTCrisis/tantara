@@ -6,3 +6,4 @@ period: [1712, 1820]
 geo: { lat: -17.9, lng: 49.35, label: "Confédération betsimisaraka (côte est)" }
 sources: [graeber-2023]
 note: "L'ascendance pirate de Ratsimilaho et la date de 1712 viennent des traditions et de récits européens tardifs ; le fait des zana-malata (métissage avec les flibustiers) est, lui, bien établi. Confédération lâche le long de ~640 km de côte, jamais un État centralisé."
+scope: [confederation-betsimisaraka, betsimisaraka]

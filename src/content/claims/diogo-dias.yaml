@@ -6,3 +6,4 @@ period: [1500, 1530]
 geo: { lat: -16.0, lng: 50.5, route: europeen, label: "Approche portugaise (1500)" }
 sources: [thomaz-2009]
 note: "Fondé sur les chroniques portugaises. Position indicative : le point d'atterrage exact n'est pas établi. L'arrivée européenne clôt le peuplement initial — l'île est alors habitée depuis des siècles."
+scope: [ile-madagascar]

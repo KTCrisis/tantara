@@ -2,12 +2,12 @@
 import { getCollection } from 'astro:content';
 import { STATUT_COLOR, annee } from '../lib/statuts';
 
-interface Props { domain?: string; }
-const { domain } = Astro.props;
+interface Props { domain?: string; scope?: string; }
+const { domain, scope } = Astro.props;
 
 // chronologie croissante : date de début, puis date de fin (lecture strictement montante)
 const claims = (await getCollection('claims'))
-  .filter((c) => (domain ? c.data.domain === domain : true))
+  .filter((c) => (scope ? c.data.scope.some((s) => s.id === scope) : domain ? c.data.domain === domain : true))
   .filter((c) => c.data.period)
   .sort((a, b) => a.data.period![0] - b.data.period![0] || a.data.period![1] - b.data.period![1]);
 ---

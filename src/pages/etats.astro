@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { annee } from '../lib/statuts';
+
+const royaumes = (await getCollection('entities'))
+  .filter((e) => e.data.kind === 'royaume')
+  .sort((a, b) => (a.data.formation?.[0] ?? 9999) - (b.data.formation?.[0] ?? 9999));
+
+const claims = await getCollection('claims');
+const countFor = (id: string) => claims.filter((c) => c.data.scope.some((s) => s.id === id)).length;
+
+// L'Imerina a sa page rédigée (la bascule récit→attesté de 1810) ; on y renvoie.
+const href = (id: string) => (id === 'royaume-imerina' ? '/imerina' : `/etats/${id}`);
+---
+<Base title="Les États — tantara.art">
+  <article class="wrap">
+    <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">Les États</div>
+    <h1>Royaumes et constructions politiques</h1>
+    <p class="lead" style="color:var(--ink-2);font-size:1.1rem;">
+      Avant la colonie, l'île n'a jamais été un seul corps. Des États se forment sur
+      les côtes comme à l'intérieur : Menabe et Boina sakalava à l'ouest, confédération
+      betsimisaraka à l'est, Imerina sur les Hautes Terres. Aucun ne précède les autres
+      par nature — l'Imerina figure ici parmi ses contemporains, pas au-dessus.
+    </p>
+
+    <div class="etat-list">
+      {royaumes.map((e) => {
+        const n = countFor(e.id);
+        const b = e.data.formation;
+        return (
+          <a class="etat-row" href={href(e.id)}>
+            <div class="etat-when">{b ? `${annee(b[0])}–${annee(b[1])}` : '—'}</div>
+            <div class="etat-main">
+              <div class="etat-nom">{e.data.nom}</div>
+              <div class="etat-resume">{e.data.resume}</div>
+            </div>
+            <div class="etat-count">{n > 0 ? `${n} assertion${n > 1 ? 's' : ''}` : 'à documenter'}</div>
+          </a>
+        );
+      })}
+    </div>
+  </article>
+</Base>
+
+<style>
+  .etat-list { margin: 32px 0 60px; }
+  .etat-row { display: grid; grid-template-columns: 130px 1fr auto; gap: 18px; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--line); text-decoration: none; color: inherit; }
+  .etat-row:last-child { border-bottom: 1px solid var(--line); }
+  .etat-row:hover .etat-nom { color: var(--ocean); }
+  .etat-when { font-family: var(--mono); font-size: 0.8rem; color: var(--ocean); }
+  .etat-nom { font-weight: 600; font-size: 1.05rem; }
+  .etat-resume { color: var(--ink-2); font-size: 0.9rem; margin-top: 3px; }
+  .etat-count { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+  @media (max-width: 640px) { .etat-row { grid-template-columns: 1fr; gap: 4px; } }
+</style>

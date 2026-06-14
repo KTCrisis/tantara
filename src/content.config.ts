@@ -26,13 +26,20 @@ const sources = defineCollection({
   }),
 });
 
-// ── Entités : peuples · lieux · périodes · auteurs ──
+// ── Entités : peuples · foko · royaumes · lieux · périodes · auteurs ──
+// `peuple`  = groupe ancestral / linguistique (Austronésiens, Bantous)
+// `foko`    = l'un des « dix-huit » groupes — un découpage tardif, pas une donnée première (cf. accueil)
+// `royaume` = construction politique (État), distincte du peuple qui l'habite
+export const ENTITY_KINDS = ['peuple', 'foko', 'royaume', 'lieu', 'periode', 'auteur'] as const;
 const entities = defineCollection({
   loader: glob({ pattern: '**/*.{yaml,yml}', base: './src/content/entities' }),
   schema: z.object({
     nom: z.string(),
-    kind: z.enum(['peuple', 'lieu', 'periode', 'auteur']),
+    kind: z.enum(ENTITY_KINDS),
     resume: z.string().optional(),
+    region: z.string().optional(),       // foko/royaume : ancrage géographique principal
+    langue: z.string().optional(),       // foko : rattachement dialectal
+    formation: z.tuple([z.number(), z.number()]).optional(), // royaume : bornes d'existence
   }),
 });
 
@@ -63,6 +70,9 @@ const claims = defineCollection({
         .optional(),
       sources: z.array(reference('sources')).default([]),
       hypotheses: z.array(hypothese).default([]),
+      // À quoi se rattache l'assertion : l'île, un foko, un royaume. Multi-valué :
+      // une même assertion peut concerner plusieurs entités (frontières poreuses).
+      scope: z.array(reference('entities')).default([]),
       note: z.string().optional(),
     })
     .superRefine((c, ctx) => {
