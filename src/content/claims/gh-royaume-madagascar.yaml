@@ -1,9 +1,9 @@
-statement: "Sous Radama Ier, l'Imerina s'étend à la majeure partie de l'île à partir de 1810 et se fait reconnaître « royaume de Madagascar » par les puissances européennes — jusqu'à la conquête française de 1895-1897."
+statement: "Sous Radama Ier, l'Imerina s'étend à la majeure partie de l'île à partir de 1810 et se fait reconnaître « royaume de Madagascar » par les puissances européennes, jusqu'à la conquête française de 1895-1897."
 statut: récit
 discipline: histoire
 domain: geographie-historique
 period: [1810, 1897]
 geo: { lat: -18.9, lng: 47.52, route: europeen, label: "Royaume de Madagascar" }
 sources: [gha-v]
-note: "Abondamment documenté (traités, archives) ; « majeure partie » — le sud et l'ouest sakalava ne furent jamais pleinement soumis."
+note: "Abondamment documenté (traités, archives) ; « majeure partie », le sud et l'ouest sakalava ne furent jamais pleinement soumis."
 scope: [royaume-madagascar, royaume-imerina, merina, ile-madagascar]

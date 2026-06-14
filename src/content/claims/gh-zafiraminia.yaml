@@ -5,5 +5,5 @@ domain: geographie-historique
 period: [1250, 1600]
 geo: { lat: -23.35, lng: 47.6, route: arabo-swahili, label: "Sud-Est (Zafiraminia)" }
 sources: [faublee-1970]
-note: "Chronologie portée par les généalogies des manuscrits — un récit d'origine, dont la datation absolue est invérifiable."
+note: "Chronologie portée par les généalogies des manuscrits, un récit d'origine, dont la datation absolue est invérifiable."
 scope: [ile-madagascar]

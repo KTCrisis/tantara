@@ -1,9 +1,9 @@
-statement: "Fort-Dauphin (Tôlanaro), fondé en 1643 dans l'extrême sud-est, est le premier établissement français durable de l'île — abandonné en 1674 après l'échec de la colonie."
+statement: "Fort-Dauphin (Tôlanaro), fondé en 1643 dans l'extrême sud-est, est le premier établissement français durable de l'île, abandonné en 1674 après l'échec de la colonie."
 statut: mesuré
 discipline: histoire
 domain: geographie-historique
 period: [1643, 1674]
 geo: { lat: -25.03, lng: 46.99, route: europeen, label: "Fort-Dauphin (Tôlanaro)" }
 sources: [flacourt-1658, gha-v]
-note: "C'est de là qu'Étienne de Flacourt, gouverneur de 1648 à 1655, écrit la première grande description française de l'île — cf la verticale Regards extérieurs."
+note: "C'est de là qu'Étienne de Flacourt, gouverneur de 1648 à 1655, écrit la première grande description française de l'île, cf la verticale Regards extérieurs."
 scope: [ile-madagascar]
