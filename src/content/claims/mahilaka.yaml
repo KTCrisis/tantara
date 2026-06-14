@@ -6,4 +6,4 @@ period: [900, 1400]
 geo: { lat: -13.7, lng: 48.2, route: arabo-swahili, label: "Mahilaka (baie d'Ampasindava)" }
 sources: [radimilahy-1998]
 note: "Fouilles : mosquée, enceinte, céramiques importées, cristal de roche, perles, la matérialité du lien arabo-swahili."
-scope: [ile-madagascar]
+scope: [ile-madagascar, mahilaka]

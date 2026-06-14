@@ -5,4 +5,4 @@ domain: foko
 period: [1200, 1500]
 geo: { lat: -21.23, lng: 48.34, label: "Mananjary / embouchure de la Matitanana" }
 sources: [beaujard-2020]
-scope: [antambahoaka, antaimoro]
+scope: [antambahoaka, antaimoro, mananjary]

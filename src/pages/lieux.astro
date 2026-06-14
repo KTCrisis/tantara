@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const lieux = (await getCollection('entities')).filter((e) => e.data.kind === 'lieu' && e.data.categorie);
+const claims = await getCollection('claims');
+const countFor = (id: string) => claims.filter((c) => c.data.scope.some((s) => s.id === id)).length;
+
+const villes = lieux.filter((e) => e.data.categorie === 'ville').sort((a, b) => a.data.nom.localeCompare(b.data.nom));
+const sites = lieux.filter((e) => e.data.categorie === 'site-naturel').sort((a, b) => a.data.nom.localeCompare(b.data.nom));
+
+const groupes = [
+  { titre: 'Villes', sous: 'des comptoirs morts aux capitales vivantes', items: villes },
+  { titre: 'Sites naturels', sous: 'un relief qui a fait l\'histoire : refuges, ressources, sépultures', items: sites },
+];
+---
+<Base title="Les lieux — tantara.art">
+  <article class="wrap">
+    <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">Les lieux</div>
+    <h1>Les lieux qui concentrent l'histoire</h1>
+    <p class="lead" style="color:var(--ink-2);font-size:1.1rem;">
+      Certains points de l'île portent plus d'histoire que d'autres : un port swahili
+      enfoui, une colline devenue capitale, un tsingy changé en refuge. On ne retient
+      ici un lieu, ville ou site naturel, que pour ce qu'il dit de l'histoire malgache.
+    </p>
+
+    {groupes.map((g) => (
+      <section>
+        <h2>{g.titre}</h2>
+        <p style="color:var(--ink-2);margin-top:-4px;">{g.sous}</p>
+        <div class="lieu-grid">
+          {g.items.map((e) => {
+            const n = countFor(e.id);
+            return (
+              <a class="lieu-card" href={`/lieux/${e.id}`}>
+                <div class="lieu-nom">{e.data.nom}</div>
+                <div class="lieu-region">{e.data.region}</div>
+                <div class="lieu-count">{n > 0 ? `${n} assertion${n > 1 ? 's' : ''}` : 'à documenter'}</div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    ))}
+  </article>
+</Base>
+
+<style>
+  .lieu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 40px; }
+  .lieu-card { display: block; padding: 16px 18px; border: 1px solid var(--line); border-radius: 4px; text-decoration: none; color: inherit; transition: border-color .15s, transform .15s; }
+  .lieu-card:hover { border-color: var(--ocean); transform: translateY(-2px); }
+  .lieu-nom { font-weight: 600; font-size: 1.05rem; }
+  .lieu-region { color: var(--ink-2); font-size: 0.85rem; margin-top: 2px; }
+  .lieu-count { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ocean); margin-top: 10px; }
+</style>

@@ -5,4 +5,4 @@ domain: geographie-physique
 period: [-88000000, -19000]
 geo: { lat: -19.35, lng: 47.2, label: "Massif de l'Ankaratra, hautes terres centrales" }
 sources: [cucciniello-2016]
-scope: [ile-madagascar]
+scope: [ile-madagascar, ankaratra]

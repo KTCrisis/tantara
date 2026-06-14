@@ -6,4 +6,4 @@ period: [1400, 1700]
 geo: { lat: -22.8, lng: 47.8, route: arabo-swahili, label: "Pays antemoro (Sud-Est)" }
 sources: [faublee-1970]
 note: "L'existence des manuscrits est un fait matériel ; leur contenu généalogique est un récit d'origine, pas une preuve de celle-ci."
-scope: [antaimoro, ile-madagascar]
+scope: [antaimoro, ile-madagascar, mananjary]

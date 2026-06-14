@@ -6,4 +6,4 @@ period: [1831, 1878]
 geo: { lat: -19.16, lng: 47.83, label: "Mantasoa (Imerina)" }
 sources: [gha-v]
 note: "Un regard d'un autre genre : non plus décrire l'île, mais la transformer. Exilé en 1857 à la mort de la reine, il revient consul de France en 1862, la frontière entre aventurier, industriel et agent d'influence est mince."
-scope: [ile-madagascar]
+scope: [ile-madagascar, mantasoa]

@@ -44,7 +44,8 @@ const entities = defineCollection({
     // Foyer approximatif (foko) : un point d'ancrage et un rayon indicatif, JAMAIS une frontière.
     lat: z.number().optional(),
     lng: z.number().optional(),
-    rayon: z.number().optional(),        // km — étendue indicative du halo
+    rayon: z.number().optional(),        // km, étendue indicative du halo
+    categorie: z.enum(['ville', 'site-naturel']).optional(), // lieu : ville ou site naturel chargé d'histoire
   }),
 });
 
