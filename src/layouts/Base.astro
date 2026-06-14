@@ -3,6 +3,9 @@ import '../styles/global.css';
 import Ornement from '../components/Ornement.astro';
 interface Props { title: string; description?: string; }
 const { title, description = "L'état des preuves sur le peuplement et l'histoire de Madagascar." } = Astro.props;
+
+const path = Astro.url.pathname.replace(/\/$/, '');
+const active = (href: string) => (path === href || path.startsWith(href + '/') ? 'active' : '');
 ---
 <!doctype html>
 <html lang="fr">
@@ -14,28 +17,36 @@ const { title, description = "L'état des preuves sur le peuplement et l'histoir
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>" />
   </head>
   <body>
-    <header class="site-head">
-      <div class="inner">
-        <a href="/" class="brand">tantara<em>.art</em></a>
-        <nav>
-          <a href="/methode">Méthode</a>
-          <a href="/geographie">Géographie</a>
-          <a href="/megafaune">Le monde d'avant</a>
-          <a href="/peuplement">Peuplement</a>
-          <a href="/geographie-historique">Géographie historique</a>
-          <a href="/peuples">Les foko</a>
-          <a href="/etats">Les États</a>
-          <a href="/lieux">Les lieux</a>
-          <a href="/regards-exterieurs">Regards extérieurs</a>
-        </nav>
-      </div>
-    </header>
-    <main>
-      <slot />
-    </main>
-    <footer class="site-foot">
-      <Ornement motif="frise" class="foot-frise" />
-      <div>tantara.art — l'état des preuves, pas le verdict · sources ouvertes quand elles existent</div>
-    </footer>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
+    <label for="nav-toggle" class="nav-burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></label>
+    <label for="nav-toggle" class="nav-scrim" aria-hidden="true"></label>
+
+    <aside class="sidebar">
+      <a href="/" class="brand">tantara<em>.art</em></a>
+      <nav>
+        <a href="/methode" class={active('/methode')}>Méthode</a>
+        <div class="nav-group">Le récit</div>
+        <a href="/geographie" class={active('/geographie')}>Géographie</a>
+        <a href="/megafaune" class={active('/megafaune')}>Le monde d'avant</a>
+        <a href="/peuplement" class={active('/peuplement')}>Peuplement</a>
+        <a href="/geographie-historique" class={active('/geographie-historique')}>Géographie historique</a>
+        <div class="nav-group">Les acteurs</div>
+        <a href="/peuples" class={active('/peuples')}>Les foko</a>
+        <a href="/etats" class={active('/etats')}>Les États</a>
+        <a href="/lieux" class={active('/lieux')}>Les lieux</a>
+        <div class="nav-sep"></div>
+        <a href="/regards-exterieurs" class={active('/regards-exterieurs')}>Regards extérieurs</a>
+      </nav>
+    </aside>
+
+    <div class="content">
+      <main>
+        <slot />
+      </main>
+      <footer class="site-foot">
+        <Ornement motif="frise" class="foot-frise" />
+        <div>tantara.art — l'état des preuves, pas le verdict · sources ouvertes quand elles existent</div>
+      </footer>
+    </div>
   </body>
 </html>
