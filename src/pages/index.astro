@@ -1,14 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
 import StatusBadge from '../components/StatusBadge.astro';
+import ExploreMap from '../components/ExploreMap.astro';
 import { STATUTS } from '../content.config';
 
 const defs: Record<string, string> = {
-  'mesuré': 'établi par la mesure — datations génétiques, archéobotanique.',
-  'attesté': 'documenté par des sources écrites concordantes — archives, traités.',
-  'reconstruit': 'inféré par méthode — linguistique historique, comparaison.',
+  'mesuré': 'établi par la mesure : datations génétiques, archéobotanique.',
+  'attesté': 'documenté par des sources écrites concordantes : archives, traités.',
+  'reconstruit': 'inféré par méthode : linguistique historique, comparaison.',
   'daté-débattu': 'la communauté ne tranche pas : hypothèses concurrentes exposées.',
-  'récit': 'tradition orale, tantara, mémoire — pas une preuve matérielle.',
+  'récit': 'tradition orale, tantara, mémoire, pas une preuve matérielle.',
   'conjectural': 'avancé, non établi : à prendre comme piste.',
 };
 ---
@@ -23,6 +24,59 @@ const defs: Record<string, string> = {
         chaque affirmation portant son statut et ses sources.
       </p>
     </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Un atlas de preuves</h2>
+    <p>
+      <em>Tantara</em> veut dire « histoire, récit » en malgache. Ce site rassemble ce que
+      l'on sait du peuplement et de l'histoire de Madagascar, de la formation de l'île
+      aux royaumes, et le pose à plat : chaque assertion porte <strong>par quelle démarche</strong>
+      on la connaît et <strong>à quel degré de certitude</strong>. Rien n'est affirmé sans source.
+    </p>
+    <p>
+      Le parti pris est de ne pas trancher ce qui divise, mais de montrer l'état réel des
+      preuves, doutes compris. Le découpage en dix-huit <em>foko</em> y est traité pour ce
+      qu'il est, une construction tardive, et non une origine. Une même île, des traversées
+      partagées, une histoire vérifiable d'où regarder devant.
+    </p>
+  </section>
+
+  <section class="wrap">
+    <h2>Explorer</h2>
+    <p>
+      Entrez par la carte : les <strong>foyers des foko</strong> en fond, les
+      <strong>lieux</strong> qui concentrent l'histoire en points. Cliquez pour suivre un fil.
+    </p>
+    <ExploreMap />
+  </section>
+
+  <section class="wrap">
+    <h2>Par où commencer</h2>
+    <p style="line-height:2;">
+      <a href="/geographie"><strong>→ Le commencement : la géographie</strong></a>, le décor avant les hommes.<br />
+      <a href="/megafaune"><strong>→ Le monde d'avant</strong></a>, les géants disparus.<br />
+      <a href="/peuplement"><strong>→ Le peuplement</strong></a>, par la mer, en deux courants.<br />
+      <a href="/peuples"><strong>→ Les dix-huit foko</strong></a>, et pourquoi « dix-huit ».<br />
+      <a href="/etats"><strong>→ Les États</strong></a>, royaumes côtiers et Imerina.<br />
+      <a href="/lieux"><strong>→ Les lieux</strong></a>, des comptoirs morts aux capitales.
+    </p>
+  </section>
+
+  <section class="wrap" id="methode">
+    <h2>La méthode, en deux mots</h2>
+    <p>
+      Sur un sujet où le mesuré, le débattu et le mythifié se mélangent vite, chaque
+      assertion porte deux étiquettes : la <strong>démarche</strong> (géologie, archéologie,
+      génétique, linguistique, histoire) et le <strong>degré de certitude</strong>. Un point
+      contesté n'est jamais arbitré : les hypothèses concurrentes sont montrées côte à côte.
+    </p>
+    <div class="legend-key" style="gap:10px;flex-wrap:wrap;">
+      {STATUTS.map((s) => (<StatusBadge statut={s} />))}
+    </div>
+    <p style="margin-top:18px;">
+      <a href="/methode"><strong>→ La méthode en entier : familles de preuve et état de la recherche</strong></a>
+    </p>
   </section>
 
   <section class="wrap" id="aujourdhui">
@@ -50,31 +104,6 @@ const defs: Record<string, string> = {
       commune, preuves et doutes compris, sans trancher ce qui divise. Une même île,
       peuplée par les mêmes traversées. Peut-être qu'une histoire partagée, posée à plat
       et vérifiable, est un endroit d'où l'on peut regarder devant.
-    </p>
-  </section>
-
-  <section class="wrap" id="methode">
-    <h2>La méthode, en deux mots</h2>
-    <p>
-      Sur un sujet où le mesuré, le débattu et le mythifié se mélangent vite, chaque
-      assertion porte deux étiquettes : <strong>par quelle démarche</strong> on la
-      connaît (géologie, archéologie, génétique, linguistique, histoire) et
-      <strong>à quel degré de certitude</strong>. Un point contesté n'est jamais
-      arbitré : les hypothèses concurrentes sont montrées côte à côte.
-    </p>
-    <div class="legend-key" style="gap:10px;flex-wrap:wrap;">
-      {STATUTS.map((s) => (<StatusBadge statut={s} />))}
-    </div>
-    <p style="margin-top:18px;">
-      <a href="/methode"><strong>→ La méthode en entier : familles de preuve et état de la recherche</strong></a>
-    </p>
-    <p style="margin-top:32px;">
-      <a href="/geographie"><strong>→ Commencer par le commencement : la géographie</strong></a><br />
-      <a href="/peuplement"><strong>→ Le peuplement, par la mer</strong></a><br />
-      <a href="/geographie-historique"><strong>→ La carte des royaumes, siècle par siècle</strong></a><br />
-      <a href="/peuples"><strong>→ Les dix-huit foko, et pourquoi « dix-huit »</strong></a><br />
-      <a href="/etats"><strong>→ Les États : royaumes côtiers et Imerina</strong></a><br />
-      <a href="/regards-exterieurs"><strong>→ Qui a décrit l'île, et comment</strong></a>
     </p>
   </section>
 </Base>

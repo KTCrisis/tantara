@@ -1,0 +1,70 @@
+---
+// Carte d'exploration de l'accueil : foyers foko (halos en fond) + lieux (points cliquables).
+import { getCollection } from 'astro:content';
+
+const entities = await getCollection('entities');
+const claims = await getCollection('claims');
+const countScope = (id: string) => claims.filter((c) => c.data.scope.some((s) => s.id === id)).length;
+
+const foko = entities
+  .filter((e) => e.data.kind === 'foko' && e.data.lat != null)
+  .map((e) => ({ nom: e.data.nom, lat: e.data.lat, lng: e.data.lng, rayon: (e.data.rayon ?? 60) * 1000, slug: e.id }));
+
+const lieux = entities
+  .filter((e) => e.data.kind === 'lieu' && e.data.categorie && e.data.lat != null)
+  .map((e) => ({ nom: e.data.nom, lat: e.data.lat, lng: e.data.lng, cat: e.data.categorie, n: countScope(e.id), slug: e.id }));
+
+const payload = JSON.stringify({ foko, lieux });
+---
+<div class="explore-map" data-explore={payload} aria-label="Carte d'exploration de Madagascar : foko et lieux"></div>
+<p class="explore-legend">
+  <span class="lg-dot lg-foko"></span> foyers des foko &nbsp;·&nbsp;
+  <span class="lg-dot lg-ville"></span> villes &nbsp;·&nbsp;
+  <span class="lg-dot lg-site"></span> sites naturels &nbsp; — &nbsp; cliquez pour explorer
+</p>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const OCEAN = '#1c6f76', GREEN = '#2f7d4f', INK2 = '#6b6256';
+
+  for (const el of document.querySelectorAll('.explore-map')) {
+    const { foko, lieux } = JSON.parse(el.dataset.explore);
+    const map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5 });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd', maxZoom: 10,
+    }).addTo(map);
+    map.fitBounds([[-11.5, 42.5], [-26.0, 51.0]]);
+
+    // foyers foko : halos en fond, cliquables
+    for (const f of foko) {
+      L.circle([f.lat, f.lng], { radius: f.rayon, color: INK2, weight: 0, fillColor: INK2, fillOpacity: 0.07 })
+        .bindPopup(`<strong>${f.nom}</strong> <em>(foko)</em><br><a href="/peuples/${f.slug}">voir le foko</a>`)
+        .bindTooltip(f.nom, { className: 'map-tip' })
+        .addTo(map);
+    }
+    // lieux : points cliquables au premier plan
+    for (const p of lieux) {
+      const color = p.cat === 'site-naturel' ? GREEN : OCEAN;
+      L.circleMarker([p.lat, p.lng], { radius: 5, color: '#fff', weight: 1.5, fillColor: color, fillOpacity: 0.95 })
+        .bindPopup(`<strong>${p.nom}</strong><br><em>${p.n} assertion${p.n > 1 ? 's' : ''}</em> · <a href="/lieux/${p.slug}">voir le lieu</a>`)
+        .bindTooltip(p.nom, { className: 'map-tip' })
+        .addTo(map);
+    }
+  }
+</script>
+
+<style is:global>
+  .explore-map { height: 600px; border-radius: 3px; z-index: 0; }
+  .explore-map .leaflet-tile { filter: sepia(0.22) saturate(0.85); }
+  .explore-map .leaflet-popup-content { font-family: var(--sans); font-size: 0.82rem; line-height: 1.5; }
+  .map-tip { background: var(--paper); border: 1px solid var(--rule); color: var(--ink); font-family: var(--sans); font-size: 0.72rem; }
+  .explore-legend { color: var(--ink-2); font-size: 0.85rem; margin-top: 12px; font-family: var(--sans); }
+  .explore-legend .lg-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; border: 1.5px solid #fff; }
+  .explore-legend .lg-foko { background: #6b6256; opacity: 0.5; border-color: #6b6256; }
+  .explore-legend .lg-ville { background: #1c6f76; }
+  .explore-legend .lg-site { background: #2f7d4f; }
+</style>

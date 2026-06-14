@@ -11,7 +11,10 @@ interface Props { title: string; description?: string; }
 const { title, description = "L'état des preuves sur le peuplement et l'histoire de Madagascar." } = Astro.props;
 
 const path = Astro.url.pathname.replace(/\/$/, '');
-const active = (href: string) => (path === href || path.startsWith(href + '/') ? 'active' : '');
+const active = (href: string) => {
+  const h = href === '/' ? '' : href;
+  return path === h || (h !== '' && path.startsWith(h + '/')) ? 'active' : '';
+};
 ---
 <!doctype html>
 <html lang="fr">
@@ -33,6 +36,7 @@ const active = (href: string) => (path === href || path.startsWith(href + '/') ?
     <aside class="sidebar">
       <a href="/" class="brand">tantara<em>.art</em></a>
       <nav>
+        <a href="/" class={active('/')}>Accueil</a>
         <a href="/methode" class={active('/methode')}>Méthode</a>
         <div class="nav-group">Le récit</div>
         <a href="/geographie" class={active('/geographie')}>Géographie</a>
