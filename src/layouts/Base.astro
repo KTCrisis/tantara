@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Ornement from '../components/Ornement.astro';
 interface Props { title: string; description?: string; }
 const { title, description = "L'état des preuves sur le peuplement et l'histoire de Madagascar." } = Astro.props;
 ---
@@ -31,7 +32,8 @@ const { title, description = "L'état des preuves sur le peuplement et l'histoir
       <slot />
     </main>
     <footer class="site-foot">
-      tantara.art — l'état des preuves, pas le verdict · sources ouvertes quand elles existent
+      <Ornement motif="frise" class="foot-frise" />
+      <div>tantara.art — l'état des preuves, pas le verdict · sources ouvertes quand elles existent</div>
     </footer>
   </body>
 </html>
