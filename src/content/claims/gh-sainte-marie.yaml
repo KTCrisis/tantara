@@ -6,3 +6,4 @@ period: [1690, 1730]
 geo: { lat: -17.0, lng: 49.85, route: europeen, label: "Île Sainte-Marie (Nosy Boraha)" }
 sources: [archeo-piraterie, graeber-2023]
 note: "La mission Archéologie de la Piraterie (Caen) fouille depuis les années 2010 une épave coulée vers 1720-1721 et un campement de forbans dans la baie d'Ambodifotatra : plus de 3 300 artefacts remontés, sept à dix épaves estimées."
+scope: [ile-madagascar]

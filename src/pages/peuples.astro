@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const foko = (await getCollection('entities'))
+  .filter((e) => e.data.kind === 'foko')
+  .sort((a, b) => a.data.nom.localeCompare(b.data.nom));
+
+const claims = await getCollection('claims');
+const countFor = (id: string) => claims.filter((c) => c.data.scope.some((s) => s.id === id)).length;
+---
+<Base title="Les dix-huit foko — tantara.art">
+  <article class="wrap">
+    <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">Les peuples</div>
+    <h1>Les « dix-huit » foko</h1>
+    <p class="lead" style="color:var(--ink-2);font-size:1.1rem;">
+      On range d'ordinaire les Malgaches en dix-huit <em>foko</em>. Le chiffre est
+      commode et tardif : il doit beaucoup à l'administration coloniale, qui a fixé
+      en frontières ce qui était gradient. Ici, chaque foko est une entrée — mais le
+      découpage lui-même est traité comme une assertion, pas comme un fait premier.
+    </p>
+    <p style="color:var(--ink-2);font-size:0.92rem;border-left:2px solid var(--line);padding-left:12px;">
+      Pourquoi « dix-huit » ? Le nombre s'est stabilisé sous la colonisation, sur des
+      catégories déjà merina-centrées ; les limites entre groupes étaient poreuses et
+      mouvantes. Lire ces pages, c'est suivre des cristallisations récentes, pas des
+      essences. <a href="/#methode">La méthode</a> · <a href="/peuplement">l'origine commune</a>.
+    </p>
+
+    <div class="foko-grid">
+      {foko.map((e) => {
+        const n = countFor(e.id);
+        return (
+          <a class="foko-card" href={`/peuples/${e.id}`}>
+            <div class="foko-nom">{e.data.nom}</div>
+            <div class="foko-region">{e.data.region}</div>
+            <div class="foko-count">{n > 0 ? `${n} assertion${n > 1 ? 's' : ''}` : 'à documenter'}</div>
+          </a>
+        );
+      })}
+    </div>
+  </article>
+</Base>
+
+<style>
+  .foko-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 32px 0 60px; }
+  .foko-card { display: block; padding: 16px 18px; border: 1px solid var(--line); border-radius: 4px; text-decoration: none; color: inherit; transition: border-color .15s, transform .15s; }
+  .foko-card:hover { border-color: var(--ocean); transform: translateY(-2px); }
+  .foko-nom { font-weight: 600; font-size: 1.05rem; }
+  .foko-region { color: var(--ink-2); font-size: 0.85rem; margin-top: 2px; }
+  .foko-count { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ocean); margin-top: 10px; }
+</style>

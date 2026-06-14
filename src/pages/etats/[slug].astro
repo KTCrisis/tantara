@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Timeline from '../../components/Timeline.astro';
+import Registre from '../../components/Registre.astro';
+import MapChrono from '../../components/MapChrono.astro';
+import SourceIndex from '../../components/SourceIndex.astro';
+import { annee } from '../../lib/statuts';
+
+export async function getStaticPaths() {
+  const royaumes = (await getCollection('entities')).filter((e) => e.data.kind === 'royaume');
+  return royaumes.map((e) => ({ params: { slug: e.id }, props: { entity: e } }));
+}
+
+const { entity } = Astro.props;
+const claims = (await getCollection('claims')).filter((c) =>
+  c.data.scope.some((s) => s.id === entity.id),
+);
+const hasGeo = claims.some((c) => c.data.geo && c.data.period);
+const hasDated = claims.some((c) => c.data.period);
+const bornes = entity.data.formation;
+---
+<Base title={`${entity.data.nom} — tantara.art`}>
+  <article class="wrap">
+    <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">
+      <a href="/etats" style="color:var(--ocean)">Les États</a> · {entity.data.region}{bornes ? ` · ${annee(bornes[0])}–${annee(bornes[1])}` : ''}
+    </div>
+    <h1>{entity.data.nom}</h1>
+    {entity.data.resume && <p class="lead" style="color:var(--ink-2);font-size:1.1rem;">{entity.data.resume}</p>}
+
+    {claims.length === 0 ? (
+      <p style="margin-top:32px;font-style:italic;color:var(--ink-2);">
+        Aucune assertion n'est encore versée au registre pour cet État. À documenter, source par source.
+      </p>
+    ) : (
+      <>
+        {hasGeo && (<><h2>Sur la carte</h2><MapChrono scope={entity.id} start={bornes ? bornes[0] : 1337} /></>)}
+        {hasDated && (<><h2>Au fil du temps</h2><Timeline scope={entity.id} /></>)}
+        <h2>Le registre</h2>
+        <Registre scope={entity.id} />
+        <h2 id="sources">Sources</h2>
+        <SourceIndex scope={entity.id} />
+      </>
+    )}
+  </article>
+</Base>

@@ -2,12 +2,12 @@
 import { getCollection } from 'astro:content';
 import { STATUT_COLOR } from '../lib/statuts';
 
-interface Props { domain: string; start?: number; }
+interface Props { domain?: string; scope?: string; start?: number; }
 // 1337 par défaut : l'année de départ d'un certain jeu de stratégie...
-const { domain, start = 1337 } = Astro.props;
+const { domain, scope, start = 1337 } = Astro.props;
 
 const points = (await getCollection('claims'))
-  .filter((c) => c.data.domain === domain)
+  .filter((c) => (scope ? c.data.scope.some((s) => s.id === scope) : c.data.domain === domain))
   .filter((c) => c.data.geo && c.data.period)
   .map((c) => ({
     ...c.data.geo!,
@@ -16,10 +16,15 @@ const points = (await getCollection('claims'))
     statement: c.data.statement,
   }));
 
-const min = Math.min(...points.map((p) => p.period[0]));
-const max = Math.max(...points.map((p) => p.period[1]));
+const hasPoints = points.length > 0;
+const min = hasPoints ? Math.min(...points.map((p) => p.period[0])) : 0;
+const max = hasPoints ? Math.max(...points.map((p) => p.period[1])) : 0;
 const payload = JSON.stringify({ points, colors: STATUT_COLOR, min, max, start });
 ---
+{!hasPoints && (
+  <p style="color:var(--ink-2);font-style:italic;">Aucune assertion géolocalisée et datée à cartographier ici pour l'instant.</p>
+)}
+{hasPoints && (
 <div class="map-wrap">
   <div class="chrono-bar">
     <input type="range" class="chrono-slider" aria-label="Année affichée" />
@@ -30,6 +35,7 @@ const payload = JSON.stringify({ points, colors: STATUT_COLOR, min, max, start }
     <span style="color:var(--ink-2)">déplacer le curseur — chaque halo est un foyer d'influence, pas une frontière : on ne les connaît pas</span>
   </div>
 </div>
+)}
 
 <script>
   import L from 'leaflet';

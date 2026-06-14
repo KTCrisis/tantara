@@ -6,3 +6,4 @@ period: [1650, 1815]
 geo: { lat: -21.45, lng: 47.08, label: "Pays betsileo (Fianarantsoa)" }
 sources: [gha-v]
 note: "Plusieurs principautés rivales (Lalangina, Isandra...), jamais un État betsileo unifié."
+scope: [betsileo]

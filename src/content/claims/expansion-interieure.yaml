@@ -5,3 +5,4 @@ domain: peuplement
 period: [1000, 1600]
 sources: [dewar-wright-1993, burney-2004]
 note: "Le littoral d'abord, l'intérieur ensuite — un schéma classique d'île colonisée par la mer."
+scope: [ile-madagascar]

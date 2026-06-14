@@ -1,7 +1,24 @@
 ---
 import { getCollection } from 'astro:content';
-const sources = (await getCollection('sources')).sort((a, b) =>
+
+interface Props { domain?: string; scope?: string; }
+const { domain, scope } = Astro.props;
+
+let sources = (await getCollection('sources')).sort((a, b) =>
   (a.data.auteur).localeCompare(b.data.auteur));
+
+// Si un périmètre est donné, ne garder que les sources réellement citées par ses claims.
+if (domain || scope) {
+  const claims = (await getCollection('claims')).filter((c) =>
+    scope ? c.data.scope.some((s) => s.id === scope) : c.data.domain === domain,
+  );
+  const used = new Set<string>();
+  for (const c of claims) {
+    c.data.sources.forEach((s) => used.add(s.id));
+    c.data.hypotheses.forEach((h) => h.sources.forEach((s) => used.add(s.id)));
+  }
+  sources = sources.filter((s) => used.has(s.id));
+}
 ---
 <ul class="src-list">
   {sources.map((s) => (

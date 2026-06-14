@@ -6,3 +6,4 @@ period: [1643, 1674]
 geo: { lat: -25.03, lng: 46.99, route: europeen, label: "Fort-Dauphin (Tôlanaro)" }
 sources: [flacourt-1658, gha-v]
 note: "C'est de là qu'Étienne de Flacourt, gouverneur de 1648 à 1655, écrit la première grande description française de l'île — cf la verticale Regards extérieurs."
+scope: [ile-madagascar]

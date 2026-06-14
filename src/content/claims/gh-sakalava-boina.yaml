@@ -6,3 +6,4 @@ period: [1690, 1840]
 geo: { lat: -15.85, lng: 46.0, label: "Boina (Majunga)" }
 sources: [gha-v]
 note: "Les cités-États marchandes passent sous tutelle d'un royaume de l'intérieur — inversion du rapport de force côtier."
+scope: [royaume-boina, sakalava]

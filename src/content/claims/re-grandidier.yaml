@@ -6,3 +6,4 @@ period: [1865, 1901]
 geo: { lat: -18.9, lng: 47.52, label: "Base d'exploration (Antananarivo)" }
 sources: [grandidier-1885, pouvoir-colonial-2012]
 note: "Œuvre monumentale et naturaliste, mais inséparable du projet colonial : la science qui inventorie l'île est aussi celle qui prépare son annexion (1896)."
+scope: [ile-madagascar]

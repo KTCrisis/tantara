@@ -6,3 +6,4 @@ period: [1450, 1850]
 geo: { lat: -22.4, lng: 47.85, route: arabo-swahili, label: "Royaume antemoro (Matitanana)" }
 sources: [faublee-1970, gha-v]
 note: "Ses scribes (katibo) et devins servirent ensuite les autres cours de l'île — l'écriture comme instrument de pouvoir."
+scope: [royaume-antemoro, antaimoro]

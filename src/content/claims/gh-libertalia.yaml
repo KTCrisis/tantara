@@ -5,3 +5,4 @@ domain: geographie-historique
 period: [1690, 1720]
 sources: [johnson-1724, graeber-2023]
 note: "Source unique : A General History of the Pyrates (1724, sous le pseudonyme Charles Johnson, peut-être Defoe). Aucune trace archivistique d'un capitaine Misson ni d'une colonie Libertalia — alors que presque tous les autres pirates du livre sont documentés. Pas de coordonnées sur la carte : on ne place pas un lieu qui n'a probablement jamais existé."
+scope: [ile-madagascar]
