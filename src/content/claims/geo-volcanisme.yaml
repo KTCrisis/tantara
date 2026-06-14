@@ -1,0 +1,8 @@
+statement: "Le volcanisme malgache se décline en deux temps : les épanchements crétacés (~88 Ma) liés au panache de Marion lors de la rupture avec l'Inde, puis un volcanisme intraplaque récent (Ankaratra et Itasy sur les hautes terres, Nosy Be et Massif d'Ambre au nord), actif jusqu'au Pléistocène (~19 000 ans)."
+statut: mesuré
+discipline: géologie
+domain: geographie-physique
+period: [-88000000, -19000]
+geo: { lat: -19.35, lng: 47.2, label: "Massif de l'Ankaratra, hautes terres centrales" }
+sources: [cucciniello-2016]
+scope: [ile-madagascar]

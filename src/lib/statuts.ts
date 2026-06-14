@@ -26,6 +26,7 @@ export const ROUTE_LABEL: Record<string, string> = {
 
 // Sous-titre de chaque discipline : la démarche, en une ligne.
 export const DISCIPLINE_DESC: Record<string, string> = {
+  'géologie': 'ce que les roches et les datations radiométriques établissent',
   'histoire': 'ce que les textes et les traditions rapportent',
   'archéologie': 'ce que le sol et les vestiges datent',
   'génétique': 'ce que les génomes mesurent',

@@ -54,19 +54,23 @@ const defs: Record<string, string> = {
   </section>
 
   <section class="wrap" id="methode">
-    <h2>La méthode</h2>
+    <h2>La méthode, en deux mots</h2>
     <p>
       Sur un sujet où le mesuré, le débattu et le mythifié se mélangent vite, chaque
-      assertion est étiquetée par son <strong>statut de preuve</strong>. Un point
-      contesté n'est jamais arbitré : on montre les hypothèses concurrentes côte à côte.
+      assertion porte deux étiquettes : <strong>par quelle démarche</strong> on la
+      connaît (géologie, archéologie, génétique, linguistique, histoire) et
+      <strong>à quel degré de certitude</strong>. Un point contesté n'est jamais
+      arbitré : les hypothèses concurrentes sont montrées côte à côte.
     </p>
-    <div class="legend-key" style="flex-direction:column;gap:10px;align-items:flex-start;">
-      {STATUTS.map((s) => (
-        <div><StatusBadge statut={s} /> <span style="color:var(--ink-2);font-size:0.92rem;"> — {defs[s]}</span></div>
-      ))}
+    <div class="legend-key" style="gap:10px;flex-wrap:wrap;">
+      {STATUTS.map((s) => (<StatusBadge statut={s} />))}
     </div>
-    <p style="margin-top:24px;">
-      <a href="/peuplement"><strong>→ Commencer par le peuplement</strong></a><br />
+    <p style="margin-top:18px;">
+      <a href="/methode"><strong>→ La méthode en entier : familles de preuve et état de la recherche</strong></a>
+    </p>
+    <p style="margin-top:32px;">
+      <a href="/geographie"><strong>→ Commencer par le commencement : la géographie</strong></a><br />
+      <a href="/peuplement"><strong>→ Le peuplement, par la mer</strong></a><br />
       <a href="/geographie-historique"><strong>→ La carte des royaumes, siècle par siècle</strong></a><br />
       <a href="/peuples"><strong>→ Les dix-huit foko, et pourquoi « dix-huit »</strong></a><br />
       <a href="/etats"><strong>→ Les États : royaumes côtiers et Imerina</strong></a><br />

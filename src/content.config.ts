@@ -10,7 +10,8 @@ import { glob } from 'astro/loaders';
 export const STATUTS = ['mesuré', 'attesté', 'reconstruit', 'daté-débattu', 'récit', 'conjectural'] as const;
 export const ROUTES = ['austronesien', 'bantou', 'arabo-swahili', 'indien', 'europeen'] as const;
 // La discipline dit COMMENT on sait (la démarche), là où la route dit ce qui s'est passé.
-export const DISCIPLINES = ['histoire', 'archéologie', 'génétique', 'linguistique', 'autre'] as const;
+// Ordre = du plus profond / mesurable au plus tardif / interprété (géologie → autre).
+export const DISCIPLINES = ['géologie', 'archéologie', 'génétique', 'linguistique', 'histoire', 'autre'] as const;
 
 // ── Sources : la bibliographie ──
 const sources = defineCollection({
