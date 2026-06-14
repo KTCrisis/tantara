@@ -6,4 +6,4 @@ period: [900, 1400]
 geo: { lat: -13.7, lng: 48.2, route: arabo-swahili, label: "Mahilaka" }
 sources: [radimilahy-1998]
 note: "Stratigraphie et céramiques importées datent l'occupation ; les causes de l'abandon restent ouvertes."
-scope: [ile-madagascar]
+scope: [ile-madagascar, mahilaka]

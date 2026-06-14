@@ -4,4 +4,4 @@ discipline: histoire
 domain: foko
 geo: { lat: -17.5, lng: 48.5, label: "Lac Alaotra" }
 sources: [penot-rakotoarimanana-2011]
-scope: [sihanaka]
+scope: [sihanaka, alaotra]
