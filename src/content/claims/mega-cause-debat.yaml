@@ -1,0 +1,15 @@
+statement: "La cause de l'extinction de la mégafaune reste débattue : surchasse humaine, aridification climatique, ou synergie de facteurs (chasse, feux, agropastoralisme transformant le paysage)."
+statut: daté-débattu
+discipline: autre
+domain: megafaune
+period: [-500, 1500]
+sources: [godfrey-2024]
+scope: [ile-madagascar]
+note: "Les synthèses récentes privilégient une fenêtre d'extinction prolongée : aridification dans les zones sèches, puis arrivée des éleveurs ailleurs, l'expansion de l'agropastoralisme jouant le rôle décisif final."
+hypotheses:
+  - label: "Surchasse et transformation humaine du paysage"
+    statement: "L'extinction coïncide avec l'expansion du pastoralisme : vers 1000-800 ans avant le présent, les herbivores introduits (zébus, caprins, porcs) et la mégafaune endémique se chevauchent brièvement ; compétition, chasse et transformation du milieu auraient précipité l'extinction."
+    sources: [hixon-2021]
+  - label: "Aridification climatique"
+    statement: "Des enregistrements polliniques du Sud-Est montrent des déclins forestiers et des épisodes de sécheresse durant la fenêtre d'extinction ; une aridification accrue, en synergie avec la pression humaine, aurait contribué au déclin."
+    sources: [virah-sawmy-2010]

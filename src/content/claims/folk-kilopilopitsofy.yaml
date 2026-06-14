@@ -1,0 +1,8 @@
+statement: "En 1995 à Belo-sur-Mer, Burney et Ramilisonina recueillent la description, par des villageois âgés, d'un animal nocturne nommé kilopilopitsofy, de la taille d'une vache, sans cornes, fuyant vers l'eau, dont les traits évoquent l'hippopotame nain ; la part du souvenir oral ancien ou d'une survivance tardive est débattue."
+statut: récit
+discipline: histoire
+domain: megafaune
+period: [1995, 1995]
+geo: { lat: -20.74, lng: 44.0, label: "Belo-sur-Mer (Sud-Ouest)" }
+sources: [burney-ramilisonina-1998]
+scope: [ile-madagascar]
