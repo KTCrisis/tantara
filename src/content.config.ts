@@ -105,6 +105,7 @@ const pages = defineCollection({
     title: z.string(),
     domain: z.string(),
     order: z.number().default(0),
+    kicker: z.string().optional(),
     intro: z.string().optional(),
   }),
 });
