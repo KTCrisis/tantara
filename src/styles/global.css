@@ -105,6 +105,9 @@ p { margin: 0 0 1rem; }
 
 /* ── claim ── */
 .claim { display: inline; }
+/* statut en ligne : discret, mot coloré sans pilule (la pilule reste pour le registre) */
+.claim-statut { font-style: italic; font-size: 0.84em; white-space: nowrap; }
+.claim-statut::before { content: "· "; color: var(--ink-2); font-style: normal; }
 .claim-sources { font-family: var(--sans); font-size: 0.7rem; }
 .claim-sources a { color: var(--ink-2); text-decoration: none; }
 .claim-sources a:hover { color: var(--ocean); }

@@ -98,6 +98,18 @@ const countDisc = (d: string) => claims.filter((c) => c.data.discipline === d).l
         </p>
       </section>
     ))}
+
+    <h2 style="margin-top:48px;">Le poids des sources</h2>
+    <p>
+      Toute source ne se vaut pas. Chaque référence de la bibliographie porte donc une
+      étiquette de poids, et, le cas échéant, sa condition d'accès.
+    </p>
+    <ul class="poids-key">
+      <li><span class="src-tag primaire">primaire</span> source de première main : témoignage d'époque, document, article scientifique original.</li>
+      <li><span class="src-tag synthèse">synthèse</span> ouvrage ou article qui fait le point, recoupe et met en perspective.</li>
+      <li><span class="src-tag vulgarisation">vulgarisation</span> encyclopédie générale, presse, médiation : utile pour cadrer, plus faible comme preuve.</li>
+      <li><span class="src-tag paywall">paywall</span> accès payant ; sans cette mention, la source est en accès libre.</li>
+    </ul>
   </article>
 </Base>
 
@@ -107,4 +119,7 @@ const countDisc = (d: string) => claims.filter((c) => c.data.discipline === d).l
   .famille-sub { font-weight: 400; font-size: 0.9rem; color: var(--ink-2); font-style: italic; }
   .famille-count { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ocean); margin-left: auto; }
   .famille-meta { font-size: 0.9rem; color: var(--ink-2); display: flex; align-items: center; gap: 8px; }
+  .poids-key { list-style: none; padding: 0; margin: 14px 0; }
+  .poids-key li { margin: 0 0 10px; font-size: 0.95rem; }
+  .poids-key .src-tag { margin-right: 8px; }
 </style>

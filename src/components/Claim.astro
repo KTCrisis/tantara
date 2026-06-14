@@ -1,7 +1,7 @@
 ---
 import { getCollection, getEntries } from 'astro:content';
 import StatusBadge from './StatusBadge.astro';
-import { annee } from '../lib/statuts';
+import { annee, STATUT_COLOR } from '../lib/statuts';
 
 interface Props { id: string; block?: boolean; }
 const { id, block = false } = Astro.props;
@@ -29,7 +29,7 @@ const sources = c.sources.length ? await getEntries(c.sources) : [];
     {c.note && <div class="meta" style="font-style:italic">{c.note}</div>}
   </div>
 ) : (
-  <span class="claim">{c.statement} <StatusBadge statut={c.statut} />{sources.length > 0 && (
+  <span class="claim">{c.statement} <span class="claim-statut" style={`color:${STATUT_COLOR[c.statut] ?? 'var(--ink-2)'}`}>{c.statut}</span>{sources.length > 0 && (
     <sup class="claim-sources"> {sources.map((s, i) => (
       <Fragment>{i > 0 ? ',' : ''}<a href={`#src-${s.id}`}>{s.data.auteur.split(',')[0]}</a></Fragment>
     ))}</sup>
