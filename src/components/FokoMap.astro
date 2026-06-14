@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+
+// Foyers approximatifs des foko : des halos, jamais des frontières.
+const foko = (await getCollection('entities')).filter(
+  (e) => e.data.kind === 'foko' && e.data.lat != null && e.data.lng != null,
+);
+const claims = await getCollection('claims');
+const countScope = (id: string) => claims.filter((c) => c.data.scope.some((s) => s.id === id)).length;
+
+const points = foko.map((e) => ({
+  nom: e.data.nom,
+  region: e.data.region ?? '',
+  lat: e.data.lat,
+  lng: e.data.lng,
+  rayon: (e.data.rayon ?? 60) * 1000, // m
+  n: countScope(e.id),
+  slug: e.id,
+}));
+const payload = JSON.stringify(points);
+---
+<div class="foko-map" data-foko={payload} aria-label="Foyers approximatifs des dix-huit foko"></div>
+<p class="foko-map-legend">
+  Chaque halo est un <strong>foyer</strong> approximatif, pas un territoire : les limites
+  entre foko étaient poreuses et mouvantes. Là où les halos se recouvrent, c'est le
+  découpage lui-même qui se brouille.
+</p>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  for (const el of document.querySelectorAll('.foko-map')) {
+    const points = JSON.parse(el.dataset.foko);
+    const map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5, attributionControl: true });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 10,
+    }).addTo(map);
+    map.fitBounds([[-11.5, 42.5], [-26.0, 51.0]]);
+
+    const ink = '#1c6f76';
+    for (const p of points) {
+      L.circle([p.lat, p.lng], {
+        radius: p.rayon,
+        color: ink,
+        weight: 0,
+        fillColor: ink,
+        fillOpacity: 0.12,
+      }).addTo(map);
+      L.circleMarker([p.lat, p.lng], {
+        radius: 3,
+        color: '#fff',
+        weight: 1,
+        fillColor: ink,
+        fillOpacity: 0.9,
+      })
+        .bindPopup(
+          `<strong>${p.nom}</strong><br>${p.region}<br><em>${p.n} assertion${p.n > 1 ? 's' : ''}</em> · <a href="/peuples/${p.slug}">voir</a>`,
+          { maxWidth: 240 },
+        )
+        .bindTooltip(p.nom, { permanent: true, direction: 'center', className: 'foko-label' })
+        .addTo(map);
+    }
+  }
+</script>
+
+<style is:global>
+  .foko-map { height: 560px; border-radius: 3px; z-index: 0; margin-top: 8px; }
+  .foko-map .leaflet-tile { filter: sepia(0.22) saturate(0.85); }
+  .foko-map .leaflet-popup-content { font-family: var(--sans); font-size: 0.8rem; line-height: 1.45; }
+  .foko-label {
+    background: transparent; border: none; box-shadow: none;
+    color: var(--ink); font-family: var(--sans); font-size: 0.64rem; font-weight: 600;
+    text-shadow: 0 0 3px var(--paper), 0 0 3px var(--paper), 0 0 2px var(--paper);
+  }
+  .foko-map-legend { color: var(--ink-2); font-size: 0.85rem; margin-top: 10px; }
+</style>

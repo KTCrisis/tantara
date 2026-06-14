@@ -3,3 +3,6 @@ kind: foko
 region: "Sud-ouest"
 langue: "dialecte malgache"
 resume: "Groupe du Sud-Ouest aride, connu pour ses tombeaux sculptés (aloalo)."
+lat: -24.3
+lng: 44.2
+rayon: 80

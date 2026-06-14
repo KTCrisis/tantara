@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import FokoMap from '../components/FokoMap.astro';
 
 const foko = (await getCollection('entities'))
   .filter((e) => e.data.kind === 'foko')
@@ -25,6 +26,9 @@ const countFor = (id: string) => claims.filter((c) => c.data.scope.some((s) => s
       mouvantes. Lire ces pages, c'est suivre des cristallisations récentes, pas des
       essences. <a href="/#methode">La méthode</a> · <a href="/peuplement">l'origine commune</a>.
     </p>
+
+    <h2>Les foyers, sur la carte</h2>
+    <FokoMap />
 
     <div class="foko-grid">
       {foko.map((e) => {
