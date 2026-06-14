@@ -5,4 +5,4 @@ domain: peuplement
 geo: { lat: -2.2, lng: 114.6, route: austronesien, label: "Sud-est de Bornéo" }
 sources: [dahl-1951, adelaar-1995, serva-2012]
 note: "Établi par la linguistique historique comparée, depuis Dahl (1951)."
-scope: [ile-madagascar]
+scope: [austronesiens, ile-madagascar]
