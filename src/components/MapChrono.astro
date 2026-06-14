@@ -57,6 +57,12 @@ const payload = JSON.stringify({ points, colors: STATUT_COLOR, min, max, start }
     }).addTo(map);
     map.fitBounds([[-11.5, 42.0], [-26.0, 51.5]]);
 
+    map.createPane('coast');
+    map.getPane('coast').style.zIndex = '250';
+    fetch('/madagascar.geojson').then((r) => r.json()).then((geo) =>
+      L.geoJSON(geo, { pane: 'coast', interactive: false, style: { color: '#3a342c', weight: 1.1, opacity: 0.55, fill: false } }).addTo(map),
+    ).catch(() => {});
+
     const layers = points.map((p) => {
       const color = colors[p.statut] ?? '#6b6256';
       const g = L.layerGroup();

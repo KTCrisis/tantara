@@ -41,21 +41,29 @@ const payload = JSON.stringify(points);
     }).addTo(map);
     map.fitBounds([[-11.5, 42.5], [-26.0, 51.0]]);
 
+    // trait de côte (sous les halos, n'altère pas le sépia des tuiles)
+    map.createPane('coast');
+    map.getPane('coast').style.zIndex = '250';
+    fetch('/madagascar.geojson').then((r) => r.json()).then((geo) =>
+      L.geoJSON(geo, { pane: 'coast', interactive: false, style: { color: '#3a342c', weight: 1.1, opacity: 0.55, fill: false } }).addTo(map),
+    ).catch(() => {});
+
     const ink = '#1c6f76';
     for (const p of points) {
       L.circle([p.lat, p.lng], {
         radius: p.rayon,
         color: ink,
-        weight: 0,
+        weight: 0.6,
+        opacity: 0.3,
         fillColor: ink,
         fillOpacity: 0.12,
       }).addTo(map);
       L.circleMarker([p.lat, p.lng], {
-        radius: 3,
+        radius: 4,
         color: '#fff',
-        weight: 1,
+        weight: 1.5,
         fillColor: ink,
-        fillOpacity: 0.9,
+        fillOpacity: 0.95,
       })
         .bindPopup(
           `<strong>${p.nom}</strong><br>${p.region}<br><em>${p.n} assertion${p.n > 1 ? 's' : ''}</em> · <a href="/peuples/${p.slug}">voir</a>`,

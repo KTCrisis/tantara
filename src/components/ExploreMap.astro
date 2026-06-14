@@ -39,17 +39,24 @@ const payload = JSON.stringify({ foko, lieux });
     }).addTo(map);
     map.fitBounds([[-11.5, 42.5], [-26.0, 51.0]]);
 
-    // foyers foko : halos en fond, cliquables
+    // trait de côte (sous les marqueurs, n'altère pas le sépia des tuiles)
+    map.createPane('coast');
+    map.getPane('coast').style.zIndex = '250';
+    fetch('/madagascar.geojson').then((r) => r.json()).then((geo) =>
+      L.geoJSON(geo, { pane: 'coast', interactive: false, style: { color: '#3a342c', weight: 1.1, opacity: 0.55, fill: false } }).addTo(map),
+    ).catch(() => {});
+
+    // foyers foko : halos en fond, cliquables, léger liseré
     for (const f of foko) {
-      L.circle([f.lat, f.lng], { radius: f.rayon, color: INK2, weight: 0, fillColor: INK2, fillOpacity: 0.07 })
+      L.circle([f.lat, f.lng], { radius: f.rayon, color: INK2, weight: 0.6, opacity: 0.35, fillColor: INK2, fillOpacity: 0.07 })
         .bindPopup(`<strong>${f.nom}</strong> <em>(foko)</em><br><a href="/peuples/${f.slug}">voir le foko</a>`)
         .bindTooltip(f.nom, { className: 'map-tip' })
         .addTo(map);
     }
-    // lieux : points cliquables au premier plan
+    // lieux : points cliquables au premier plan, plus lourds
     for (const p of lieux) {
       const color = p.cat === 'site-naturel' ? GREEN : OCEAN;
-      L.circleMarker([p.lat, p.lng], { radius: 5, color: '#fff', weight: 1.5, fillColor: color, fillOpacity: 0.95 })
+      L.circleMarker([p.lat, p.lng], { radius: 6.5, color: '#fff', weight: 2, fillColor: color, fillOpacity: 1 })
         .bindPopup(`<strong>${p.nom}</strong><br><em>${p.n} assertion${p.n > 1 ? 's' : ''}</em> · <a href="/lieux/${p.slug}">voir le lieu</a>`)
         .bindTooltip(p.nom, { className: 'map-tip' })
         .addTo(map);
