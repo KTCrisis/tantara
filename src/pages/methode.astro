@@ -6,11 +6,11 @@ import { STATUTS } from '../content.config';
 import { DISCIPLINE_DESC } from '../lib/statuts';
 
 const defs: Record<string, string> = {
-  'mesuré': 'établi par la mesure — datations radiométriques, génétiques, archéobotanique.',
-  'attesté': 'documenté par des sources écrites concordantes — archives, traités, correspondances.',
-  'reconstruit': 'inféré par méthode — linguistique historique, comparaison, modélisation.',
+  'mesuré': 'établi par la mesure : datations radiométriques, génétiques, archéobotanique.',
+  'attesté': 'documenté par des sources écrites concordantes : archives, traités, correspondances.',
+  'reconstruit': 'inféré par méthode : linguistique historique, comparaison, modélisation.',
   'daté-débattu': 'la communauté ne tranche pas : les hypothèses concurrentes sont exposées côte à côte.',
-  'récit': 'tradition orale, tantara, mémoire — un témoignage, pas une preuve matérielle.',
+  'récit': 'tradition orale, tantara, mémoire : un témoignage, pas une preuve matérielle.',
   'conjectural': 'avancé mais non établi : à prendre comme une piste.',
 };
 
@@ -24,25 +24,25 @@ const familles = [
   },
   {
     cle: 'archéologie',
-    etat: "Le sol date la présence humaine. Un peuplement durable tardif, autour du VIIIe-Xe siècle, est aujourd'hui bien établi par les assemblages et les cultures importées (Dewar & Wright 1993 ; Crowther 2016). Les revendications d'une présence bien plus ancienne — ossements portant des traces de découpe — restent contestées et non confirmées par une installation durable : c'est le point typiquement daté-débattu du dossier.",
+    etat: "Le sol date la présence humaine. Un peuplement durable tardif, autour du VIIIe-Xe siècle, est aujourd'hui bien établi par les assemblages et les cultures importées (Dewar & Wright 1993 ; Crowther 2016). Les revendications d'une présence bien plus ancienne (ossements portant des traces de découpe) restent contestées et non confirmées par une installation durable : c'est le point typiquement daté-débattu du dossier.",
     statut: 'daté-débattu',
     lien: { href: '/peuplement', label: 'Le peuplement' },
   },
   {
     cle: 'génétique',
-    etat: "Les génomes mesurent l'origine et le métissage. Ils établissent une double ascendance — austronésienne (rattachée à Bornéo) et bantoue africaine — et datent le brassage du dernier millénaire (Cox 2012 ; Pierron 2017, 2018), avec une sélection marquée pour l'ascendance africaine. Restent discutés le nombre de vagues d'arrivée et leurs routes exactes.",
+    etat: "Les génomes mesurent l'origine et le métissage. Ils établissent une double ascendance, austronésienne (rattachée à Bornéo) et bantoue africaine, et datent le brassage du dernier millénaire (Cox 2012 ; Pierron 2017, 2018), avec une sélection marquée pour l'ascendance africaine. Restent discutés le nombre de vagues d'arrivée et leurs routes exactes.",
     statut: 'mesuré',
     lien: { href: '/peuplement', label: 'Le peuplement' },
   },
   {
     cle: 'linguistique',
-    etat: "La langue reconstruit la parenté. Le malgache se rattache aux langues barito du sud-est de Bornéo (Dahl 1951 ; Adelaar) — l'origine austronésienne est solidement reconstruite —, avec des apports bantous puis arabo-swahili bien documentés. L'histoire dialectale interne, elle, reste discutée (Serva 2012). Une preuve indirecte mais puissante : la langue se souvient de trajets que ni le sol ni les textes ne gardent.",
+    etat: "La langue reconstruit la parenté. Le malgache se rattache aux langues barito du sud-est de Bornéo (Dahl 1951 ; Adelaar) : l'origine austronésienne est solidement reconstruite, avec des apports bantous puis arabo-swahili bien documentés. L'histoire dialectale interne, elle, reste discutée (Serva 2012). Une preuve indirecte mais puissante : la langue se souvient de trajets que ni le sol ni les textes ne gardent.",
     statut: 'reconstruit',
     lien: { href: '/peuplement', label: 'Le peuplement' },
   },
   {
     cle: 'histoire',
-    etat: "Deux régimes de preuve sous un même mot. L'archive écrite — traités, missionnaires, administration, à partir de l'adoption de l'écriture latine en Imerina vers 1810 — donne de l'attesté. La tradition orale, le tantara compilé tard (Callet), donne du récit : une mémoire, pas une preuve matérielle. Quant aux récits extérieurs (Flacourt, Grandidier), ce sont des regards situés, à lire comme tels.",
+    etat: "Deux régimes de preuve sous un même mot. L'archive écrite (traités, missionnaires, administration, à partir de l'adoption de l'écriture latine en Imerina vers 1810) donne de l'attesté. La tradition orale, le tantara compilé tard (Callet), donne du récit : une mémoire, pas une preuve matérielle. Quant aux récits extérieurs (Flacourt, Grandidier), ce sont des regards situés, à lire comme tels.",
     statut: 'récit',
     lien: { href: '/regards-exterieurs', label: 'Regards extérieurs' },
   },
@@ -64,24 +64,24 @@ const countDisc = (d: string) => claims.filter((c) => c.data.discipline === d).l
     <p class="lead" style="color:var(--ink-2);font-size:1.1rem;">
       Sur un sujet où le mesuré, le débattu et le mythifié se mélangent vite, tantara
       ne tranche pas l'origine : il cartographie l'état des preuves. Chaque assertion
-      porte deux étiquettes — <strong>par quelle démarche</strong> on la connaît, et
+      porte deux étiquettes : <strong>par quelle démarche</strong> on la connaît, et
       <strong>à quel degré de certitude</strong>. Une contrainte de fabrication les
       impose : une assertion sans source casse la construction du site ; un point
       débattu sans hypothèses concurrentes sourcées aussi.
     </p>
 
-    <h2>Le degré de certitude — le statut</h2>
+    <h2>Le degré de certitude : le statut</h2>
     <div class="legend-key" style="flex-direction:column;gap:10px;align-items:flex-start;">
       {STATUTS.map((s) => (
-        <div><StatusBadge statut={s} /> <span style="color:var(--ink-2);font-size:0.92rem;"> — {defs[s]}</span></div>
+        <div><StatusBadge statut={s} /> <span style="color:var(--ink-2);font-size:0.92rem;"> · {defs[s]}</span></div>
       ))}
     </div>
 
-    <h2 style="margin-top:48px;">Les familles de preuve — où en est la recherche</h2>
+    <h2 style="margin-top:48px;">Les familles de preuve : où en est la recherche</h2>
     <p style="color:var(--ink-2);">
       Aucune discipline ne suffit seule ; elles se corroborent ou se contredisent. La
       langue et les génomes convergent sur l'Asie du Sud-Est ; le sol fixe les dates ;
-      les textes éclairent le dernier millénaire. Voici ce que chacune apporte — et son
+      les textes éclairent le dernier millénaire. Voici ce que chacune apporte, et son
       état actuel.
     </p>
 

@@ -30,7 +30,7 @@ const payload = JSON.stringify({ points, arcs: ARCS, colors: ROUTE_COLOR });
   <div class="map-osm" data-map={payload} aria-label="Routes de peuplement de Madagascar"></div>
   <div class="map-legend">
     {routesUsed.map((r) => (<span style={`color:${ROUTE_COLOR[r]}`}>route {ROUTE_LABEL[r]}</span>))}
-    <span style="color:var(--ink-2)">fond OpenStreetMap — points dérivés des coordonnées des assertions</span>
+    <span style="color:var(--ink-2)">fond OpenStreetMap · points dérivés des coordonnées des assertions</span>
   </div>
 </div>
 

@@ -12,7 +12,7 @@ const claims = (await getCollection('claims'))
   .sort((a, b) => a.data.period![0] - b.data.period![0] || a.data.period![1] - b.data.period![1]);
 ---
 <div class="timeline">
-  <div class="tl-head">Frise — dérivée des assertions datées</div>
+  <div class="tl-head">Frise · dérivée des assertions datées</div>
   <div class="tl-list">
     {claims.map((c) => {
       const color = STATUT_COLOR[c.data.statut];

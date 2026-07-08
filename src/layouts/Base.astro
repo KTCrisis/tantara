@@ -28,13 +28,13 @@ const active = (href: string) => {
   <body>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
     <header class="mobile-bar">
-      <a href="/" class="brand-m">tantara<em>.art</em></a>
+      <a href="/" class="brand-m">tantara<em>.wiki</em></a>
       <label for="nav-toggle" class="nav-burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></label>
     </header>
     <label for="nav-toggle" class="nav-scrim" aria-hidden="true"></label>
 
     <aside class="sidebar">
-      <a href="/" class="brand">tantara<em>.art</em></a>
+      <a href="/" class="brand">tantara<em>.wiki</em></a>
       <nav>
         <a href="/" class={active('/')}>Accueil</a>
         <a href="/methode" class={active('/methode')}>Méthode</a>
@@ -59,7 +59,7 @@ const active = (href: string) => {
       </main>
       <footer class="site-foot">
         <Ornement motif="frise" class="foot-frise" />
-        <div>tantara.wiki — l'état des preuves, pas le verdict · sources ouvertes quand elles existent</div>
+        <div>tantara.wiki · l'état des preuves, pas le verdict · sources ouvertes quand elles existent</div>
       </footer>
     </div>
   </body>
