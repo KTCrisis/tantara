@@ -1,7 +1,13 @@
-statement: "Le trajet de la traversée austronésienne (route directe à travers l'océan Indien ou cabotage par l'Inde et la côte est-africaine) n'est pas tranché."
-statut: conjectural
+statement: "Le trajet même de la traversée austronésienne reste débattu : route directe à travers l'océan Indien, ou cabotage le long des côtes de l'Inde et de l'Afrique de l'Est."
+statut: daté-débattu
 discipline: autre
 domain: peuplement
-sources: [adelaar-1995, corps-2019]
-note: "Modélisations maritimes et indices linguistiques se contredisent partiellement ; aucune épave, aucun site d'étape attesté."
+note: "Aucune épave, aucun site d'étape n'atteste le chemin ; le débat se joue entre modélisations génétiques, indices linguistiques et archéologie du pourtour. Les deux itinéraires ont pu coexister."
+hypotheses:
+  - label: "Route directe"
+    statement: "La génétique de population penche pour une traversée directe du sud-est de Bornéo vers les Comores et Madagascar : aucun flux génétique austronésien significatif n'est détecté ailleurs sur le pourtour de l'océan Indien occidental, ce qu'un long cabotage aurait laissé. Des modélisations de navigation à la mousson rendent le trajet direct plausible."
+    sources: [brucato-2019, adelaar-1995]
+  - label: "Cabotage par les côtes"
+    statement: "Le modèle classique fait longer les côtes (Inde, Maldives, côte swahilie), avec un métissage africain en chemin et les Comores comme relais. La terminologie de la pirogue à balancier, échelonnée de l'Insulinde au monde swahili, garde la trace de cet itinéraire côtier."
+    sources: [beaujard-2007, corps-2019]
 scope: [austronesiens, ile-madagascar]

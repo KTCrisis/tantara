@@ -1,0 +1,112 @@
+---
+import { getCollection } from 'astro:content';
+
+// La carte est la mise en image d'un point débattu : elle lit les hypothèses
+// du claim navigation-trajet et trace les deux itinéraires concurrents.
+// Aucun n'est attesté : les deux traits sont en pointillé, à parité visuelle.
+const claim = (await getCollection('claims')).find((c) => c.id === 'navigation-trajet');
+const labels = (claim?.data.hypotheses ?? []).map((h) => h.label);
+const [labelDirect = 'Route directe', labelCabotage = 'Cabotage'] = labels;
+
+// Géographie des deux hypothèses. Coordonnées [lat, lng].
+// Point de départ commun : le sud-est de Bornéo (bassin de la Barito).
+const BORNEO = [-2.5, 114.6];
+const MADA = [-15.7, 46.3]; // côte nord-ouest, zone d'accostage austronésienne
+
+// Route directe : une seule traversée transocéanique.
+const DIRECT = [BORNEO, MADA];
+
+// Cabotage : de proche en proche par le pourtour de l'océan Indien.
+const CABOTAGE = [
+  BORNEO,
+  [5.9, 80.6],    // Sri Lanka
+  [3.2, 73.2],    // Maldives
+  [-8.9, 39.5],   // côte swahilie (Kilwa)
+  [-11.7, 43.3],  // Comores
+  MADA,
+];
+
+// Étapes nommées, discrètes.
+const STEPS = [
+  { at: BORNEO, label: 'Bornéo (Barito)' },
+  { at: [-11.7, 43.3], label: 'Comores' },
+  { at: MADA, label: 'Madagascar' },
+];
+
+const COLOR = { direct: '#2f6fb0', cabotage: '#b0552f' };
+const payload = JSON.stringify({ direct: DIRECT, cabotage: CABOTAGE, steps: STEPS, color: COLOR });
+---
+<div class="map-wrap">
+  <div class="map-trav" data-map={payload} aria-label="Deux hypothèses de trajet de la traversée austronésienne"></div>
+  <div class="map-legend">
+    <span style={`color:${COLOR.direct}`}>{labelDirect}</span>
+    <span style={`color:${COLOR.cabotage}`}>{labelCabotage}</span>
+    <span style="color:var(--ink-2)">deux hypothèses, aucune tranchée · fond OpenStreetMap</span>
+  </div>
+</div>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  // arc quadratique échantillonné entre deux points (léger galbe)
+  function arc(from, to, bend, n = 36) {
+    const [lat1, lng1] = from, [lat2, lng2] = to;
+    const dlat = lat2 - lat1, dlng = lng2 - lng1;
+    const clat = (lat1 + lat2) / 2 + bend * dlng;
+    const clng = (lng1 + lng2) / 2 - bend * dlat;
+    const pts = [];
+    for (let i = 0; i <= n; i++) {
+      const t = i / n, u = 1 - t;
+      pts.push([
+        u * u * lat1 + 2 * u * t * clat + t * t * lat2,
+        u * u * lng1 + 2 * u * t * clng + t * t * lng2,
+      ]);
+    }
+    return pts;
+  }
+
+  // enchaîne des arcs entre étapes successives, pour un tracé qui « longe »
+  function path(points, bend) {
+    let out = [];
+    for (let i = 0; i < points.length - 1; i++) {
+      out = out.concat(arc(points[i], points[i + 1], bend));
+    }
+    return out;
+  }
+
+  for (const el of document.querySelectorAll('.map-trav')) {
+    const { direct, cabotage, steps, color } = JSON.parse(el.dataset.map);
+
+    const map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5 });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 10,
+    }).addTo(map);
+    map.fitBounds([[16, 38], [-24, 120]]);
+
+    // cabotage : pointillé serré qui longe le pourtour
+    L.polyline(path(cabotage, -0.12), {
+      color: color.cabotage, weight: 2, dashArray: '5 5', opacity: 0.85,
+    }).addTo(map).bindPopup('Hypothèse : cabotage par les côtes');
+
+    // route directe : pointillé long, traversée franche
+    L.polyline(arc(direct[0], direct[1], -0.16), {
+      color: color.direct, weight: 2.5, dashArray: '10 7', opacity: 0.9,
+    }).addTo(map).bindPopup('Hypothèse : route directe');
+
+    for (const s of steps) {
+      L.circleMarker(s.at, {
+        radius: 5, color: '#fff', weight: 1.5, fillColor: '#4a443a', fillOpacity: 1,
+      }).addTo(map).bindPopup(`<strong>${s.label}</strong>`);
+    }
+  }
+</script>
+
+<style is:global>
+  .map-trav { height: 420px; border-radius: 3px; z-index: 0; }
+  .map-trav .leaflet-tile { filter: sepia(0.22) saturate(0.85); }
+  .map-trav .leaflet-popup-content { font-family: var(--sans); font-size: 0.8rem; line-height: 1.45; }
+</style>
