@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SourceIndex from '../components/SourceIndex.astro';
+
+const sources = await getCollection('sources');
+const claims = await getCollection('claims');
+
+// Chaque source compte pour ce qu'elle porte : le nombre d'assertions qui la citent.
+const cited = new Set<string>();
+for (const c of claims) {
+  c.data.sources.forEach((s) => cited.add(s.id));
+  c.data.hypotheses.forEach((h) => h.sources.forEach((s) => cited.add(s.id)));
+}
+const byPoids = (p: string) => sources.filter((s) => s.data.poids === p).length;
+---
+<Base title="Sources — tantara.wiki" description="La bibliographie complète du site : chaque référence avec son poids de preuve et sa condition d'accès.">
+  <article class="wrap">
+    <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">Sources</div>
+    <h1>La bibliographie</h1>
+    <p class="lead" style="color:var(--ink-2);font-size:1.1rem;">
+      Toute assertion du site cite au moins une référence de cette liste ; la contrainte
+      est vérifiée à la construction, une assertion sans source casse le site. Chaque
+      référence porte un poids de preuve et, le cas échéant, sa condition d'accès,
+      définis dans <a href="/methode">la méthode</a>.
+    </p>
+    <p style="font-family:var(--mono);font-size:0.78rem;color:var(--ink-2);">
+      {sources.length} références · {byPoids('primaire')} primaires · {byPoids('synthèse')} synthèses · {byPoids('vulgarisation')} vulgarisations · {cited.size} citées par au moins une assertion
+    </p>
+    <SourceIndex />
+  </article>
+</Base>
