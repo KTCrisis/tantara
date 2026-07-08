@@ -1,4 +1,4 @@
-# tantara.art
+# tantara.wiki
 
 L'état des preuves sur le peuplement et l'histoire de Madagascar.
 Le site ne tranche pas l'origine : il **cartographie l'état des preuves**, chaque

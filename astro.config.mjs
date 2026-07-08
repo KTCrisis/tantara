@@ -4,6 +4,6 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build
 export default defineConfig({
-  site: 'https://tantara.art',
+  site: 'https://tantara.wiki',
   integrations: [mdx()],
 });

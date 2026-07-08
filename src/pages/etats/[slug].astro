@@ -20,7 +20,7 @@ const hasGeo = claims.some((c) => c.data.geo && c.data.period);
 const hasDated = claims.some((c) => c.data.period);
 const bornes = entity.data.formation;
 ---
-<Base title={`${entity.data.nom} — tantara.art`}>
+<Base title={`${entity.data.nom} — tantara.wiki`}>
   <article class="wrap">
     <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">
       <a href="/etats" style="color:var(--ocean)">Les États</a> · {entity.data.region}{bornes ? ` · ${annee(bornes[0])}–${annee(bornes[1])}` : ''}

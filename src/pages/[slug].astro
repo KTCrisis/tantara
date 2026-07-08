@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 const { page } = Astro.props;
 const { Content } = await render(page);
 ---
-<Base title={`${page.data.title} — tantara.art`}>
+<Base title={`${page.data.title} — tantara.wiki`}>
   <article class="wrap" style="position:relative;">
     {page.data.kicker && (
       <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">{page.data.kicker}</div>

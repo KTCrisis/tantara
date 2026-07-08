@@ -10,7 +10,7 @@ const foko = (await getCollection('entities'))
 const claims = await getCollection('claims');
 const countFor = (id: string) => claims.filter((c) => c.data.scope.some((s) => s.id === id)).length;
 ---
-<Base title="Les dix-huit foko — tantara.art">
+<Base title="Les dix-huit foko — tantara.wiki">
   <article class="wrap">
     <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">Les peuples</div>
     <h1>Les « dix-huit » foko</h1>
