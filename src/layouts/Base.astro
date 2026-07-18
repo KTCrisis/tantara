@@ -11,6 +11,7 @@ interface Props { title: string; description?: string; }
 const { title, description = "L'état des preuves sur le peuplement et l'histoire de Madagascar." } = Astro.props;
 
 const path = Astro.url.pathname.replace(/\/$/, '');
+const canonical = new URL(path + '/', Astro.site ?? 'https://tantara.wiki');
 const active = (href: string) => {
   const h = href === '/' ? '' : href;
   return path === h || (h !== '' && path.startsWith(h + '/')) ? 'active' : '';
@@ -23,6 +24,7 @@ const active = (href: string) => {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>" />
   </head>
   <body>
