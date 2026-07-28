@@ -7,8 +7,14 @@ import '@fontsource/spectral/600.css';
 import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
 import Ornement from '../components/Ornement.astro';
+import { clampMeta } from '../lib/meta';
 interface Props { title: string; description?: string; }
+// Le défaut n'est plus qu'un filet de sécurité : chaque page passe la sienne.
+// Une description partagée par tout le site fait traiter les pages comme des
+// doublons et pousse Google à élire sa propre canonique.
 const { title, description = "L'état des preuves sur le peuplement et l'histoire de Madagascar." } = Astro.props;
+// La borne est tenue ici, pas au jugé dans chaque page.
+const meta = clampMeta(description);
 
 const path = Astro.url.pathname.replace(/\/$/, '');
 const canonical = new URL(path + '/', Astro.site ?? 'https://tantara.wiki');
@@ -23,7 +29,7 @@ const active = (href: string) => {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={meta} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>" />
   </head>

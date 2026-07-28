@@ -13,7 +13,10 @@ const countFor = (id: string) => claims.filter((c) => c.data.scope.some((s) => s
 // L'Imerina a sa page rédigée (la bascule récit→attesté de 1810) ; on y renvoie.
 const href = (id: string) => (id === 'royaume-imerina' ? '/imerina' : `/etats/${id}`);
 ---
-<Base title="Les États — tantara.wiki">
+<Base
+  title="Les États — tantara.wiki"
+  description="Avant la colonie, l'île n'a jamais été un seul corps : Menabe et Boina sakalava, confédération betsimisaraka, Antemoro, Imerina. Les royaumes, par les preuves."
+>
   <article class="wrap">
     <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">Les États</div>
     <h1>Royaumes et constructions politiques</h1>

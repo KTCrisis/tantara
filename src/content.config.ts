@@ -112,6 +112,10 @@ const pages = defineCollection({
     order: z.number().default(0),
     kicker: z.string().optional(),
     intro: z.string().optional(),
+    // Meta description. À défaut, l'intro sert de repli, tronquée à 160
+    // caractères — ce qui coupe parfois en pleine subordonnée. Renseigner ce
+    // champ quand la phrase mérite d'être tenue en entier.
+    description: z.string().optional(),
   }),
 });
 
