@@ -2,8 +2,7 @@ statement: "Les ruines de Mahilaka sont signalées dès 1913 par un colon qui d�
 statut: attesté
 discipline: archéologie
 domain: peuplement
-period: [1913, 1922]
 geo: { lat: -13.81, lng: 48.31, label: "Mahilaka (baie d'Ampasindava)" }
 sources: [jodin-1922]
 scope: [ile-madagascar, mahilaka]
-note: "Le détail qui frappe le visiteur de 1913 est l'absence de pierre : selon le témoignage qu'il rapporte, il n'y en avait aucune à l'état naturel sur cette dune, ni dans un rayon de dix kilomètres. Tout le matériau a donc été apporté. Le site est décrit au fond de la baie, sur une dune de quatre kilomètres de long qui s'enfonce dans la mer, à cinq ou six heures de chaloupe à vapeur d'Hell-Ville, et l'auteur note que plusieurs routes anciennes y convergent."
+note: "Sans champ period : 1913 date la découverte des ruines, non un fait du peuplement, et la frise de cette page suit les seconds. Le détail qui frappe le visiteur de 1913 est l'absence de pierre : selon le témoignage qu'il rapporte, il n'y en avait aucune à l'état naturel sur cette dune, ni dans un rayon de dix kilomètres. Tout le matériau a donc été apporté. Le site est décrit au fond de la baie, sur une dune de quatre kilomètres de long qui s'enfonce dans la mer, à cinq ou six heures de chaloupe à vapeur d'Hell-Ville, et l'auteur note que plusieurs routes anciennes y convergent."
