@@ -22,19 +22,26 @@ interface Props {
   retouche?: string;
   /** Lien vers la base d'origine. */
   href?: string;
-  /** Où la planche se pose : dans la colonne, ou en marge à droite avec le texte qui l'enveloppe. */
-  cote?: 'pleine' | 'droite';
+  /**
+   * Où la planche se pose : dans la colonne, ou en marge avec le texte qui
+   * l'enveloppe. Sur une page qui en porte plusieurs, alterner droite puis
+   * gauche évite la colonne de vignettes empilées d'un seul côté. Le choix
+   * reste explicite plutôt que calculé : une planche pleine largeur au milieu
+   * casserait une alternance automatique sans que personne le voie.
+   */
+  cote?: 'pleine' | 'droite' | 'gauche';
 }
 const { src, alt, legende, source, licence, retouche, href, cote = 'pleine' } = Astro.props;
+const enMarge = cote === 'droite' || cote === 'gauche';
 // Largeurs rendues : la vignette suffit à la lecture, l'original reste servi
 // pour l'agrandissement. Pas de visionneuse JS — un lien vers le fichier fait
 // le même travail, fonctionne au clavier, et survit à un script bloqué.
-const rendus = cote === 'droite' ? [320, 560, 760] : [480, 800, 1200];
-const tailles = cote === 'droite'
+const rendus = enMarge ? [320, 560, 760] : [480, 800, 1200];
+const tailles = enMarge
   ? '(max-width: 720px) 100vw, 38vw'
   : '(max-width: 720px) 100vw, 520px';
 ---
-<figure class:list={['planche', cote === 'droite' && 'a-droite']}>
+<figure class:list={['planche', enMarge && 'en-marge', cote === 'droite' && 'a-droite', cote === 'gauche' && 'a-gauche']}>
   <a href={src.src} class="loupe" title="Voir la planche en grand">
     <Image src={src} alt={alt} widths={rendus} sizes={tailles} />
   </a>
@@ -52,10 +59,9 @@ const tailles = cote === 'droite'
   /* En marge : le texte enveloppe la planche. Le float reste l'outil le plus
      sûr ici, une grille obligerait à découper la prose en colonnes, ce que le
      MDX ne permet pas sans casser le flux des assertions. */
-  .planche.a-droite {
-    float: right; width: 38%; max-width: 340px;
-    margin: .4rem 0 1.2rem 1.8rem;
-  }
+  .planche.en-marge { width: 38%; max-width: 340px; }
+  .planche.a-droite { float: right; margin: .4rem 0 1.2rem 1.8rem; }
+  .planche.a-gauche { float: left;  margin: .4rem 1.8rem 1.2rem 0; }
   .planche :global(img) {
     display: block; width: 100%; height: auto;
     border: 1px solid var(--rule); border-radius: 2px; background: var(--paper-2);
@@ -70,18 +76,18 @@ const tailles = cote === 'droite'
     line-height: 1.55; color: var(--ink-2);
     display: flex; flex-direction: column; gap: .15rem;
   }
-  .planche.a-droite figcaption { font-size: .72rem; }
+  .planche.en-marge figcaption { font-size: .72rem; }
   .quoi { color: var(--ink); }
   /* La provenance se lit comme une note de bas de page : présente, discrète,
      jamais au même poids que la légende. Même geste que les marqueurs de
      statut en ligne dans la prose. */
   .prov { font-size: .72rem; color: var(--ink-2); opacity: .85; }
-  .planche.a-droite .prov { font-size: .68rem; }
+  .planche.en-marge .prov { font-size: .68rem; }
   .prov a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
   /* Sous 720 px la colonne est trop étroite pour envelopper quoi que ce soit. */
   @media (max-width: 720px) {
-    .planche.a-droite { float: none; width: auto; max-width: none; margin: 2rem 0; }
-    .planche.a-droite figcaption, .planche.a-droite .prov { font-size: .78rem; }
+    .planche.en-marge { float: none; width: auto; max-width: none; margin: 2rem 0; }
+    .planche.en-marge figcaption, .planche.en-marge .prov { font-size: .78rem; }
   }
 </style>
