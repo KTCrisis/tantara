@@ -47,11 +47,20 @@ const active = (href: string) => {
       <a href="/" class="brand"><Ornement motif="marque" class="brand-mark" />tantara<em>.wiki</em></a>
       <nav>
         <a href="/" class={active('/')}>Accueil</a>
-        <div class="nav-group">Le récit</div>
+        {/* Les trois premiers groupes ne rangent pas par chronologie mais par
+            ce qui permet de savoir. Avant les hommes, aucun document : la
+            géologie, la paléontologie et la génétique mesurent. Puis l'arrivée,
+            que le peuplement et les traditions vivantes documentent chacun à
+            leur façon. Puis le temps des hommes, celui de l'archive et de la
+            tradition orale. « Le récit » ne pouvait pas rester : c'est aussi le
+            nom d'un statut, celui qui veut dire « pas une preuve matérielle ». */}
+        <div class="nav-group">Avant les hommes</div>
         <a href="/geographie" class={active('/geographie')}>Géographie</a>
         <a href="/megafaune" class={active('/megafaune')}>Le monde d'avant</a>
+        <div class="nav-group">L'arrivée</div>
         <a href="/peuplement" class={active('/peuplement')}>Peuplement</a>
         <a href="/traditions-origines" class={active('/traditions-origines')}>Traditions &amp; origines</a>
+        <div class="nav-group">Le temps des hommes</div>
         <a href="/geographie-historique" class={active('/geographie-historique')}>Géographie historique</a>
         <a href="/imerina" class={active('/imerina')}>L'Imerina</a>
         <div class="nav-group">Les acteurs</div>
