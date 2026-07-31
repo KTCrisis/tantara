@@ -6,9 +6,11 @@
 // Copernicus DEM GLO-90, figés dans src/data/profil-20s.json. Le relief ne
 // bouge pas, il n'y a donc aucune raison d'appeler une API au build.
 //
-// Elle dit d'un coup d'œil ce que le claim geo-asymetrie-relief énonce en
-// chiffres : la montée occidentale est trois fois plus longue que la chute
-// orientale.
+// L'habillage est celui d'une coupe géologique gravée : hachures obliques pour
+// la roche, tirets horizontaux pour la mer, papier vieilli, double filet. Rien
+// n'y est faux, ce sont des conventions de dessin. Le seul mensonge possible
+// d'un profil est son exagération verticale : elle est donc calculée et
+// affichée, pas dissimulée.
 import profil from '../data/profil-20s.json';
 
 const alt: number[] = profil.altitudes_m;
@@ -16,55 +18,82 @@ const lng = (i: number) => profil.longitude_debut + i * profil.pas_degres;
 
 const W = 100;
 const H = 30;
+const SOL = H - 2;          // ligne de rivage, la mer occupe la bande du bas
 const AMAX = Math.max(...alt);
 const px = (i: number) => (i / (alt.length - 1)) * W;
-const py = (a: number) => H - (a / AMAX) * (H - 3);
+const py = (a: number) => SOL - (a / AMAX) * (SOL - 4);
 
-const terre = `M${px(0).toFixed(2)} ${H} ` +
+const terre = `M${px(0).toFixed(2)} ${SOL} ` +
   alt.map((a, i) => `L${px(i).toFixed(2)} ${py(a).toFixed(2)}`).join(' ') +
-  ` L${px(alt.length - 1).toFixed(2)} ${H} Z`;
+  ` L${px(alt.length - 1).toFixed(2)} ${SOL} Z`;
 const ligne = alt.map((a, i) => `${i ? 'L' : 'M'}${px(i).toFixed(2)} ${py(a).toFixed(2)}`).join(' ');
 
-// Les trois repères sont dérivés, pas placés à la main.
 const iOuest = alt.findIndex((a) => a > 0);
 const iEst = alt.length - 1 - [...alt].reverse().findIndex((a) => a > 0);
 const iSommet = alt.indexOf(AMAX);
 // 0,94 : rétrécissement du degré de longitude à 20 degrés de latitude.
-const km = (a: number, b: number) => Math.round((lng(b) - lng(a)) * 111 * 0.94);
+const KM_DEG = 111 * 0.94;
+const km = (a: number, b: number) => Math.round((lng(b) - lng(a)) * KM_DEG);
+
+// L'exagération verticale, calculée et non estimée : combien de fois la
+// hauteur est étirée par rapport aux distances horizontales.
+const largeurKm = (lng(alt.length - 1) - lng(0)) * KM_DEG;
+// Unités de dessin par kilomètre, dans chaque direction ; leur rapport est
+// l'exagération. Arrondi à la dizaine : la précision serait fausse.
+const uniteH = W / largeurKm;
+const uniteV = (SOL - 4) / (AMAX / 1000);
+const exageration = Math.round(uniteV / uniteH / 10) * 10;
+
 const uid = 'pr';
 ---
 <figure class="profil">
   <svg viewBox={`0 0 ${W} ${H + 6}`} role="img"
-       aria-label={`Profil du relief au parallèle 20 degrés sud : la côte ouest monte jusqu'à ${AMAX} mètres sur ${km(iOuest, iSommet)} kilomètres, puis redescend à la mer sur ${km(iSommet, iEst)} kilomètres.`}>
+       aria-label={`Coupe du relief au parallèle 20 degrés sud : la côte ouest monte jusqu'à ${AMAX} mètres sur ${km(iOuest, iSommet)} kilomètres, puis redescend à la mer sur ${km(iSommet, iEst)} kilomètres.`}>
     <defs>
-      <linearGradient id={`${uid}-roche`} x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#c8a97e" />
-        <stop offset="1" stop-color="#e6d9bd" />
-      </linearGradient>
+      <filter id={`${uid}-grain`} x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="4" result="n" />
+        <feColorMatrix in="n" type="saturate" values="0" result="g" />
+        <feComponentTransfer in="g" result="a"><feFuncA type="linear" slope="0.06" /></feComponentTransfer>
+        <feComposite in="a" in2="SourceGraphic" operator="over" />
+      </filter>
+      {/* Hachures obliques : la convention de la coupe géologique gravée. */}
+      <pattern id={`${uid}-roche`} patternUnits="userSpaceOnUse" width="1.4" height="1.4"
+               patternTransform="rotate(45)">
+        <rect width="1.4" height="1.4" fill="#e2d2ad" />
+        <line x1="0" y1="0" x2="0" y2="1.4" stroke="#9c8a63" stroke-width="0.3" />
+      </pattern>
+      {/* Mer : tirets horizontaux, l'autre convention de la planche ancienne. */}
+      <pattern id={`${uid}-mer`} patternUnits="userSpaceOnUse" width="3" height="1">
+        <line x1="0" y1="0.5" x2="1.8" y2="0.5" stroke="#7d96a0" stroke-width="0.18" />
+      </pattern>
     </defs>
 
-    {/* La mer, des deux côtés */}
-    <rect x="0" y={H - 1.2} width={W} height="1.2" fill="#8fb0b5" opacity="0.5" />
+    <rect width={W} height={H + 6} fill="#efe6d2" />
+    <rect width={W} height={H + 6} filter={`url(#${uid}-grain)`} fill="#efe6d2" />
+    <rect x="0" y={SOL} width={W} height={H - SOL} fill={`url(#${uid}-mer)`} />
 
     <path d={terre} fill={`url(#${uid}-roche)`} />
     <path d={ligne} fill="none" stroke="#4a3c28" stroke-width="0.45" stroke-linejoin="round" />
-    <line x1="0" y1={H} x2={W} y2={H} stroke="#4a3c28" stroke-width="0.3" />
+    <line x1="0" y1={SOL} x2={W} y2={SOL} stroke="#4a3c28" stroke-width="0.28" />
 
-    {/* Repères : les deux côtes et le sommet du plateau */}
     {[iOuest, iSommet, iEst].map((i) => (
-      <line x1={px(i)} y1={py(alt[i])} x2={px(i)} y2={H} stroke="#a8492f"
-            stroke-width="0.25" stroke-dasharray="0.8 0.8" opacity="0.7" />
+      <line x1={px(i)} y1={py(alt[i])} x2={px(i)} y2={SOL} stroke="#8a3a23"
+            stroke-width="0.22" stroke-dasharray="0.7 0.7" opacity="0.75" />
     ))}
     <text x={px(iSommet)} y={py(AMAX) - 1.2} class="cote" text-anchor="middle">{AMAX} m</text>
-    <text x={px(iOuest) + 1} y={H + 4} class="rive">ouest</text>
-    <text x={px(iEst) - 1} y={H + 4} class="rive" text-anchor="end">est</text>
-    <text x={(px(iOuest) + px(iSommet)) / 2} y={H + 4} class="dist" text-anchor="middle">{km(iOuest, iSommet)} km</text>
-    <text x={(px(iSommet) + px(iEst)) / 2} y={H + 4} class="dist" text-anchor="middle">{km(iSommet, iEst)} km</text>
+    <text x={px(iOuest) + 1.4} y={H + 3.4} class="rive">ouest</text>
+    <text x={px(iEst) - 1.4} y={H + 3.4} class="rive" text-anchor="end">est</text>
+    <text x={(px(iOuest) + px(iSommet)) / 2} y={H + 3.4} class="dist" text-anchor="middle">{km(iOuest, iSommet)} km</text>
+    <text x={(px(iSommet) + px(iEst)) / 2} y={H + 3.4} class="dist" text-anchor="middle">{km(iSommet, iEst)} km</text>
+
+    <rect x="0.6" y="0.6" width={W - 1.2} height={H + 4.8} fill="none" stroke="#4a3c28" stroke-width="0.5" />
+    <rect x="1.5" y="1.5" width={W - 3} height={H + 3} fill="none" stroke="#4a3c28" stroke-width="0.22" />
   </svg>
   <figcaption>
     <span class="quoi">
       Le relief au parallèle 20 degrés sud. La montée occidentale prend {km(iOuest, iSommet)} kilomètres,
-      la chute orientale {km(iSommet, iEst)}. Échelle verticale forcée : à l'échelle vraie, le trait serait plat.
+      la chute orientale {km(iSommet, iEst)}. Les hauteurs sont étirées environ {exageration} fois :
+      à l'échelle vraie, ce profil serait un trait.
     </span>
     <span class="prov">
       Cent altitudes échantillonnées sur le modèle
@@ -76,11 +105,10 @@ const uid = 'pr';
 
 <style>
   .profil { margin: 2rem 0; }
-  .profil svg { display: block; width: 100%; height: auto; background: var(--paper-2);
-                border: 1px solid var(--rule); border-radius: 2px; }
+  .profil svg { display: block; width: 100%; height: auto; }
   .cote { font-family: var(--mono); font-size: 2px; fill: #4a3c28; }
-  .rive { font-family: var(--sans); font-size: 2.4px; fill: var(--ink-2); }
-  .dist { font-family: var(--mono); font-size: 2.2px; fill: #a8492f; }
+  .rive { font-family: var(--sans); font-size: 2.3px; fill: #6b5c44; }
+  .dist { font-family: var(--mono); font-size: 2.1px; fill: #8a3a23; }
   figcaption { margin-top: .6rem; font-family: var(--sans); font-size: .78rem;
                line-height: 1.55; color: var(--ink-2);
                display: flex; flex-direction: column; gap: .15rem; }
