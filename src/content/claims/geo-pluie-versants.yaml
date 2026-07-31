@@ -1,0 +1,8 @@
+statement: "Sur les trente années 1991-2020, la réanalyse donne un cumul annuel moyen de 2 122 mm à Toamasina, sur la côte au vent, contre 572 mm à Toliara, sur le versant sec : un rapport de un à quatre entre les deux façades de l'île."
+statut: mesuré
+discipline: climat
+domain: geographie-physique
+period: [1991, 2020]
+sources: [era5-1991-2020]
+scope: [ile-madagascar, toamasina]
+note: "L'écart se creuse encore hors de la saison des pluies : de mai à octobre, la côte est reçoit 707 mm quand le sud-ouest en reçoit 34, soit vingt fois moins. La moyenne cache par ailleurs une variabilité que le chiffre du sud rend mal : selon les années, Toliara reçoit de 245 à 986 mm, un facteur quatre d'une année sur l'autre, quand l'est reste entre 1 526 et 2 706 mm. Dans un climat semi-aride, c'est cette instabilité qui commande, pas la moyenne."

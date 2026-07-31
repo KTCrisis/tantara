@@ -5,4 +5,4 @@ domain: geographie-physique
 period: [1991, 2023]
 sources: [rasoafaniry-2024]
 scope: [ile-madagascar]
-note: "Fait qualitatif seulement : cette source n'a pas été lue au-delà de son résumé et le site ne dispose d'aucun cumul annuel fiable pour ce versant. Les 1 200 à 1 600 mm cités en face portent sur l'escarpement, chez Clementucci. Le contraste est donc établi dans son principe, pas dans ses nombres."
+note: "Cette source n'a pas été lue au-delà de son résumé, et elle établit le fait sans le chiffrer. Les cumuls manquaient jusqu'ici au site ; ils sont désormais calculés à part, sur la réanalyse ERA5. Les 1 200 à 1 600 mm cités par ailleurs portent sur l'escarpement, chez Clementucci, et non sur la côte."
