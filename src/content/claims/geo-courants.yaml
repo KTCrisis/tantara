@@ -4,4 +4,4 @@ discipline: océanographie
 domain: geographie-physique
 sources: [chenillat-2024]
 scope: [ile-madagascar]
-note: "Classé « autre » faute de discipline océanographique dans l'enum : c'est le vingt-troisième claim dans ce cas. Circulation actuelle, mesurée par altimétrie satellitaire et mouillages. Rien n'établit ici qu'elle était identique il y a mille ans, ni qu'elle a porté telle ou telle traversée : voir navigation-trajet, qui reste débattu."
+note: "Circulation actuelle, mesurée par altimétrie satellitaire et mouillages. Rien n'établit ici qu'elle était identique il y a mille ans, ni qu'elle a porté telle ou telle traversée : voir navigation-trajet, qui reste débattu."
