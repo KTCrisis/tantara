@@ -1,0 +1,7 @@
+statement: "Cinq familles entières de plantes à fleurs ne poussent qu'à Madagascar, les Asteropeiaceae, Barbeuiaceae, Physenaceae, Sarcolaenaceae et Sphaerosepalaceae, auxquelles s'ajoutent trois cent dix genres endémiques, soit près d'un genre sur cinq de la flore de l'île."
+statut: mesuré
+discipline: biologie
+domain: flore-avant
+sources: [antonelli-2022]
+scope: [ile-madagascar]
+note: "L'endémisme se mesure ici au rang de la famille, deux étages au-dessus de l'espèce : ce ne sont pas des variantes locales d'un groupe répandu, ce sont des branches entières de l'arbre des plantes à fleurs qui n'ont pris nulle part ailleurs. La plus fournie, les Sarcolaenaceae, compte environ quatre-vingts espèces d'arbres et d'arbustes, et son groupe frère est la famille des diptérocarpacées, dont les grands arbres font les forêts d'Asie du Sud-Est."
