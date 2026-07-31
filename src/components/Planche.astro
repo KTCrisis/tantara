@@ -45,7 +45,7 @@ const enMarge = cote === 'droite' || cote === 'gauche';
 const rendus = enMarge ? [320, 560, 760] : [480, 800, 1200];
 const tailles = enMarge
   ? '(max-width: 720px) 100vw, 38vw'
-  : '(max-width: 720px) 100vw, 520px';
+  : '(max-width: 760px) 100vw, 712px';   // colonne .wrap : 760 moins 2 × 24 de marge
 ---
 <figure class:list={['planche', enMarge && 'en-marge', cote === 'droite' && 'a-droite', cote === 'gauche' && 'a-gauche']}>
   <a href={src.src} class="loupe" title="Voir la planche en grand">
@@ -68,6 +68,10 @@ const tailles = enMarge
 
 <style>
   .planche { margin: 2.2rem 0; max-width: 520px; }
+  /* Hors marge, la planche est une figure à part entière : elle prend la largeur
+     de la colonne, ses bords tombant sur ceux du texte. Alignée à gauche dans un
+     cadre plus étroit, elle donnait une page décalée. */
+  .planche:not(.en-marge) { max-width: 100%; margin-inline: auto; }
   /* En marge : le texte enveloppe la planche. Le float reste l'outil le plus
      sûr ici, une grille obligerait à découper la prose en colonnes, ce que le
      MDX ne permet pas sans casser le flux des assertions. */
