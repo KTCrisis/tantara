@@ -1,0 +1,110 @@
+---
+// Où s'accrochent les cinq familles de plantes à fleurs propres à l'île.
+//
+// La figure ne montre que ce que la classification de référence établit : le
+// rattachement de chaque famille à son ordre. Elle NE dessine PAS de relations
+// de sororité entre familles, qui demanderaient des nœuds que la source ne
+// donne pas sous cette forme. La seule parenté rapprochée figurée est celle des
+// Sarcolaenaceae avec les diptérocarpacées, que la source discute explicitement,
+// et elle est tracée en pointillé parce que la délimitation reste débattue.
+//
+// Le résultat que la figure porte : les cinq ne forment pas un groupe. Elles se
+// répartissent entre deux ordres éloignés, donc l'endémisme au rang familial
+// s'est produit plusieurs fois, séparément.
+
+const MALVALES = [
+  { nom: 'Malvaceae', ou: 'monde entier', mg: false },
+  { nom: 'Dipterocarpaceae', ou: "forêts d'Asie du Sud-Est", mg: false },
+  { nom: 'Sarcolaenaceae', ou: 'Madagascar', mg: true },
+  { nom: 'Sphaerosepalaceae', ou: 'Madagascar', mg: true },
+];
+const CARYO = [
+  { nom: 'Cactaceae', ou: 'Amériques', mg: false },
+  { nom: 'Physenaceae', ou: 'Madagascar', mg: true },
+  { nom: 'Asteropeiaceae', ou: 'Madagascar', mg: true },
+  { nom: 'Barbeuiaceae', ou: 'Madagascar', mg: true },
+  { nom: 'Phytolaccaceae', ou: 'régions chaudes', mg: false },
+];
+
+const W = 100;
+const LIG = 5.2;                    // hauteur d'une ligne de famille
+const H_TOP = 9;                    // avant la première famille
+const GAP = 6;                      // entre les deux ordres
+const H = H_TOP + (MALVALES.length + CARYO.length) * LIG + GAP + 6;
+const X_TRONC = 8;
+const X_ORDRE = 22;
+const X_FAM = 40;
+
+const yMal = (i: number) => H_TOP + i * LIG;
+const yCar = (i: number) => H_TOP + (MALVALES.length) * LIG + GAP + i * LIG;
+const midMal = (yMal(0) + yMal(MALVALES.length - 1)) / 2;
+const midCar = (yCar(0) + yCar(CARYO.length - 1)) / 2;
+const uid = 'af';
+---
+<figure class="arbref">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img"
+       aria-label="Arbre des rattachements : deux familles propres à Madagascar dans l'ordre des Malvales, à côté des diptérocarpacées d'Asie du Sud-Est, et trois autres dans l'ordre des Caryophyllales, à côté des cactus.">
+    <defs>
+      <filter id={`${uid}-grain`} x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="9" result="n" />
+        <feColorMatrix in="n" type="saturate" values="0" result="g" />
+        <feComponentTransfer in="g" result="a"><feFuncA type="linear" slope="0.05" /></feComponentTransfer>
+        <feComposite in="a" in2="SourceGraphic" operator="over" />
+      </filter>
+    </defs>
+    <rect width={W} height={H} fill="#efe6d2" />
+    <rect width={W} height={H} filter={`url(#${uid}-grain)`} fill="#efe6d2" />
+
+    {/* le tronc commun : les plantes à fleurs */}
+    <line x1={X_TRONC} y1={midMal} x2={X_TRONC} y2={midCar} stroke="#4a3c28" stroke-width="0.4" />
+    <text x={X_TRONC - 3} y="5" class="tronc">les plantes à fleurs</text>
+
+    {[{ y: midMal, nom: 'Malvales', l: MALVALES, f: yMal },
+      { y: midCar, nom: 'Caryophyllales', l: CARYO, f: yCar }].map((o) => (
+      <>
+        <line x1={X_TRONC} y1={o.y} x2={X_ORDRE} y2={o.y} stroke="#4a3c28" stroke-width="0.4" />
+        <text x={X_ORDRE - 0.8} y={o.y - 1.2} class="ordre" text-anchor="end">{o.nom}</text>
+        <line x1={X_ORDRE} y1={o.f(0)} x2={X_ORDRE} y2={o.f(o.l.length - 1)}
+              stroke="#4a3c28" stroke-width="0.35" />
+        {o.l.map((fam, i) => (
+          <>
+            <line x1={X_ORDRE} y1={o.f(i)} x2={X_FAM - 1} y2={o.f(i)}
+                  stroke={fam.mg ? '#8a3a23' : '#4a3c28'} stroke-width={fam.mg ? 0.5 : 0.28} />
+            <text x={X_FAM} y={o.f(i) + 0.9} class:list={['fam', fam.mg && 'mg']}>{fam.nom}</text>
+            <text x={X_FAM} y={o.f(i) + 3.4} class="ou">{fam.ou}</text>
+          </>
+        ))}
+      </>
+    ))}
+
+    <rect x="0.6" y="0.6" width={W - 1.2} height={H - 1.2} fill="none" stroke="#4a3c28" stroke-width="0.5" />
+  </svg>
+  <figcaption>
+    <span class="quoi">
+      Les cinq familles qui ne poussent qu'ici, en rouge, et leur point d'accroche. Elles ne
+      forment pas un groupe : deux tiennent aux Malvales, dont les diptérocarpacées qui font
+      les grandes forêts d'Asie du Sud-Est, trois aux Caryophyllales, l'ordre des cactus.
+      L'endémisme au rang de la famille s'est donc produit plusieurs fois, séparément.
+    </span>
+    <span class="prov">
+      Rattachements d'après la classification APG IV (2016). La figure ne trace que
+      l'appartenance aux ordres : les relations entre familles voisines demanderaient des
+      nœuds que cette source ne fixe pas.
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  .arbref { margin: 2rem 0; }
+  .arbref svg { display: block; width: 100%; height: auto; }
+  .tronc { font-family: var(--sans); font-size: 2.1px; fill: #6b5c44; }
+  .ordre { font-family: var(--sans); font-size: 2.4px; fill: #2b241a; font-weight: 600; }
+  .fam { font-family: var(--sans); font-size: 2.4px; fill: #2b241a; }
+  .fam.mg { fill: #8a3a23; font-weight: 600; }
+  .ou { font-family: var(--sans); font-size: 1.8px; fill: #8a8276; font-style: italic; }
+  figcaption { margin-top: .6rem; font-family: var(--sans); font-size: .78rem;
+               line-height: 1.55; color: var(--ink-2);
+               display: flex; flex-direction: column; gap: .15rem; }
+  .quoi { color: var(--ink); }
+  .prov { font-size: .72rem; opacity: .85; }
+</style>
