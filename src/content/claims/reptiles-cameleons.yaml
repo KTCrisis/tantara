@@ -1,7 +1,7 @@
 statement: "Les caméléons ne sont pas un héritage du Gondwana : la famille est d'origine africaine, et Madagascar a été atteint par deux traversées océaniques distinctes, datées vers 65 et vers 47 millions d'années, à des périodes où la circulation océanique portait vers l'est."
 statut: reconstruit
 discipline: biologie
-domain: megafaune
+domain: faune-avant
 period: [-65000000, -47000000]
 sources: [tolley-2013]
 scope: [ile-madagascar]

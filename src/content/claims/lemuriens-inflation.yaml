@@ -1,7 +1,7 @@
 statement: "Le nombre d'espèces de lémuriens reconnues dépend du critère retenu pour définir une espèce : l'inflation dénoncée en 2007, attribuée à l'application massive du concept phylogénétique, a été confirmée en 2024 pour le genre le plus concerné, les microcèbes, où une révision par taxinomie intégrative conclut que la diversité a été surestimée, la variation géographique ayant été lue comme de la spéciation."
 statut: reconstruit
 discipline: biologie
-domain: megafaune
+domain: faune-avant
 period: [2007, 2024]
 sources: [tattersall-2007, vanelst-2024]
 scope: [ile-madagascar]

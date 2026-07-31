@@ -1,7 +1,7 @@
 statement: "Toute la faune de vertébrés terrestres de Madagascar descend d'une trentaine de lignées seulement, chacune issue d'une arrivée distincte : cinq lignées d'amphibiens, cinq de mammifères terrestres et vingt de reptiles, sur une île séparée de l'Afrique par quatre cent trente kilomètres de mer et distincte depuis quatre-vingt-cinq millions d'années."
 statut: reconstruit
 discipline: biologie
-domain: megafaune
+domain: faune-avant
 sources: [ali-hedges-2025]
 scope: [ile-madagascar]
 note: "Le décompte porte sur les lignées, pas sur les espèces : chaque lignée a ensuite produit des dizaines ou des centaines de formes. Les oiseaux et les chauves-souris sont écartés de ces comptages, parce qu'ils traversent la mer sans difficulté et ne renseignent donc pas sur le mode d'arrivée des autres."

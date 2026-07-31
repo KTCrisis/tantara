@@ -1,7 +1,7 @@
 statement: "L'effondrement de la mégafaune malgache s'est produit au cours des deux derniers millénaires, surtout durant le dernier ; les taxons les plus grands déclinent en premier, signature d'une extinction biaisée par la taille."
 statut: mesuré
 discipline: biologie
-domain: megafaune
+domain: faune-avant
 period: [-500, 1500]
 sources: [crowley-2010]
 scope: [ile-madagascar]

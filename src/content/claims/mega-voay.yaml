@@ -1,7 +1,7 @@
 statement: "L'île avait son propre crocodile, le crocodile à cornes Voay robustus, décrit en 1872 par Grandidier et Vaillant et disparu depuis : l'ADN mitochondrial lu sur des ossements vieux de mille trois cents à mille quatre cents ans le place comme groupe frère des crocodiles vrais, et non comme une forme de ceux-ci."
 statut: reconstruit
 discipline: génétique
-domain: megafaune
+domain: faune-avant
 period: [-2500, 700]
 sources: [hekkala-2021]
 scope: [ile-madagascar]

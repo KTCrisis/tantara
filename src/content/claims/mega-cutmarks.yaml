@@ -1,7 +1,7 @@
 statement: "Des os d'oiseaux-éléphants (Aepyornis et Mullerornis) portant des marques de découpe et des fractures périmortem, datés à plus de 10 500 ans, ont été présentés comme un indice d'activité humaine très ancienne ; cette datation, qui devancerait toute autre preuve de plusieurs millénaires, est contestée."
 statut: conjectural
 discipline: archéologie
-domain: megafaune
+domain: faune-avant
 period: [-8500, -8500]
 geo: { lat: -22.3, lng: 45.3, label: "Christmas River (centre-sud)" }
 sources: [hansford-2018]

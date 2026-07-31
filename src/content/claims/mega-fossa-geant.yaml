@@ -1,7 +1,7 @@
 statement: "Le plus grand carnivore mammifère qu'ait porté l'île est le fossa géant, Cryptoprocta spelea, éteint au cours des deux derniers millénaires ; les estimations de sa masse vont d'un peu plus de dix à une vingtaine de kilogrammes, quand son proche parent survivant, le fossa actuel, pèse de cinq kilos et demi à dix, et se trouve être aujourd'hui le plus grand carnivore endémique du pays."
 statut: reconstruit
 discipline: biologie
-domain: megafaune
+domain: faune-avant
 period: [-2000, 500]
 sources: [meador-2019]
 scope: [ile-madagascar]

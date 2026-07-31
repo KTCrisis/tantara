@@ -1,7 +1,7 @@
 statement: "La cause de l'extinction de la mégafaune reste débattue : surchasse humaine, aridification climatique, ou synergie de facteurs (chasse, feux, agropastoralisme transformant le paysage)."
 statut: daté-débattu
 discipline: biologie
-domain: megafaune
+domain: faune-avant
 period: [-500, 1500]
 sources: [godfrey-2024]
 scope: [ile-madagascar]
