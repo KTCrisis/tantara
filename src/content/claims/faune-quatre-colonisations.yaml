@@ -1,0 +1,8 @@
+statement: "Les quatre groupes de mammifères terrestres actuels de l'île, lémuriens, tenrecs, carnivores et rongeurs, forment chacun un ensemble monophylétique frère de taxons africains : quatre arrivées indépendantes et séparées dans le temps, datées par les gènes nucléaires vers 60 à 50 millions d'années pour les lémuriens, 42 à 25 pour les tenrecs, 26 à 19 pour les carnivores et 24 à 20 pour les rongeurs."
+statut: reconstruit
+discipline: génétique
+domain: megafaune
+period: [-60000000, -19000000]
+sources: [poux-2005]
+scope: [ile-madagascar]
+note: "Datations d'horloge moléculaire, calibrées sur des fossiles africains : ce sont des intervalles d'inférence, pas des dates d'arrivée observées. L'île n'a livré presque aucun fossile de mammifère pour le Tertiaire, ce qui prive ces estimations de contrôle direct et explique leur amplitude."

@@ -1,0 +1,14 @@
+statement: "Comment ces lignées ont franchi le canal du Mozambique reste débattu : traversée passive sur des radeaux de végétation, ou passage à pied par des hauts-fonds émergés par intervalles."
+statut: daté-débattu
+discipline: biologie
+domain: megafaune
+period: [-66000000, -15000000]
+scope: [ile-madagascar]
+hypotheses:
+  - label: "Le radeau, porté par des courants aujourd'hui disparus"
+    statement: "Au Paléogène, la position de l'Afrique et de Madagascar plaçait le canal sous un régime de courants dirigés vers l'est, capables de porter un radeau de végétation d'une rive à l'autre ; la dérive vers le nord des deux masses a reconfiguré cette circulation, et les arrivées de mammifères cessent au moment où elle s'inverse."
+    sources: [ali-huber-2010]
+  - label: "Le pont, émergé par intervalles"
+    statement: "La ride de Davie, relief sous-marin qui court entre l'Afrique et Madagascar, aurait émergé à plusieurs reprises au Cénozoïque en offrant des passages temporaires ; la traversée n'aurait alors demandé ni radeau ni hasard, mais un chemin praticable pendant des périodes brèves."
+    sources: [masters-2021]
+note: "Le débat porte sur le mécanisme, pas sur le fait que les lignées soient arrivées après la séparation d'avec l'Afrique, qui n'est pas contesté. Il oppose deux communautés depuis un siècle et se rejoue à chaque publication géologique sur la ride de Davie. Les deux hypothèses rendent compte des mêmes datations moléculaires, ce qui explique qu'aucune ne l'emporte par ce moyen."
