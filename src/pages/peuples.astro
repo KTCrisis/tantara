@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import FokoMap from '../components/FokoMap.astro';
+import Claim from '../components/Claim.astro';
 
 const foko = (await getCollection('entities'))
   .filter((e) => e.data.kind === 'foko')
@@ -12,22 +13,22 @@ const countFor = (id: string) => claims.filter((c) => c.data.scope.some((s) => s
 ---
 <Base
   title="Les dix-huit foko — tantara.wiki"
-  description="On range les Malgaches en dix-huit foko. Le chiffre est commode et tardif : il doit beaucoup à l'administration coloniale. Ce qu'en disent les preuves."
+  description="On range les Malgaches en dix-huit foko. Ces noms sont tardifs : ils se cristallisent avec les royaumes des XVIe-XIXe siècles. Ce qu'en disent les preuves."
 >
   <article class="wrap">
     <div class="kicker" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ocean);margin:60px 0 12px;">Les peuples</div>
     <h1>Les « dix-huit » foko</h1>
     <p class="lead" style="color:var(--ink-2);font-size:1.1rem;">
-      On range d'ordinaire les Malgaches en dix-huit <em>foko</em>. Le chiffre est
-      commode et tardif : il doit beaucoup à l'administration coloniale, qui a fixé
-      en frontières ce qui était gradient. Ici, chaque foko est une entrée, mais le
-      découpage lui-même est traité comme une assertion, pas comme un fait premier.
+      On range d'ordinaire les Malgaches en dix-huit <em>foko</em>. Ici, chaque foko est
+      une entrée, mais le découpage lui-même est traité comme une assertion, pas comme un
+      fait premier. <Claim id="gh-ethnonymes-tardifs" />
     </p>
     <p style="color:var(--ink-2);font-size:0.92rem;border-left:2px solid var(--line);padding-left:12px;">
-      Pourquoi « dix-huit » ? Le nombre s'est stabilisé sous la colonisation, sur des
-      catégories déjà merina-centrées ; les limites entre groupes étaient poreuses et
-      mouvantes. Lire ces pages, c'est suivre des cristallisations récentes, pas des
-      essences. <a href="/#methode">La méthode</a> · <a href="/peuplement">l'origine commune</a>.
+      Quant au nombre lui-même, dix-huit, le site n'en donne pas encore l'origine :
+      aucune source n'a été retenue ici qui établisse quand et par qui il a été arrêté.
+      Ce qui est établi, c'est que les noms sont tardifs. Lire ces pages, c'est donc
+      suivre des cristallisations récentes, pas des essences.
+      <a href="/#methode">La méthode</a> · <a href="/peuplement">l'origine commune</a>.
     </p>
 
     <h2>Les foyers, sur la carte</h2>
