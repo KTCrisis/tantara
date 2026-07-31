@@ -11,6 +11,7 @@ import Registre from '../../components/Registre.astro';
 import Ornement from '../../components/Ornement.astro';
 import Planche from '../../components/Planche.astro';
 import pangee from '../../assets/planches/pangee-usgs.png';
+import ampefy from '../../assets/planches/ampefy-itasy.jpg';
 
 <Ornement motif="ravenala" class="page-ravenala" />
 
@@ -20,10 +21,10 @@ import pangee from '../../assets/planches/pangee-usgs.png';
   src={pangee}
   alt="Cinq vues du globe montrant l'éclatement de la Pangée et la dérive des continents jusqu'à leurs positions actuelles."
   legende="L'éclatement de la Pangée et la dérive des continents jusqu'à leurs positions actuelles. Madagascar n'y est pas nommée : à cette échelle, elle se détache du bloc austral avec l'Inde."
-  source="Kious et Tilling, This Dynamic Earth: The Story of Plate Tectonics, U.S. Geological Survey ; version sans légendes par Llywelyn2000"
+  source="Kious et Tilling (U.S. Geological Survey), version sans légendes par Llywelyn2000"
   licence="domaine public"
   href="https://pubs.usgs.gov/gip/dynamic/historical.html"
-  retouche="Habillage de planche ancienne appliqué par flux7.art : la matière et la couleur changent, les contours sont ceux de la base. Image d'appui, pas un document d'époque."
+  retouche="Habillage appliqué par flux7.art."
   cote="droite"
 />
 
@@ -34,10 +35,23 @@ millions d'années. <Claim id="geo-separation-afrique" />
 
 ## La rupture avec l'Inde
 
-Le bloc malgache ne part pas seul : il emporte d'abord l'Inde, avant de s'en séparer
-dans un événement aussi bref que violent. <Claim id="geo-separation-inde" /> La déchirure
-laisse sa signature dans la roche, en deux temps très éloignés. <Claim id="geo-volcanisme" />
-Depuis cette rupture, plus aucun pont terrestre : l'île est seule.
+<Planche
+  src={ampefy}
+  alt="Paysage des hautes terres à Ampefy : un cône de travertin ocre bâti par une source jaillissante, au bord d'une rivière, sous des collines boisées."
+  legende="Ampefy, dans le champ volcanique de l'Itasy : des sources jaillissantes y ont bâti des cônes de travertin. Contrairement à la planche ci-dessus, ceci n'est pas une reconstruction mais une photographie ; elle montre le paysage du champ volcanique, non son activité."
+  source="Pwilcox10, Wikimedia Commons"
+  licence="CC BY-SA 4.0"
+  href="https://commons.wikimedia.org/wiki/File:Paysage_et_Geyser_%C3%A0_Ampefy.jpg"
+  cote="gauche"
+/>
+
+Le bloc malgache ne part pas seul : il emporte l'Inde, et ne s'en sépare que plus de
+soixante-dix millions d'années plus tard. <Claim id="geo-separation-inde" /> La déchirure
+laisse sa signature dans la roche, des épanchements mis en place vite à l'échelle
+géologique. La même roche en garde une seconde, beaucoup plus tardive et sans rapport
+avec la rupture : l'île n'est pas un socle éteint, elle a connu du feu il y a dix-neuf
+mille ans. <Claim id="geo-volcanisme" /> Depuis la séparation, en revanche, plus aucun
+pont terrestre : l'île est seule.
 
 ## Un monde clos sur lui-même
 

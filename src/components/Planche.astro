@@ -47,9 +47,13 @@ const tailles = enMarge
   </a>
   <figcaption>
     <span class="quoi">{legende}</span>
+    {/* Les faits restent sous l'image : sans eux la provenance n'est plus
+        vérifiable d'un coup d'œil. C'est l'explication de la convention qui
+        part, elle vit une seule fois sur /avertissement au lieu d'être
+        recopiée sous chaque planche. */}
     <span class="prov">
-      Base : {href ? <a href={href} rel="noopener">{source}</a> : source}, {licence}.
-      {retouche && <> {retouche}</>}
+      {href ? <a href={href} rel="noopener">{source}</a> : source}, {licence}.
+      {retouche && <> <a href="/avertissement#images">{retouche}</a></>}
     </span>
   </figcaption>
 </figure>
