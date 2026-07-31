@@ -54,8 +54,11 @@ p { margin: 0 0 1rem; }
   border-right: 1px solid var(--rule); background: var(--paper);
   padding: 28px 22px; box-sizing: border-box; z-index: 20;
 }
-.brand { font-family: var(--display); font-weight: 600; font-size: 1.4rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; display: block; margin-bottom: 26px; }
+.brand { font-family: var(--display); font-weight: 600; font-size: 1.4rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 9px; margin-bottom: 26px; }
 .brand em { color: var(--laterite); font-style: normal; }
+/* Le ravenala de l'onglet, repris en tête de rail. Terre rouge comme le .wiki
+   de la marque : le glyphe et l'extension se répondent, l'encre reste au texte. */
+.brand-mark { width: 26px; height: 26px; flex: none; color: var(--laterite); }
 .sidebar nav { display: flex; flex-direction: column; gap: 1px; font-family: var(--sans); font-size: 0.9rem; }
 .sidebar nav a { color: var(--ink-2); text-decoration: none; padding: 5px 0 5px 11px; margin-left: -11px; border-left: 2px solid transparent; transition: color .12s, border-color .12s; }
 .sidebar nav a:hover { color: var(--ocean); }
@@ -74,8 +77,9 @@ p { margin: 0 0 1rem; }
     position: fixed; top: 0; left: 0; right: 0; height: 52px; z-index: 25;
     padding: 0 10px 0 18px; background: var(--paper); border-bottom: 1px solid var(--rule);
   }
-  .brand-m { font-family: var(--display); font-weight: 600; font-size: 1.2rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+  .brand-m { font-family: var(--display); font-weight: 600; font-size: 1.2rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 7px; }
   .brand-m em { color: var(--laterite); font-style: normal; }
+  .brand-m .brand-mark { width: 21px; height: 21px; }
   .nav-burger {
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
     width: 40px; height: 40px; background: none; border: none; cursor: pointer;

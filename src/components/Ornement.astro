@@ -1,9 +1,24 @@
 ---
 // Motifs décoratifs à l'encre — SVG tracés main, monochromes (currentColor),
 // pensés pour rester discrets (l'appelant fixe couleur + opacité).
-interface Props { motif: 'ravenala' | 'filet' | 'frise'; class?: string; }
+interface Props { motif: 'ravenala' | 'filet' | 'frise' | 'marque'; class?: string; }
 const { motif, class: klass = '' } = Astro.props;
 ---
+{motif === 'marque' && (
+  /* Variante compacte du ravenala : cinq frondes, trait épaissi, insertions
+     étagées le long du tronc. C'est le dessin de `public/favicon.svg`, repris
+     ici pour que l'en-tête et l'onglet portent la même marque — les deux
+     doivent bouger ensemble. Réduire l'ornement décoratif ne marchait pas, son
+     éventail se referme sous 32 px. */
+  <svg class={klass} viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M16 29 V17.5" />
+    <path d="M16 20.5 C12 18.5 7.5 15 4 11" />
+    <path d="M16 19 C13 15 10.5 9.5 9.5 4.5" />
+    <path d="M16 17.5 V2.5" />
+    <path d="M16 19 C19 15 21.5 9.5 22.5 4.5" />
+    <path d="M16 20.5 C20 18.5 24.5 15 28 11" />
+  </svg>
+)}
 {motif === 'ravenala' && (
   <svg class={klass} viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M50 96 V60" />

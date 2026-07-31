@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="tantara.wiki">
+  <title>tantara.wiki</title>
+  <!-- Ravenala madagascariensis, l'arbre du voyageur. Variante compacte de
+       l'ornement du site, redessinée et non réduite : cinq frondes au lieu de
+       sept, trait épaissi, et surtout des points d'attache étagés le long du
+       tronc. Les faire toutes partir du même point fermait l'éventail en tache
+       à 16 px ; l'étagement est aussi plus juste botaniquement, le ravenala
+       porte ses frondes en éventail plan sur des insertions successives.
+       Fond papier plutôt que transparence, sinon l'encre disparaît sur un
+       onglet sombre. -->
+  <rect width="32" height="32" rx="6" fill="#f6f2e9" />
+  <g fill="none" stroke="#a8492f" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 29 V17.5" />
+    <path d="M16 20.5 C12 18.5 7.5 15 4 11" />
+    <path d="M16 19 C13 15 10.5 9.5 9.5 4.5" />
+    <path d="M16 17.5 V2.5" />
+    <path d="M16 19 C19 15 21.5 9.5 22.5 4.5" />
+    <path d="M16 20.5 C20 18.5 24.5 15 28 11" />
+  </g>
+</svg>
