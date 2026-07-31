@@ -14,10 +14,16 @@ interface Props {
   alt: string;
   /** Ce que la planche montre. */
   legende: string;
-  /** La base : auteur et publication d'origine. */
-  source: string;
+  /** La base : auteur et publication d'origine. Absent si la planche est de synthèse. */
+  source?: string;
   /** Licence de la base, telle qu'elle est déclarée à la source. */
-  licence: string;
+  licence?: string;
+  /**
+   * Image de synthèse, sans base. Elle n'a ni auteur à créditer ni licence à
+   * respecter, mais c'est justement celle qui doit le dire le plus clairement :
+   * elle ne documente rien. Remplace source et licence.
+   */
+  synthese?: string;
   /** Ce qui a été fait à la base, et par qui. Omis si la base est servie telle quelle. */
   retouche?: string;
   /** Lien vers la base d'origine. */
@@ -31,7 +37,7 @@ interface Props {
    */
   cote?: 'pleine' | 'droite' | 'gauche';
 }
-const { src, alt, legende, source, licence, retouche, href, cote = 'pleine' } = Astro.props;
+const { src, alt, legende, source, licence, retouche, href, synthese, cote = 'pleine' } = Astro.props;
 const enMarge = cote === 'droite' || cote === 'gauche';
 // Largeurs rendues : la vignette suffit à la lecture, l'original reste servi
 // pour l'agrandissement. Pas de visionneuse JS — un lien vers le fichier fait
@@ -52,8 +58,10 @@ const tailles = enMarge
         part, elle vit une seule fois sur /avertissement au lieu d'être
         recopiée sous chaque planche. */}
     <span class="prov">
-      {href ? <a href={href} rel="noopener">{source}</a> : source}, {licence}.
-      {retouche && <> <a href="/avertissement#images">{retouche}</a></>}
+      {synthese
+        ? <a href="/avertissement#images">{synthese}</a>
+        : <>{href ? <a href={href} rel="noopener">{source}</a> : source}, {licence}.
+            {retouche && <> <a href="/avertissement#images">{retouche}</a></>}</>}
     </span>
   </figcaption>
 </figure>

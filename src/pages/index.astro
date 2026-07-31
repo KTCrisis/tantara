@@ -2,6 +2,9 @@
 import Base from '../layouts/Base.astro';
 import StatusBadge from '../components/StatusBadge.astro';
 import ExploreMap from '../components/ExploreMap.astro';
+import Planche from '../components/Planche.astro';
+import analakely from '../assets/planches/analakely.jpg';
+import objets from '../assets/planches/objets-synthese.png';
 import { STATUTS } from '../content.config';
 
 const defs: Record<string, string> = {
@@ -33,6 +36,15 @@ const defs: Record<string, string> = {
 
   <section class="wrap" id="aujourdhui">
     <h2>Aujourd'hui</h2>
+    <Planche
+      src={analakely}
+      alt="Vue plongeante sur le marché d'Analakely à Antananarivo : les pavillons à toits de tuiles, l'avenue, et la ville qui monte à flanc de colline derrière."
+      legende="Analakely, au centre d'Antananarivo. La ville monte à flanc de colline derrière les pavillons du marché."
+      source="Cactus0625, Wikimedia Commons"
+      licence="CC BY-SA 4.0"
+      href="https://commons.wikimedia.org/wiki/File:Analakely_vu_d%27en_haut,_Madagascar.jpg"
+      cote="droite"
+    />
     <p>
       Madagascar compte près de 32 millions d'habitants, dont l'âge médian n'atteint
       pas vingt ans. Sa capitale, Antananarivo, en réunit environ trois millions.
@@ -61,6 +73,13 @@ const defs: Record<string, string> = {
 
   <section class="wrap">
     <h2>Ce que ce site rassemble</h2>
+    <Planche
+      src={objets}
+      alt="Planche d'objets sur papier crème, dans un encadrement de rinceaux végétaux : deux coquillages, une roche volcanique poreuse, une palme séchée, un cristal de quartz et un rouleau de raphia."
+      legende="Les matières par lesquelles on sait quelque chose de cette île : des coquillages, une roche volcanique, une palme, un cristal, du raphia. Aucun de ces objets n'a été trouvé quelque part."
+      synthese="Image de synthèse produite par flux7.art. Elle n'illustre aucune pièce réelle et n'atteste de rien."
+      cote="gauche"
+    />
     <p>
       <em>Tantara</em> veut dire « histoire, récit » en malgache. On y trouve la formation
       de l'île et son long isolement, la faune de géants qui l'a occupée avant les hommes,
