@@ -18,5 +18,8 @@
     "@fontsource/spectral": "^5.2.8",
     "astro": "^7.1.6",
     "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "wrangler": "4.116.0"
   }
 }
