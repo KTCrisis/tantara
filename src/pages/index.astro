@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import StatusBadge from '../components/StatusBadge.astro';
+import Claim from '../components/Claim.astro';
 import ExploreMap from '../components/ExploreMap.astro';
 import Planche from '../components/Planche.astro';
 import Portes from '../components/Portes.astro';
@@ -55,11 +56,12 @@ const defs: Record<string, string> = {
       <div class="kicker">Madagascar · l'état des preuves</div>
       <h1>D'où viennent les Malgaches ?</h1>
       <p class="lead">
-        De Bornéo et d'Afrique, et sur ce point les gènes sont nets : deux courants, un
-        métissage datable, une trentaine de lignées maternelles fondatrices. Ce que l'on
-        ignore est ailleurs : <strong>par quelle route ils sont venus, et pourquoi ils
-        sont partis</strong>. Ce site pose l'un et l'autre à plat, chaque assertion
-        portant son statut de preuve et ses sources.
+        D'Asie du Sud-Est insulaire et d'Afrique de l'Est : sur ce point les gènes sont
+        nets, deux courants, un métissage datable, une trentaine de lignées maternelles
+        fondatrices. C'est la langue, et non les gènes, qui désigne plus précisément le
+        sud-est de Bornéo. Ce que l'on ignore est ailleurs : <strong>par quelle route ils
+        sont venus, et pourquoi ils sont partis</strong>. Ce site pose l'un et l'autre à
+        plat, chaque assertion portant son statut de preuve et ses sources.
       </p>
     </div>
   </section>
@@ -76,18 +78,16 @@ const defs: Record<string, string> = {
       cote="droite"
     />
     <p>
-      Madagascar compte près de 32 millions d'habitants, dont l'âge médian n'atteint
-      pas vingt ans. Sa capitale, Antananarivo, en réunit environ trois millions.
-      C'est aussi l'un des pays les plus pauvres du monde : près de quatre Malgaches
-      sur cinq vivent sous le seuil d'extrême pauvreté.
+      Le pays est jeune, rural, et l'un des plus pauvres du monde.{' '}
+      <Claim id="mg-population" /> <Claim id="mg-pauvrete" />
     </p>
     <p>
       On range d'ordinaire la population en dix-huit <em>foko</em>, « ethnies » :
       Merina des Hautes Terres, Sakalava de l'Ouest, Betsileo, Betsimisaraka et les
-      autres. Le découpage est commode et tardif, il doit beaucoup à l'administration
-      coloniale, et les lignes qu'il trace pèsent encore. Les hiérarchies héritées,
-      nobles, libres, descendants d'esclaves, ne se sont pas effacées, et la défiance
-      entre Hautes Terres et côtes non plus.
+      autres. Ce découpage est tardif. <Claim id="gh-ethnonymes-tardifs" /> Les lignes
+      qu'il trace pèsent pourtant encore : les hiérarchies héritées, nobles, libres,
+      descendants d'esclaves, ne se sont pas effacées, et la défiance entre Hautes
+      Terres et côtes non plus.
     </p>
     <p>
       Ce site ne change rien à cela. Il rassemble ce que l'on sait de l'origine commune,
