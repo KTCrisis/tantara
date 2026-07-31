@@ -2,6 +2,7 @@ statement: "Le premier Européen à voir Madagascar est le Portugais Diogo Dias,
 statut: récit
 discipline: histoire
 domain: peuplement
+axes: [regards-exterieurs]
 period: [1500, 1530]
 geo: { lat: -16.0, lng: 50.5, route: europeen, label: "Approche portugaise (1500)" }
 sources: [thomaz-2009]

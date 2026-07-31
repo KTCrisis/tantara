@@ -2,6 +2,7 @@ statement: "Vohémar, au nord-est, abrite la civilisation rasikajy : une nécrop
 statut: mesuré
 discipline: archéologie
 domain: geographie-historique
+axes: [regards-exterieurs]
 period: [1300, 1600]
 geo: { lat: -13.37, lng: 50.0, route: arabo-swahili, label: "Vohémar (Rasikajy)" }
 sources: [schreurs-2011]

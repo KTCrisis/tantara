@@ -2,6 +2,7 @@ statement: "Le pays bara du Centre-Sud, où se situe le massif de l'Isalo, est m
 statut: attesté
 discipline: archéologie
 domain: lieu
+axes: [traditions]
 geo: { lat: -22.55, lng: 45.35, label: "Massif de l'Isalo (pays bara)" }
 sources: [manjakahery-2017]
 scope: [isalo, bara, ile-madagascar]
