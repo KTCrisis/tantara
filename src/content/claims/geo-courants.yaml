@@ -1,0 +1,7 @@
+statement: "Le courant sud-équatorial traverse l'océan Indien vers l'ouest et se sépare sur la côte est de Madagascar en deux branches, le courant nord-est malgache et le courant sud-est malgache ; la première se retourne vers le sud en longeant l'Afrique, formant le courant du Mozambique, et engendre des tourbillons au voisinage des Comores."
+statut: mesuré
+discipline: autre
+domain: geographie-physique
+sources: [chenillat-2024]
+scope: [ile-madagascar]
+note: "Classé « autre » faute de discipline océanographique dans l'enum : c'est le vingt-troisième claim dans ce cas. Circulation actuelle, mesurée par altimétrie satellitaire et mouillages. Rien n'établit ici qu'elle était identique il y a mille ans, ni qu'elle a porté telle ou telle traversée : voir navigation-trajet, qui reste débattu."
