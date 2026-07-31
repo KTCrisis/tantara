@@ -27,11 +27,14 @@ export const ROUTE_LABEL: Record<string, string> = {
 // Sous-titre de chaque discipline : la démarche, en une ligne.
 export const DISCIPLINE_DESC: Record<string, string> = {
   'géologie': 'ce que les roches et les datations radiométriques établissent',
+  'océanographie': 'ce que les courants et les vents mesurés imposent',
+  'biologie': 'ce que les os, les pollens et la répartition du vivant montrent',
   'histoire': 'ce que les textes et les traditions rapportent',
   'archéologie': 'ce que le sol et les vestiges datent',
   'génétique': 'ce que les génomes mesurent',
   'linguistique': 'ce que la langue reconstruit',
-  'autre': 'paléoécologie, modélisations',
+  'ethnographie': 'ce que les pratiques observées et décrites livrent',
+  'autre': 'ce qui ne relève d\'aucune démarche seule',
 };
 
 /** Affiche une année signée : -500 → "500 av. n.è.", 1200 → "1200". */
