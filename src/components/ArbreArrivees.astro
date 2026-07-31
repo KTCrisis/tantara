@@ -1,0 +1,109 @@
+---
+// Les quatre arrivées de mammifères, portées sur l'échelle des temps.
+//
+// Ce n'est pas un cladogramme : un arbre classique dessinerait des
+// branchements dont la position exacte serait inventée. La figure ne montre
+// donc que ce que les données donnent, c'est-à-dire quatre INTERVALLES de
+// colonisation, dessinés à leur largeur. L'incertitude est ici la forme même
+// du trait : plus la barre est longue, moins la date est serrée.
+//
+// Bornes : Poux et coll. 2005, gènes nucléaires, horloge calibrée sur fossiles
+// africains. Les parents africains nommés sont les groupes frères que la même
+// étude retrouve pour chaque clade malgache.
+const SEPARATION = 88;   // Ma, rupture d'avec l'Inde ; l'île est seule ensuite
+
+const lignees = [
+  { nom: 'Lémuriens',           de: 60, a: 50, parent: 'galagos et loris' },
+  { nom: 'Tenrecs',             de: 42, a: 25, parent: "taupes dorées d'Afrique" },
+  { nom: 'Carnivores',          de: 26, a: 19, parent: "mangoustes d'Afrique" },
+  { nom: 'Rongeurs',            de: 24, a: 20, parent: 'rongeurs nésomyidés' },
+];
+
+const T0 = 92;              // Ma, bord gauche de l'axe
+const W = 100;
+const MARGE_G = 21;         // colonne des noms
+const MARGE_D = 3;
+const HAUT = 5;             // hauteur de bande par lignée
+const H = HAUT * lignees.length + 15;
+
+const x = (ma: number) => MARGE_G + (1 - ma / T0) * (W - MARGE_G - MARGE_D);
+const y = (i: number) => 8 + i * HAUT;
+
+const graduations = [90, 80, 70, 60, 50, 40, 30, 20, 10, 0];
+const AXE = y(lignees.length) + 2.5;
+const uid = 'ar';
+---
+<figure class="arbre">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img"
+       aria-label="Diagramme des quatre colonisations de Madagascar par les mammifères, portées sur une échelle de temps allant de 92 millions d'années à aujourd'hui : lémuriens entre 60 et 50 millions d'années, tenrecs entre 42 et 25, carnivores entre 26 et 19, rongeurs entre 24 et 20.">
+    <defs>
+      <filter id={`${uid}-grain`} x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="5" result="n" />
+        <feColorMatrix in="n" type="saturate" values="0" result="g" />
+        <feComponentTransfer in="g" result="a"><feFuncA type="linear" slope="0.05" /></feComponentTransfer>
+        <feComposite in="a" in2="SourceGraphic" operator="over" />
+      </filter>
+    </defs>
+
+    <rect width={W} height={H} fill="#efe6d2" />
+    <rect width={W} height={H} filter={`url(#${uid}-grain)`} fill="#efe6d2" />
+
+    {/* la séparation, et le très long vide qui la suit */}
+    <line x1={x(SEPARATION)} y1="5" x2={x(SEPARATION)} y2={AXE} stroke="#8a3a23"
+          stroke-width="0.3" />
+    <text x={x(SEPARATION) + 0.8} y="4" class="jalon">l'île devient seule, {SEPARATION} Ma</text>
+
+    {lignees.map((l, i) => (
+      <>
+        <text x={MARGE_G - 1.4} y={y(i) + 2.6} class="nom" text-anchor="end">{l.nom}</text>
+        {/* la lignée, une fois arrivée, se poursuit jusqu'à aujourd'hui */}
+        <line x1={x(l.a)} y1={y(i) + 1.9} x2={x(0)} y2={y(i) + 1.9}
+              stroke="#4a3c28" stroke-width="0.22" />
+        {/* l'intervalle d'arrivée : sa largeur EST l'incertitude */}
+        <rect x={x(l.de)} y={y(i) + 0.7} width={x(l.a) - x(l.de)} height="2.4"
+              fill="#c9b892" stroke="#4a3c28" stroke-width="0.28" />
+        <text x={x(l.de) - 0.9} y={y(i) + 1.4} class="borne" text-anchor="end">{l.de}</text>
+        <text x={x(l.a) + 0.9} y={y(i) + 1.4} class="borne">{l.a} Ma</text>
+        <text x={x(0)} y={y(i) + 4.6} class="parent" text-anchor="end">frère : {l.parent}</text>
+      </>
+    ))}
+
+    <line x1={MARGE_G} y1={AXE} x2={x(0)} y2={AXE} stroke="#4a3c28" stroke-width="0.3" />
+    {graduations.map((g) => (
+      <>
+        <line x1={x(g)} y1={AXE} x2={x(g)} y2={AXE + 1} stroke="#4a3c28" stroke-width="0.22" />
+        <text x={x(g)} y={AXE + 3.4} class="grad" text-anchor="middle">{g}</text>
+      </>
+    ))}
+    <text x={x(0)} y={AXE + 6.4} class="grad" text-anchor="end">millions d'années avant le présent</text>
+
+    <rect x="0.6" y="0.6" width={W - 1.2} height={H - 1.2} fill="none" stroke="#4a3c28" stroke-width="0.5" />
+  </svg>
+  <figcaption>
+    <span class="quoi">
+      Quatre arrivées, séparées par des dizaines de millions d'années, et toutes très
+      postérieures à l'isolement de l'île. Chaque barre est un intervalle et non une date :
+      sa longueur mesure ce qu'on ignore. Le trait qui la prolonge est la lignée elle-même,
+      qui court jusqu'à aujourd'hui.
+    </span>
+    <span class="prov">
+      Bornes d'après Poux et coll. 2005, horloge moléculaire sur gènes nucléaires calibrée
+      par des fossiles africains. Aucun branchement n'est figuré : il serait dessiné, pas mesuré.
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  .arbre { margin: 2rem 0; }
+  .arbre svg { display: block; width: 100%; height: auto; }
+  .nom { font-family: var(--sans); font-size: 2.5px; fill: #2b241a; }
+  .borne { font-family: var(--mono); font-size: 1.9px; fill: #6b5c44; }
+  .parent { font-family: var(--sans); font-size: 1.8px; fill: #8a8276; font-style: italic; }
+  .grad { font-family: var(--mono); font-size: 1.9px; fill: #6b5c44; }
+  .jalon { font-family: var(--sans); font-size: 2px; fill: #8a3a23; }
+  figcaption { margin-top: .6rem; font-family: var(--sans); font-size: .78rem;
+               line-height: 1.55; color: var(--ink-2);
+               display: flex; flex-direction: column; gap: .15rem; }
+  .quoi { color: var(--ink); }
+  .prov { font-size: .72rem; opacity: .85; }
+</style>
