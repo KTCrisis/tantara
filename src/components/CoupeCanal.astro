@@ -1,0 +1,115 @@
+---
+// La coupe du canal du Mozambique, tracée depuis des profondeurs mesurées.
+//
+// Même principe que ProfilRelief : cent quatre-vingts sondes échantillonnées au
+// parallèle 16 degrés sud sur la synthèse GMRT, figées dans
+// src/data/coupe-canal-16s.json. Le fond ne bouge pas, aucune API n'est appelée
+// au build.
+//
+// La figure sert un débat : l'hypothèse du pont terrestre demande de faire
+// émerger ce fond. Elle ne désigne donc aucun relief par un nom qu'elle ne peut
+// pas vérifier, elle donne les profondeurs et laisse le lecteur mesurer l'écart.
+// Comme pour le profil de relief, la seule tricherie possible est l'exagération
+// verticale : elle est calculée et affichée.
+import coupe from '../data/coupe-canal-16s.json';
+
+const p: number[] = coupe.profondeurs_m;
+const lng = (i: number) => coupe.longitude_debut + i * coupe.pas_degres;
+
+const W = 100;
+const H = 30;
+const SURF = 5;             // le trait de surface, en haut
+const FOND = H - 3;
+const PMAX = Math.max(...p.map((v) => -v), 0);
+const px = (i: number) => (i / (p.length - 1)) * W;
+const py = (v: number) => SURF + (Math.max(-v, 0) / PMAX) * (FOND - SURF);
+
+const fond = `M0 ${FOND} ` + p.map((v, i) => `L${px(i).toFixed(2)} ${py(v).toFixed(2)}`).join(' ') +
+  ` L${W} ${FOND} Z`;
+const ligne = p.map((v, i) => `${i ? 'L' : 'M'}${px(i).toFixed(2)} ${py(v).toFixed(2)}`).join(' ');
+
+const iMer = p.findIndex((v) => v < 0);
+const iMerFin = p.length - 1 - [...p].reverse().findIndex((v) => v < 0);
+const iCreux = p.indexOf(Math.min(...p));
+
+// 0,96 : rétrécissement du degré de longitude à 16 degrés de latitude.
+const KM_DEG = 111 * 0.96;
+const km = (a: number, b: number) => Math.round((lng(b) - lng(a)) * KM_DEG);
+const largeurMer = km(iMer, iMerFin);
+
+const largeurKm = (lng(p.length - 1) - lng(0)) * KM_DEG;
+const uniteH = W / largeurKm;
+const uniteV = (FOND - SURF) / (PMAX / 1000);
+const exageration = Math.round(uniteV / uniteH / 10) * 10;
+
+const uid = 'cc';
+---
+<figure class="coupe">
+  <svg viewBox={`0 0 ${W} ${H + 6}`} role="img"
+       aria-label={`Coupe du canal du Mozambique au parallèle 16 degrés sud : ${largeurMer} kilomètres de mer entre les deux côtes, avec un fond descendant à ${PMAX} mètres.`}>
+    <defs>
+      <filter id={`${uid}-grain`} x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="n" />
+        <feColorMatrix in="n" type="saturate" values="0" result="g" />
+        <feComponentTransfer in="g" result="a"><feFuncA type="linear" slope="0.06" /></feComponentTransfer>
+        <feComposite in="a" in2="SourceGraphic" operator="over" />
+      </filter>
+      <pattern id={`${uid}-roche`} patternUnits="userSpaceOnUse" width="1.4" height="1.4"
+               patternTransform="rotate(45)">
+        <rect width="1.4" height="1.4" fill="#e2d2ad" />
+        <line x1="0" y1="0" x2="0" y2="1.4" stroke="#9c8a63" stroke-width="0.3" />
+      </pattern>
+      <pattern id={`${uid}-mer`} patternUnits="userSpaceOnUse" width="3" height="1.6">
+        <line x1="0" y1="0.8" x2="1.8" y2="0.8" stroke="#7d96a0" stroke-width="0.18" />
+      </pattern>
+    </defs>
+
+    <rect width={W} height={H + 6} fill="#efe6d2" />
+    <rect width={W} height={H + 6} filter={`url(#${uid}-grain)`} fill="#efe6d2" />
+
+    {/* l'eau occupe toute la bande sous la surface ; la roche la recouvre ensuite */}
+    <rect x="0" y={SURF} width={W} height={FOND - SURF} fill={`url(#${uid}-mer)`} />
+    <path d={fond} fill={`url(#${uid}-roche)`} />
+    <path d={ligne} fill="none" stroke="#4a3c28" stroke-width="0.45" stroke-linejoin="round" />
+    <line x1="0" y1={SURF} x2={W} y2={SURF} stroke="#4a3c28" stroke-width="0.32" />
+
+    <line x1={px(iCreux)} y1={SURF} x2={px(iCreux)} y2={py(p[iCreux])} stroke="#8a3a23"
+          stroke-width="0.22" stroke-dasharray="0.7 0.7" opacity="0.75" />
+    <text x={px(iCreux)} y={py(p[iCreux]) + 2.2} class="cote" text-anchor="middle">{PMAX} m</text>
+
+    <text x="2.6" y={SURF - 1.4} class="rive">Afrique</text>
+    <text x={W - 2.6} y={SURF - 1.4} class="rive" text-anchor="end">Madagascar</text>
+    <text x={(px(iMer) + px(iMerFin)) / 2} y={H + 3.4} class="dist" text-anchor="middle">{largeurMer} km de mer</text>
+
+    <rect x="0.6" y="0.6" width={W - 1.2} height={H + 4.8} fill="none" stroke="#4a3c28" stroke-width="0.5" />
+    <rect x="1.5" y="1.5" width={W - 3} height={H + 3} fill="none" stroke="#4a3c28" stroke-width="0.22" />
+  </svg>
+  <figcaption>
+    <span class="quoi">
+      Le canal au parallèle 16 degrés sud : {largeurMer} kilomètres d'eau, et un fond qui
+      descend à {PMAX} mètres. Les quatre cent trente kilomètres cités plus haut sont une
+      distance minimale entre les deux terres ; une coupe prise à une latitude en traverse
+      nécessairement davantage. C'est ce creux que l'hypothèse du pont demande d'élever, et
+      les profondeurs sont ici étirées environ {exageration} fois : à l'échelle vraie, ce
+      fossé serait une éraflure.
+    </span>
+    <span class="prov">
+      Cent quatre-vingts sondes échantillonnées sur la synthèse{' '}
+      <a href={coupe.source_doi} rel="noopener">GMRT</a>, service GridServer.
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  .coupe { margin: 2rem 0; }
+  .coupe svg { display: block; width: 100%; height: auto; }
+  .cote { font-family: var(--mono); font-size: 2px; fill: #4a3c28; }
+  .rive { font-family: var(--sans); font-size: 2.3px; fill: #6b5c44; }
+  .dist { font-family: var(--mono); font-size: 2.1px; fill: #8a3a23; }
+  figcaption { margin-top: .6rem; font-family: var(--sans); font-size: .78rem;
+               line-height: 1.55; color: var(--ink-2);
+               display: flex; flex-direction: column; gap: .15rem; }
+  .quoi { color: var(--ink); }
+  .prov { font-size: .72rem; opacity: .85; }
+  .prov a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+</style>

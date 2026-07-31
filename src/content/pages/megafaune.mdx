@@ -9,6 +9,9 @@ description: "Ni éléphant, ni antilope, ni grand félin. Ce qui manque expliqu
 import Claim from '../../components/Claim.astro';
 import HypothesisCompare from '../../components/HypothesisCompare.astro';
 import Registre from '../../components/Registre.astro';
+import CoupeCanal from '../../components/CoupeCanal.astro';
+import Planche from '../../components/Planche.astro';
+import tenrec from '../../assets/planches/tenrec-geoffroy-1839.jpg';
 
 ## Le filtre
 
@@ -16,6 +19,16 @@ L'inventaire le plus instructif de la faune malgache est celui des absents. Le c
 le plus proche porte les plus grands mammifères terrestres du monde, et rien de tout cela
 n'a traversé. <Claim id="faune-quatre-ordres" /> Les quatre groupes qui ont franchi le
 canal l'ont fait sans se donner le mot.
+
+<Planche
+  src={tenrec}
+  alt="Lithographie coloriée de 1839 : un tenrec hérisson de profil sur un tertre herbeux, museau pointu et long, dos couvert d'épines brunes."
+  legende="Un tenrec hérisson, planche de 1839, donnée pour la moitié de la taille réelle. Le genre Ericulus n'a pas survécu à la nomenclature, l'animal s'appelle aujourd'hui Setifer setosus. Sa ressemblance avec un hérisson ne recouvre aucune parenté proche : c'est une des quatre lignées de mammifères arrivées par la mer, et elle a pris la place que les hérissons occupent ailleurs."
+  source="Étienne Geoffroy Saint-Hilaire, Magasin de Zoologie, série 2, volume 1 (1839), via Wikimedia Commons"
+  licence="domaine public"
+  href="https://commons.wikimedia.org/wiki/File:Ericulus_nigrescens_St.-Hilaire_1839.jpg"
+  cote="droite"
+/>
 
 L'île n'a pas été peuplée, elle a été atteinte, et le détail de ces arrivées se compte.
 <Claim id="faune-trente-lignees" /> Pour les mammifères, la généalogie est établie :
@@ -31,6 +44,8 @@ l'objection est aussi ancienne que l'hypothèse, et que les deux camps publient 
 <Claim id="faune-mecanisme-debat" />
 
 <HypothesisCompare id="faune-mecanisme-debat" />
+
+<CoupeCanal />
 
 Quel que soit le mécanisme, la dernière arrivée datée est celle des rongeurs, il y a une
 vingtaine de millions d'années. Ce qui vivait sur l'île y était donc seul depuis très
