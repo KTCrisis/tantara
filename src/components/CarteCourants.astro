@@ -12,6 +12,12 @@
 // serait la seule ligne inventée de la figure.
 import brut from '../../public/madagascar.geojson?raw';
 
+interface Props {
+  /** Même convention que Planche : en marge, le texte enveloppe la figure. */
+  cote?: 'pleine' | 'droite' | 'gauche';
+}
+const { cote = 'pleine' } = Astro.props;
+
 const contour: [number, number][] = JSON.parse(brut).features[0].geometry.coordinates[0];
 
 // Boîte élargie au nord et à l'ouest pour tenir les Comores et l'entrée du canal.
@@ -40,7 +46,7 @@ const sud = `M${P(51.0, -16.2)} C${P(50.2, -19.0)} ${P(48.5, -23.5)} ${P(46.4, -
 
 const uid = 'cc';
 ---
-<figure class="courants">
+<figure class:list={['courants', cote !== 'pleine' && 'en-marge', cote === 'droite' && 'a-droite', cote === 'gauche' && 'a-gauche']}>
   <svg viewBox={`0 0 ${W} ${H.toFixed(2)}`} role="img"
        aria-label="Schéma du partage du courant sud-équatorial sur la côte est de Madagascar : arrivée par l'est, séparation en une branche nord qui passe aux Comores puis descend le canal, et une branche sud.">
     <defs>
@@ -96,6 +102,18 @@ const uid = 'cc';
 
 <style>
   .courants { margin: 2rem 0; max-width: 460px; }
+  /* En marge : le schéma est en portrait, il tient à cette largeur. Le profil
+     du relief, lui, reste pleine colonne : tout son propos est la comparaison
+     horizontale des deux distances, la réduire la détruirait. */
+  .courants.en-marge { width: 38%; max-width: 340px; }
+  .courants.a-droite { float: right; margin: .4rem 0 1.2rem 1.8rem; }
+  .courants.a-gauche { float: left;  margin: .4rem 1.8rem 1.2rem 0; }
+  .courants.en-marge figcaption { font-size: .72rem; }
+  .courants.en-marge .prov { font-size: .68rem; }
+  @media (max-width: 720px) {
+    .courants.en-marge { float: none; width: auto; max-width: none; margin: 2rem 0; }
+    .courants.en-marge figcaption, .courants.en-marge .prov { font-size: .78rem; }
+  }
   .courants svg { display: block; width: 100%; height: auto;
                   border: 1px solid var(--rule); border-radius: 2px; }
   .lieu { font-family: var(--sans); font-size: 2.2px; fill: #6b5c44; }
