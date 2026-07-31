@@ -1,7 +1,8 @@
-statement: "L'escarpement oriental et la ligne de partage des eaux qui le suit font barrière topographique à la mousson venue de l'est : les précipitations et la végétation y sont commandées par le soulèvement orographique, avec des cumuls annuels de 1 200 à 1 600 mm le long de l'escarpement, quand le versant occidental reste sous le vent."
+statement: "Aujourd'hui, l'escarpement oriental et la ligne de partage des eaux qui le suit font barrière topographique à la mousson venue de l'est : les précipitations et la végétation y sont commandées par le soulèvement orographique, avec des cumuls annuels de 1 200 à 1 600 mm le long de l'escarpement, quand le versant occidental reste sous le vent."
 statut: mesuré
 discipline: climat
 domain: geographie-physique
+period: [1950, 2025]
 sources: [clementucci-2025]
 scope: [ile-madagascar]
-note: "Le contraste est-ouest des pluies est ici rapporté à la topographie. Le site ne quantifie pas encore le versant sec : les chiffres cités portent sur l'escarpement seul."
+note: "Climatologie contemporaine. Le contraste est rapporté à la topographie, laquelle est ancienne, mais le régime de pluies mesuré ne l'est pas : rien ici n'établit qu'il valait déjà au XVe siècle. Les chiffres cités portent sur l'escarpement seul, le versant sec n'est pas quantifié."

@@ -1,7 +1,8 @@
-statement: "Le régime des vents du sud-ouest de l'océan Indien s'inverse deux fois par an : mousson de nord-est de novembre à avril, qui établit un flux vers l'ouest à travers tout l'océan, puis mousson de sud-ouest de mai à octobre, plus intense ; le renversement fait tourner les vents dominants de plus de quatre-vingt-dix degrés."
+statement: "Dans le régime actuel, les vents du sud-ouest de l'océan Indien s'inversent deux fois par an : mousson de nord-est de novembre à avril, qui établit un flux vers l'ouest à travers tout l'océan, puis mousson de sud-ouest de mai à octobre, plus intense ; le renversement fait tourner les vents dominants de plus de quatre-vingt-dix degrés."
 statut: mesuré
 discipline: climat
 domain: geographie-physique
+period: [1950, 2025]
 sources: [guyomard-2006]
 scope: [ile-madagascar]
-note: "Régime actuel, mesuré. Le site n'en déduit aucun itinéraire : que le vent permette l'aller-retour ne dit pas qui l'a emprunté, ni quand."
+note: "Régime observé, décrit sur les données contemporaines. Sa stabilité au fil des siècles n'est pas établie ici, et que le vent permette l'aller-retour ne dit ni qui l'a emprunté ni quand."
