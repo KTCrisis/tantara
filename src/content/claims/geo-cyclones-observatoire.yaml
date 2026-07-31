@@ -1,0 +1,9 @@
+statement: "L'observation instrumentale des cyclones à Madagascar commence en 1889, avec l'observatoire d'Ambohidempona fondé par le jésuite Élie Colin sur une colline cédée par le premier ministre Rainilaiarivony, sous le règne de Ranavalona III ; ses moyens sont renforcés en 1901 sous l'administration Gallieni, et un relevé de 1929 y dénombre quatre-vingt-quinze cyclones observés depuis la fondation, dont cinquante-deux violents."
+statut: attesté
+discipline: histoire
+domain: geographie-physique
+period: [1889, 1929]
+geo: { lat: -18.92, lng: 47.55, label: "Observatoire d'Ambohidempona, Antananarivo" }
+sources: [combeau-mari-2011, celerier-cholley-1929]
+scope: [ile-madagascar]
+note: "Le comptage de 1929 est un relevé d'époque : ses critères ne sont pas ceux des classifications actuelles, et ses chiffres ne se comparent pas terme à terme avec ceux de l'ère satellitaire. L'observatoire est antérieur à la colonisation de 1896, et il naît d'un accord avec la cour merina, qui lui vaut son nom d'Observatoire royal. L'île Maurice observait depuis 1875."

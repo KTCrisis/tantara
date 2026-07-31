@@ -1,0 +1,8 @@
+statement: "Pour la période 1862-1900, antérieure à tout relevé instrumental complet, vingt cyclones ayant touché Madagascar ont été reconstitués à partir d'archives écrites, dont dix-sept seulement figuraient dans la base de trajectoires de référence ; les deux plus destructeurs, des 13-14 mars 1872 et des 28 janvier-1er février 1893, ont laissé des traces de vent de niveau F3 ou plus."
+statut: reconstruit
+discipline: histoire
+domain: geographie-physique
+period: [1862, 1900]
+sources: [nash-2014]
+scope: [ile-madagascar]
+note: "Les trajectoires sont inférées de récits de dégâts, tirés de correspondances et de rapports missionnaires, de l'Antananarivo Annual and Madagascar Magazine, de journaux et de papiers hydrographiques français. Le total est plus faible que celui de l'ère satellitaire, mais la comparaison ne mesure aucune tendance : ces sources ne couvrent que les régions où des Européens écrivaient, et le nord-est, peu peuplé alors, y est sous-représenté, précisément la façade que les relevés modernes désignent comme la plus exposée."

@@ -1,0 +1,8 @@
+statement: "Dans le régime actuel, le sud-ouest de l'océan Indien produit en moyenne douze systèmes tropicaux et demi par an, dont 85 % entre novembre et avril ; la moitié des systèmes du bassin se forment sur les deux seuls mois de janvier et février."
+statut: mesuré
+discipline: climat
+domain: geographie-physique
+period: [1980, 2007]
+sources: [mavume-2009]
+scope: [ile-madagascar]
+note: "Comptage établi sur 1980-2007, en fusionnant les trajectoires du Joint Typhoon Warning Centre et du centre météorologique régional de La Réunion. Les auteurs écartent leurs propres données antérieures à 1980, faute de mesures de vent suffisantes avant la généralisation de l'estimation satellitaire."

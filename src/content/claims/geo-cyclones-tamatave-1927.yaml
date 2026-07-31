@@ -1,0 +1,9 @@
+statement: "Le cyclone du 3 mars 1927 a submergé Tamatave : les cent onze morts recensés dans la ville sont tous imputables à la mer, par naufrage en rade ou par submersion à terre, et non au vent."
+statut: attesté
+discipline: histoire
+domain: geographie-physique
+period: [1927, 1927]
+geo: { lat: -18.15, lng: 49.4, label: "Tamatave (Toamasina), 3 mars 1927" }
+sources: [huyez-2025, celerier-cholley-1929]
+scope: [toamasina, ile-madagascar]
+note: "Bilan établi par recoupement d'archives administratives, du journal officiel de Tamatave, du bulletin économique de Madagascar et de fonds jésuites. La trajectoire du système, dirigée vers l'ouest-nord-ouest, amenait le vent perpendiculairement à la côte, ce qui a amplifié la montée des eaux ; la marée montante y concourait. Le décompte porte sur une ville portuaire dotée d'une administration qui compte : il ne dit rien de l'intérieur."
