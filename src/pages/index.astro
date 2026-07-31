@@ -10,7 +10,6 @@ import pGeographie from '../assets/portes/geographie.png';
 import pMegafaune from '../assets/portes/megafaune.png';
 import pPeuplement from '../assets/portes/peuplement.png';
 import pFoko from '../assets/portes/foko.png';
-import pEtats from '../assets/portes/etats.png';
 import pLieux from '../assets/portes/lieux.png';
 import { STATUTS } from '../content.config';
 
@@ -23,19 +22,19 @@ const portes = [
     alt: "Feuille de spécimen : un fragment de roche volcanique poreuse sanglé au papier, à côté d'une palme séchée." },
   { href: '/megafaune', titre: "Le monde d'avant", glose: 'les géants disparus.',
     domain: 'megafaune', img: pMegafaune,
-    alt: "Feuille de spécimen : un grand œuf d'oiseau-éléphant posé dans un berceau de cordage." },
+    alt: "Planche ostéologique : le squelette monté d'un grand oiseau coureur, un œuf posé à ses pieds pour l'échelle." },
   { href: '/peuplement', titre: 'Le peuplement', glose: 'par la mer, en deux courants.',
     domain: 'peuplement', img: pPeuplement,
-    alt: "Feuille de spécimen : un épi de riz, quelques graines sombres et une cordelette de fibre tressée." },
+    alt: "Feuille de spécimen : un modèle réduit de pirogue à balancier, ses traverses ligaturées de fibre, et un épi de riz posé à côté." },
   { href: '/peuples', titre: 'Les dix-huit foko', glose: 'et pourquoi « dix-huit ».',
     kind: 'foko', img: pFoko,
     alt: "Feuille de spécimen : un fragment d'étoffe tissée à rayures, effrangé sur un bord." },
   { href: '/etats', titre: 'Les États', glose: 'royaumes côtiers et Imerina.',
-    kind: 'royaume', img: pEtats,
-    alt: "Feuille de spécimen : une petite pièce d'argent coupée en coin et un éclat de cire à cacheter." },
+    // Seule porte à ne rien inventer : la carte est tracée depuis le corpus.
+    kind: 'royaume', carte: true },
   { href: '/lieux', titre: 'Les lieux', glose: 'des comptoirs morts aux capitales.',
     kind: 'lieu', img: pLieux,
-    alt: "Feuille de spécimen : un tesson de poterie, un fragment de corail et un morceau de brique." },
+    alt: "Planche : les ruines d'un petit fort côtier en pierre, deux canons démontés parmi les blocs, la mer derrière." },
 ];
 
 const defs: Record<string, string> = {

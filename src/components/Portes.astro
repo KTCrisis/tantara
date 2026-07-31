@@ -15,13 +15,16 @@ import type { ImageMetadata } from 'astro';
 import { getCollection } from 'astro:content';
 import { STATUTS } from '../content.config';
 import { STATUT_COLOR } from '../lib/statuts';
+import CarteRoyaumes from './CarteRoyaumes.astro';
 
 interface Porte {
   href: string;
   titre: string;
   glose: string;
-  img: ImageMetadata;
-  alt: string;
+  img?: ImageMetadata;
+  alt?: string;
+  /** Vignette tracée depuis les données plutôt qu'engendrée : la carte des royaumes. */
+  carte?: boolean;
   /** Rattachement : par domaine (pages de récit) ou par type d'entité (pages d'acteurs). */
   domain?: string;
   kind?: string;
@@ -51,8 +54,10 @@ const cartes = portes.map((p) => ({ ...p, ...compte(p) }));
   {cartes.map((c) => (
     <li>
       <a href={c.href}>
-        <Image src={c.img} alt={c.alt} widths={[240, 420, 640]}
-               sizes="(max-width: 560px) 100vw, (max-width: 900px) 45vw, 240px" />
+        {c.carte
+          ? <span class="vignette"><CarteRoyaumes /></span>
+          : <Image src={c.img!} alt={c.alt ?? ''} widths={[240, 420, 640]}
+                   sizes="(max-width: 560px) 100vw, (max-width: 900px) 45vw, 240px" />}
         <span class="titre">{c.titre}</span>
         <span class="glose">{c.glose}</span>
         <span class="barre" aria-hidden="true">
@@ -83,6 +88,13 @@ const cartes = portes.map((p) => ({ ...p, ...compte(p) }));
   }
   .portes a:hover, .portes a:focus-visible {
     border-color: var(--ocean); transform: translateY(-2px);
+  }
+  /* La carte tient la même case que les vignettes : même carré, même filet. */
+  .vignette {
+    display: block; aspect-ratio: 1 / 1; overflow: hidden;
+    border-bottom: 1px solid var(--rule); margin-bottom: .55rem;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--paper-2); padding: .5rem;
   }
   .portes :global(img) {
     display: block; width: 100%; height: auto; aspect-ratio: 1 / 1;
