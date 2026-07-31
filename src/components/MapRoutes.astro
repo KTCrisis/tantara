@@ -1,12 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import { ROUTE_COLOR, ROUTE_LABEL } from '../lib/statuts';
+import { surAxe } from '../content.config';
 
 interface Props { domain?: string; }
 const { domain } = Astro.props;
 
 const points = (await getCollection('claims'))
-  .filter((c) => (domain ? c.data.domain === domain : true))
+  .filter((c) => (domain ? surAxe(c, domain) : true))
   .filter((c) => c.data.geo)
   .map((c) => ({ ...c.data.geo!, statement: c.data.statement }));
 

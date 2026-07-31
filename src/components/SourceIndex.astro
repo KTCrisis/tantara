@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { surAxe } from '../content.config';
 
 interface Props { domain?: string; scope?: string; }
 const { domain, scope } = Astro.props;
@@ -10,7 +11,7 @@ let sources = (await getCollection('sources')).sort((a, b) =>
 // Si un périmètre est donné, ne garder que les sources réellement citées par ses claims.
 if (domain || scope) {
   const claims = (await getCollection('claims')).filter((c) =>
-    scope ? c.data.scope.some((s) => s.id === scope) : c.data.domain === domain,
+    scope ? c.data.scope.some((s) => s.id === scope) : surAxe(c, domain),
   );
   const used = new Set<string>();
   for (const c of claims) {

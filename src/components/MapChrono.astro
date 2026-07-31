@@ -1,13 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import { STATUT_COLOR } from '../lib/statuts';
+import { surAxe } from '../content.config';
 
 interface Props { domain?: string; scope?: string; start?: number; }
 // 1337 par défaut : l'année de départ d'un certain jeu de stratégie...
 const { domain, scope, start = 1337 } = Astro.props;
 
 const points = (await getCollection('claims'))
-  .filter((c) => (scope ? c.data.scope.some((s) => s.id === scope) : c.data.domain === domain))
+  .filter((c) => (scope ? c.data.scope.some((s) => s.id === scope) : surAxe(c, domain)))
   .filter((c) => c.data.geo && c.data.period)
   .map((c) => ({
     ...c.data.geo!,

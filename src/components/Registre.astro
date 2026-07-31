@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Claim from './Claim.astro';
-import { DISCIPLINES } from '../content.config';
+import { DISCIPLINES, surAxe } from '../content.config';
 import { DISCIPLINE_DESC } from '../lib/statuts';
 
 interface Props { domain?: string; scope?: string; }
@@ -9,7 +9,7 @@ const { domain, scope } = Astro.props;
 
 // Filtre par entité (scope) si fourni, sinon par thème (domain).
 const claims = (await getCollection('claims')).filter((c) =>
-  scope ? c.data.scope.some((s) => s.id === scope) : c.data.domain === domain,
+  scope ? c.data.scope.some((s) => s.id === scope) : surAxe(c, domain),
 );
 // Groupé par démarche scientifique : comment on sait, pas ce qu'on croit.
 // À l'intérieur d'un groupe : chronologie croissante (début puis fin), non datées à la fin.

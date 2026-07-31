@@ -66,6 +66,12 @@ const claims = defineCollection({
       statut: z.enum(STATUTS),
       discipline: z.enum(DISCIPLINES),
       domain: z.string(),
+      // Axes secondaires : une assertion écrite pour un thème peut être reprise dans le
+      // corps d'une autre page. Elle doit alors figurer aussi dans SON registre et dans
+      // SON index de sources, faute de quoi la page affiche une assertion que son propre
+      // audit ignore. Le domain reste l'axe d'origine ; axes liste les rattachements en
+      // plus. C'est ce que promet la note de l'accueil sur les totaux qui ne s'additionnent pas.
+      axes: z.array(z.string()).default([]),
       period: z.tuple([z.number(), z.number()]).optional(), // années ; négatif = av. n.è.
       geo: z
         .object({
@@ -121,3 +127,17 @@ const pages = defineCollection({
 });
 
 export const collections = { sources, entities, claims, pages };
+
+/**
+ * Une assertion appartient-elle à cet axe ? Vrai pour son domain d'origine comme pour
+ * ses axes secondaires. Point de passage unique : registre, index des sources, portes,
+ * frise et cartes filtrent tous par ici, sinon une page peut citer une assertion que son
+ * propre registre n'énumère pas.
+ */
+export function surAxe(
+  claim: { data: { domain: string; axes?: string[] } },
+  domain: string | undefined,
+): boolean {
+  if (!domain) return false;
+  return claim.data.domain === domain || (claim.data.axes ?? []).includes(domain);
+}

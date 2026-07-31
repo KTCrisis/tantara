@@ -2,5 +2,6 @@ statement: "Isolée des continents depuis ~88 Ma sans pont terrestre, Madagascar
 statut: mesuré
 discipline: biologie
 domain: geographie-physique
+axes: [flore-avant]
 sources: [antonelli-2022]
 scope: [ile-madagascar]

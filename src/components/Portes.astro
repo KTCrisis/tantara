@@ -13,7 +13,7 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { getCollection } from 'astro:content';
-import { STATUTS } from '../content.config';
+import { STATUTS, surAxe } from '../content.config';
 import { STATUT_COLOR } from '../lib/statuts';
 import CarteRoyaumes from './CarteRoyaumes.astro';
 
@@ -38,7 +38,7 @@ const kindOf = new Map(entities.map((e) => [e.id, e.data.kind]));
 
 function compte(p: Porte) {
   const sel = p.domain
-    ? claims.filter((c) => c.data.domain === p.domain)
+    ? claims.filter((c) => surAxe(c, p.domain))
     // Une assertion rattachée à plusieurs entités du même type ne compte qu'une
     // fois ici ; en revanche elle compte dans chaque type qu'elle touche, donc
     // les totaux des cartes ne s'additionnent pas au corpus. La légende le dit.
