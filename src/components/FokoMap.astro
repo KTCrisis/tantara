@@ -32,7 +32,7 @@ const payload = JSON.stringify(points);
 
   for (const el of document.querySelectorAll('.foko-map')) {
     const points = JSON.parse(el.dataset.foko);
-    const map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5, attributionControl: true });
+    const map = L.map(el, { scrollWheelZoom: false, dragging: !L.Browser.mobile, zoomSnap: 0.5, attributionControl: true });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -85,4 +85,5 @@ const payload = JSON.stringify(points);
     text-shadow: 0 0 3px var(--paper), 0 0 3px var(--paper), 0 0 2px var(--paper);
   }
   .foko-map-legend { color: var(--ink-2); font-size: 0.85rem; margin-top: 10px; }
+  @media (max-width: 640px) { .foko-map { height: 300px; } }
 </style>

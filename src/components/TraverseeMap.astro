@@ -78,7 +78,7 @@ const payload = JSON.stringify({ direct: DIRECT, cabotage: CABOTAGE, steps: STEP
   for (const el of document.querySelectorAll('.map-trav')) {
     const { direct, cabotage, steps, color } = JSON.parse(el.dataset.map);
 
-    const map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5 });
+    const map = L.map(el, { scrollWheelZoom: false, dragging: !L.Browser.mobile, zoomSnap: 0.5 });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -106,7 +106,9 @@ const payload = JSON.stringify({ direct: DIRECT, cabotage: CABOTAGE, steps: STEP
 </script>
 
 <style is:global>
+  @media (max-width: 640px) { .map-trav { height: 260px; } }
   .map-trav { height: 420px; border-radius: 3px; z-index: 0; }
   .map-trav .leaflet-tile { filter: sepia(0.22) saturate(0.85); }
   .map-trav .leaflet-popup-content { font-family: var(--sans); font-size: 0.8rem; line-height: 1.45; }
+  @media (max-width: 640px) { .map-trav { height: 300px; } }
 </style>

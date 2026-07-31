@@ -32,7 +32,7 @@ const payload = JSON.stringify(points);
 
   for (const el of document.querySelectorAll('.lieux-map')) {
     const points = JSON.parse(el.dataset.lieux);
-    const map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5 });
+    const map = L.map(el, { scrollWheelZoom: false, dragging: !L.Browser.mobile, zoomSnap: 0.5 });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -79,4 +79,5 @@ const payload = JSON.stringify(points);
   .lg-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #fff; vertical-align: middle; }
   .lg-ville { background: #1c6f76; }
   .lg-site { background: #2f7d4f; }
+  @media (max-width: 640px) { .lieux-map { height: 300px; } }
 </style>
