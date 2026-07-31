@@ -1,0 +1,14 @@
+statement: "Les lémuriens descendent-ils d'une seule arrivée ou de deux ? La monophylie du groupe est admise de longue date, mais des fossiles africains rattachés à l'aye-aye la remettent en cause."
+statut: daté-débattu
+discipline: biologie
+domain: megafaune
+period: [-60000000, -20000000]
+scope: [ile-madagascar]
+hypotheses:
+  - label: "Une seule arrivée, et une radiation sur place"
+    statement: "Les gènes nucléaires retrouvent les lémuriens malgaches comme un ensemble monophylétique, frère des galagos et loris africains : une colonisation unique, suivie d'une diversification entièrement insulaire, rend compte des données moléculaires disponibles."
+    sources: [poux-2005, everson-2025]
+  - label: "Deux arrivées, dont celle de l'aye-aye"
+    statement: "Deux fossiles africains, l'un d'Égypte et l'autre du Kenya, se rattachent exclusivement à la lignée de l'aye-aye ; la séparation d'avec les autres lémuriens se serait alors produite en Afrique vers 41 millions d'années, et chacune des deux lignées aurait gagné l'île pour son propre compte, plus tard dans le Cénozoïque."
+    sources: [gunnell-2018]
+note: "L'enjeu déborde les lémuriens : si l'aye-aye est arrivé séparément, le compte de quatre colonisations de mammifères posé plus haut devient cinq. Les auteurs de la synthèse de 2025 retiennent l'arrivée unique comme hypothèse de travail tout en écrivant qu'ils ne peuvent écarter l'autre. Le désaccord tient à la nature des indices : une horloge moléculaire calibrée d'un côté, des dents fossiles de l'autre."
