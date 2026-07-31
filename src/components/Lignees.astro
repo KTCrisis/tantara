@@ -1,17 +1,28 @@
 ---
 // Les lignées ancestrales (entités « peuple »), dérivées du scope des assertions.
+//
+// Toutes les entités « peuple » ne sont pas du même ordre. Les Austronésiens et les
+// Bantous sont deux apports migratoires établis, chacun rattaché à une route. Les
+// Vazimba sont un terme de la tradition dont la page dit, deux sections plus haut, que
+// la nature même est débattue. Les afficher dans la même grille, à la même enseigne,
+// leur donnerait un statut d'ancêtre que le corpus ne leur accorde pas : ceux qui n'ont
+// pas de route sont donc distingués, et la carte le dit.
 import { getCollection } from 'astro:content';
 import { ROUTE_COLOR } from '../lib/statuts';
 
-const lignees = (await getCollection('entities')).filter((e) => e.data.kind === 'peuple');
+const routeOf: Record<string, string> = { austronesiens: 'austronesien', bantous: 'bantou' };
+const lignees = (await getCollection('entities'))
+  .filter((e) => e.data.kind === 'peuple')
+  .sort((a, b) => Number(!!routeOf[b.id]) - Number(!!routeOf[a.id]));
 const claims = await getCollection('claims');
 const countScope = (id: string) => claims.filter((c) => c.data.scope.some((s) => s.id === id)).length;
-const routeOf: Record<string, string> = { austronesiens: 'austronesien', bantous: 'bantou' };
 ---
 <div class="lignee-grid">
   {lignees.map((e) => (
-    <div class="lignee-card" style={`border-left:3px solid ${ROUTE_COLOR[routeOf[e.id]] ?? 'var(--ocean)'}`}>
+    <div class:list={['lignee-card', !routeOf[e.id] && 'sans-route']}
+         style={routeOf[e.id] ? `border-left:3px solid ${ROUTE_COLOR[routeOf[e.id]]}` : undefined}>
       <div class="lignee-nom">{e.data.nom}</div>
+      {!routeOf[e.id] && <div class="lignee-statut">ni migration ni ethnie : un terme de la tradition</div>}
       <p class="lignee-resume">{e.data.resume}</p>
       <div class="lignee-count">{countScope(e.id)} assertions rattachées</div>
     </div>
@@ -21,7 +32,10 @@ const routeOf: Record<string, string> = { austronesiens: 'austronesien', bantous
 <style>
   .lignee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 8px 0 16px; }
   .lignee-card { padding: 14px 18px; background: rgba(0,0,0,0.015); border-radius: 0 4px 4px 0; }
+  .lignee-card.sans-route { border-left: 3px dashed var(--line); background: none; }
   .lignee-nom { font-weight: 600; font-size: 1.05rem; }
+  .lignee-statut { font-family: var(--sans); font-size: 0.72rem; font-style: italic;
+                   color: var(--ink-2); margin-top: 2px; }
   .lignee-resume { color: var(--ink-2); font-size: 0.9rem; margin: 6px 0 10px; }
   .lignee-count { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ocean); }
 </style>
