@@ -1,0 +1,8 @@
+statement: "Cette asymétrie procède du basculement d'une ancienne surface de plateau par deux épisodes de rifting très éloignés dans le temps, la séparation d'avec l'Afrique entre 170 et 140 Ma puis celle d'avec l'Inde et les Seychelles vers 90 Ma ; l'escarpement oriental recule depuis vers l'intérieur, à des vitesses qui croissent vers le nord, de 170 m/Ma dans le secteur le plus méridional jusqu'à près de 3 800 m/Ma dans les secteurs les plus actifs."
+statut: reconstruit
+discipline: géologie
+domain: geographie-physique
+period: [-170000000, 0]
+sources: [clementucci-2025]
+scope: [ile-madagascar]
+note: "Reconstruit par modélisation de l'évolution du relief et des lignes de partage des eaux, non observé directement. Les bornes 170-140 Ma englobent les ~165-160 Ma que Rabinowitz retient pour la séparation d'avec l'Afrique."
