@@ -1,0 +1,13 @@
+statement: "Les lavaka, ravines en entonnoir qui criblent les hautes terres, sont couramment attribués à l'action humaine, défrichement et surpâturage ; mais l'origine anthropique est inférée plutôt que vérifiée, et des contrôles non anthropiques sont documentés."
+statut: daté-débattu
+discipline: géologie
+domain: geographie-physique
+sources: [cox-2024]
+note: "Le débat porte moins sur l'existence de l'érosion que sur sa cause et son ampleur relative. L'enjeu n'est pas seulement savant : les politiques de gestion des sols qui surpondèrent la causalité humaine visent à côté."
+hypotheses:
+  - label: "Cause humaine"
+    statement: "Le récit dominant fait des lavaka la marque du défrichement et du surpâturage sur des versants dénudés : la culture sur brûlis et la charge en zébus déstabiliseraient les manteaux d'altération, et l'érosion suivrait le peuplement."
+    sources: [cox-2024]
+  - label: "Contrôles non anthropiques"
+    statement: "L'étude longitudinale du lac Alaotra montre que la causalité humaine est inférée et non vérifiée, et met en évidence des facteurs de forçage indépendants de l'occupation des sols. Les politiques qui surpondèrent la cause humaine sont jugées peu susceptibles d'être efficaces."
+    sources: [cox-2024]
