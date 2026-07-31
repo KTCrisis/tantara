@@ -31,7 +31,7 @@ const sources = c.sources.length ? await getEntries(c.sources) : [];
 ) : (
   <span class="claim">{c.statement} <span class="claim-statut" style={`color:${STATUT_COLOR[c.statut] ?? 'var(--ink-2)'}`}>{c.statut}</span>{sources.length > 0 && (
     <sup class="claim-sources"> {sources.map((s, i) => (
-      <Fragment>{i > 0 ? ',' : ''}<a href={`#src-${s.id}`}>{s.data.auteur.split(',')[0]}</a></Fragment>
+      <Fragment>{i > 0 ? ' · ' : ''}<a href={`#src-${s.id}`}>{s.data.auteur.split(',')[0]}</a></Fragment>
     ))}</sup>
   )}</span>
 )}
