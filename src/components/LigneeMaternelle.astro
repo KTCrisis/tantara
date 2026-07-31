@@ -1,0 +1,108 @@
+---
+// Pourquoi un effectif fondateur FÉMININ se compte, et pourquoi le compte est un minimum.
+//
+// La figure ne montre pas « de l'ADN » : elle montre la règle de transmission dont la
+// mesure dépend. L'ADN mitochondrial passe de la mère à tous ses enfants, mais seules
+// les filles le retransmettent. Compter les lignées mitochondriales distinctes dans une
+// population actuelle revient donc à compter des femmes fondatrices — celles dont la
+// descendance féminine n'a jamais été interrompue.
+//
+// La seconde chose que la figure porte est la nuance que la prose énonce : une lignée
+// s'éteint dès qu'une génération n'a que des fils. Le nombre obtenu est donc un plancher,
+// pas un recensement. Ici la troisième fondatrice disparaît de cette façon.
+//
+// Aucune donnée malgache n'est dessinée : c'est un schéma de principe, et le nombre de
+// générations comme la composition des fratries sont choisis pour la lisibilité.
+
+type P = { g: number; x: number; f: boolean; l: number | null };
+// l = lignée mitochondriale portée (0,1,2), null = aucune (venu d'ailleurs)
+const GEN: P[][] = [
+  [ { g:0, x:14, f:true,  l:0 }, { g:0, x:44, f:true,  l:1 }, { g:0, x:74, f:true,  l:2 } ],
+  [ { g:1, x: 8, f:true,  l:0 }, { g:1, x:22, f:false, l:0 },
+    { g:1, x:38, f:true,  l:1 }, { g:1, x:52, f:true,  l:1 },
+    { g:1, x:68, f:false, l:2 }, { g:1, x:82, f:false, l:2 } ],
+  [ { g:2, x: 4, f:false, l:0 }, { g:2, x:16, f:true,  l:0 },
+    { g:2, x:33, f:true,  l:1 }, { g:2, x:45, f:false, l:1 },
+    { g:2, x:57, f:true,  l:1 },
+    { g:2, x:74, f:true,  l:null }, { g:2, x:86, f:false, l:null } ],
+  [ { g:3, x:10, f:true,  l:0 }, { g:3, x:22, f:false, l:0 },
+    { g:3, x:33, f:true,  l:1 }, { g:3, x:45, f:true,  l:1 },
+    { g:3, x:57, f:false, l:1 }, { g:3, x:69, f:true,  l:null }, { g:3, x:81, f:true,  l:null } ],
+];
+// Qui descend de qui : chaque enfant est rattaché à sa mère (index dans la génération au-dessus).
+const LIENS: [number, number, number][] = [ // [génération de l'enfant, x mère, x enfant]
+  [1, 14, 8], [1, 14, 22], [1, 44, 38], [1, 44, 52], [1, 74, 68], [1, 74, 82],
+  [2, 8, 4], [2, 8, 16], [2, 38, 33], [2, 38, 45], [2, 52, 57],
+  [3, 16, 10], [3, 16, 22], [3, 33, 33], [3, 33, 45], [3, 57, 57],
+];
+const W = 100, H = 62;
+const yg = (g: number) => 11 + g * 12.5;
+const COL = ['#8a3a23', '#2f5d50', '#6b5c44'];
+const uid = 'lm';
+---
+<figure class="lignee">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img"
+       aria-label="Schéma de transmission de l'ADN mitochondrial sur quatre générations : la molécule passe de la mère à tous ses enfants, seules les filles la retransmettent, et une des trois lignées de départ s'éteint faute de filles.">
+    <defs>
+      <filter id={`${uid}-grain`} x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="4" result="n" />
+        <feColorMatrix in="n" type="saturate" values="0" result="g" />
+        <feComponentTransfer in="g" result="a"><feFuncA type="linear" slope="0.05" /></feComponentTransfer>
+        <feComposite in="a" in2="SourceGraphic" operator="over" />
+      </filter>
+    </defs>
+    <rect width={W} height={H} fill="#efe6d2" />
+    <rect width={W} height={H} filter={`url(#${uid}-grain)`} fill="#efe6d2" />
+
+    {LIENS.map(([g, xm, xe]) => {
+      const mere = GEN[g - 1].find((p) => p.x === xm && p.f);
+      const col = mere && mere.l !== null ? COL[mere.l] : '#b9ae9a';
+      return (
+        <path d={`M ${xm} ${yg(g - 1) + 2.2} V ${yg(g) - 4.4} H ${xe} V ${yg(g) - 2.2}`}
+              fill="none" stroke={col} stroke-width={mere && mere.l !== null ? 0.55 : 0.3} />
+      );
+    })}
+
+    {GEN.map((gen) => gen.map((p) => {
+      const col = p.l !== null ? COL[p.l] : '#b9ae9a';
+      return p.f
+        ? <circle cx={p.x} cy={yg(p.g)} r="2.2" fill={p.l !== null ? col : '#efe6d2'} stroke={col} stroke-width="0.5" />
+        : <rect x={p.x - 2} y={yg(p.g) - 2} width="4" height="4" fill="none" stroke={col} stroke-width="0.5" />;
+    }))}
+
+    {/* la lignée éteinte */}
+    <text x="75" y={yg(1) + 6.6} class="mort">plus de filles :</text>
+    <text x="75" y={yg(1) + 9.2} class="mort">la lignée s'arrête</text>
+
+    <text x="2" y="4.6" class="lab">trois femmes fondatrices</text>
+    <text x="2" y={H - 2} class="lab">quatre générations plus tard : deux lignées sur trois</text>
+
+    <rect x="0.6" y="0.6" width={W - 1.2} height={H - 1.2} fill="none" stroke="#4a3c28" stroke-width="0.5" />
+  </svg>
+  <figcaption>
+    <span class="quoi">
+      Les cercles sont des femmes, les carrés des hommes ; la couleur suit la molécule.
+      L'ADN mitochondrial passe de la mère à tous ses enfants, mais seules les filles le
+      transmettent à leur tour : les carrés le portent et l'arrêtent. Compter les lignées
+      mitochondriales d'une population revient donc à compter des femmes.
+    </span>
+    <span class="prov">
+      Schéma de principe, sans aucune donnée malgache. Il porte la limite de la méthode :
+      une lignée disparaît dès qu'une génération n'a que des fils, comme la troisième ici.
+      Le nombre obtenu est un plancher, celui des fondatrices dont la descendance
+      féminine n'a jamais été rompue, et non un recensement des femmes débarquées.
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  .lignee { margin: 2rem 0; }
+  .lignee svg { display: block; width: 100%; height: auto; }
+  .lab { font-family: var(--sans); font-size: 2.4px; fill: #2b241a; font-weight: 600; }
+  .mort { font-family: var(--sans); font-size: 2px; fill: #8a8276; font-style: italic; }
+  figcaption { margin-top: .6rem; font-family: var(--sans); font-size: .78rem;
+               line-height: 1.55; color: var(--ink-2);
+               display: flex; flex-direction: column; gap: .15rem; }
+  .quoi { color: var(--ink); }
+  .prov { font-size: .72rem; opacity: .85; }
+</style>
