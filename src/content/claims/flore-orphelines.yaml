@@ -1,0 +1,8 @@
+statement: "La disparition des grands lémuriens a privé une partie de la flore de ses disperseurs : la comparaison des ouvertures de gueule et des régimes alimentaires, entre espèces éteintes et vivantes, montre une réduction marquée de la capacité à avaler puis rejeter de grosses graines, et laisse des lignées végétales à grosses graines sans animal capable de les transporter."
+statut: reconstruit
+discipline: biologie
+domain: flore-avant
+period: [-2000, 0]
+sources: [federman-2016]
+scope: [ile-madagascar]
+note: "Le raisonnement est morphologique : il compare ce que les mâchoires permettaient d'avaler, pas ce que les animaux ont été vus manger, puisque les espèces en cause sont éteintes. Ces plantes ne sont pas condamnées pour autant, mais leur mode de reproduction n'a plus de partenaire, situation qui se lit dans le présent comme la trace d'un monde disparu."
