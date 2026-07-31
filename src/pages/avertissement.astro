@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+// Les chiffres du corpus sont dérivés, jamais écrits à la main : une page qui
+// dit les limites du site ne peut pas se permettre un compte périmé.
+const claims = await getCollection('claims');
+const sources = await getCollection('sources');
+const debattus = claims.filter((c) => c.data.statut === 'daté-débattu').length;
+---
+<Base
+  title="Avertissement et contact — tantara.wiki"
+  description="Ce que ce site est, ce qu'il n'est pas, d'où il est écrit, et comment signaler une erreur."
+>
+  <article class="wrap">
+    <div class="kicker">Avertissement</div>
+    <h1>Ce que ce site est, et ce qu'il n'est pas</h1>
+    <p class="lead">
+      tantara.wiki rassemble et gradue. Il ne découvre rien, ne tranche pas les
+      questions ouvertes, et n'a aucune autorité propre : tout ce qu'il avance
+      renvoie à un travail publié par quelqu'un d'autre. Sa seule prétention est
+      d'être vérifiable, ligne à ligne.
+    </p>
+
+    <h2>Il n'est pas écrit par un historien</h2>
+    <p>
+      Ce site est fait par un praticien des systèmes, pas par un chercheur en
+      histoire, en archéologie ou en génétique des populations. Rien de ce qui suit
+      n'est une contribution à la recherche. Le travail consiste à lire ce que la
+      recherche publie, à le poser à plat, et à rendre visible le degré de certitude
+      de chaque assertion plutôt qu'à le lisser.
+    </p>
+    <p>
+      Cela impose une règle : la construction du site échoue si une assertion n'a pas
+      de source, ou si un point donné pour débattu ne montre pas ses hypothèses
+      concurrentes. La contrainte est mécanique parce que la vigilance humaine ne
+      suffit pas. Elle ne garantit pas la justesse, seulement qu'aucune affirmation
+      ne circule sans être rattachée à quelque chose. Le corpus compte aujourd'hui
+      {claims.length} assertions, {sources.length} références, et {debattus} points
+      explicitement laissés ouverts. <a href="/methode">La méthode en entier</a>.
+    </p>
+
+    <h2>Il regarde depuis un endroit</h2>
+    <p>
+      Le site consacre une page aux <a href="/regards-exterieurs">regards extérieurs</a>,
+      pour rappeler que Flacourt, Grandidier et les autres écrivent depuis une position
+      et non depuis nulle part. La même remarque vaut ici. tantara est écrit en français,
+      depuis la France, à partir d'une bibliographie très majoritairement européenne, par
+      quelqu'un dont l'origine malgache est familiale et non vécue. Ce n'est pas une
+      neutralité, c'est une situation, et elle laisse des angles morts : les travaux
+      malgachophones y sont sous-représentés, et la parole des communautés sur leur
+      propre histoire n'y figure que filtrée par des ethnographes.
+    </p>
+
+    <h2>Il s'arrête avant 1947</h2>
+    <p>
+      Le périmètre est volontairement borné à l'histoire d'avant l'insurrection de 1947.
+      Ce n'est ni un oubli ni une pudeur : la colonisation, 1947 et les républiques
+      demandent un travail de sourcing d'une autre nature, sur des faits encore
+      politiquement vifs, et le site préfère ne pas les traiter plutôt que les traiter
+      mal. La page d'accueil parle du Madagascar d'aujourd'hui, mais pour dire d'où l'on
+      regarde, pas pour en faire l'histoire.
+    </p>
+
+    <h2>Il touche à des sujets qui blessent</h2>
+    <p>
+      L'origine, les hiérarchies héritées entre nobles, libres et descendants d'esclaves,
+      la traite, la défiance entre Hautes Terres et côtes : ces sujets sont dans les
+      sources, donc ils sont ici. Ils sont posés avec leur statut de preuve et sans
+      conclusion morale ajoutée. Personne ne devrait y trouver de quoi hiérarchiser des
+      groupes ; si un passage s'y prête, c'est un défaut d'écriture, et il sera corrigé.
+    </p>
+    <p>
+      Le découpage en dix-huit <em>foko</em> est traité comme une construction tardive,
+      pas comme une donnée de nature. C'est un choix de fond, appuyé sur les sources, et
+      il est discutable comme le reste.
+    </p>
+
+    <h2>Ses images ne sont pas des documents</h2>
+    <p>
+      Les planches du site sont des images d'appui. Chacune indique sa base, l'auteur de
+      cette base, sa licence, et ce qui lui a été appliqué. Un habillage de planche
+      ancienne ne fait pas d'une figure une pièce d'archive : la légende le dit à chaque
+      fois, parce qu'une image convaincante affirme plus vite qu'un paragraphe.
+    </p>
+
+    <h2>Signaler une erreur</h2>
+    <p>
+      Une date fausse, une source mal citée, une nuance écrasée, une hypothèse absente :
+      ce sont les signalements les plus utiles. Un message qui indique la page et ce qui
+      cloche suffit, une référence est encore mieux. Les corrections de fond sont faites
+      à la source, dans les assertions elles-mêmes, pas en note.
+    </p>
+    <p class="contact">
+      <a href="mailto:contact@tantara.wiki">contact@tantara.wiki</a>
+    </p>
+    <p class="attrib">
+      tantara.wiki est fabriqué par <a href="https://flux7.art" rel="noopener">flux7.art</a>.
+      Le contenu s'appuie sur les travaux cités en <a href="/sources">bibliographie</a> ;
+      les droits de ces travaux appartiennent à leurs auteurs.
+    </p>
+  </article>
+</Base>
+
+<style>
+  .kicker {
+    font-family: var(--mono); font-size: .72rem; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ocean); margin: 60px 0 12px;
+  }
+  .lead { color: var(--ink-2); font-size: 1.1rem; }
+  h2 { margin-top: 42px; }
+  .contact { font-family: var(--mono); font-size: 1rem; margin-top: 26px; }
+  .attrib {
+    margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--rule);
+    font-family: var(--sans); font-size: .8rem; color: var(--ink-2);
+  }
+</style>

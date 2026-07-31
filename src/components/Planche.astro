@@ -22,11 +22,22 @@ interface Props {
   retouche?: string;
   /** Lien vers la base d'origine. */
   href?: string;
+  /** Où la planche se pose : dans la colonne, ou en marge à droite avec le texte qui l'enveloppe. */
+  cote?: 'pleine' | 'droite';
 }
-const { src, alt, legende, source, licence, retouche, href } = Astro.props;
+const { src, alt, legende, source, licence, retouche, href, cote = 'pleine' } = Astro.props;
+// Largeurs rendues : la vignette suffit à la lecture, l'original reste servi
+// pour l'agrandissement. Pas de visionneuse JS — un lien vers le fichier fait
+// le même travail, fonctionne au clavier, et survit à un script bloqué.
+const rendus = cote === 'droite' ? [320, 560, 760] : [480, 800, 1200];
+const tailles = cote === 'droite'
+  ? '(max-width: 720px) 100vw, 38vw'
+  : '(max-width: 720px) 100vw, 520px';
 ---
-<figure class="planche">
-  <Image src={src} alt={alt} widths={[480, 800, 1200]} sizes="(max-width: 720px) 100vw, 720px" />
+<figure class:list={['planche', cote === 'droite' && 'a-droite']}>
+  <a href={src.src} class="loupe" title="Voir la planche en grand">
+    <Image src={src} alt={alt} widths={rendus} sizes={tailles} />
+  </a>
   <figcaption>
     <span class="quoi">{legende}</span>
     <span class="prov">
@@ -37,20 +48,40 @@ const { src, alt, legende, source, licence, retouche, href } = Astro.props;
 </figure>
 
 <style>
-  .planche { margin: 2.2rem 0; }
+  .planche { margin: 2.2rem 0; max-width: 520px; }
+  /* En marge : le texte enveloppe la planche. Le float reste l'outil le plus
+     sûr ici, une grille obligerait à découper la prose en colonnes, ce que le
+     MDX ne permet pas sans casser le flux des assertions. */
+  .planche.a-droite {
+    float: right; width: 38%; max-width: 340px;
+    margin: .4rem 0 1.2rem 1.8rem;
+  }
   .planche :global(img) {
     display: block; width: 100%; height: auto;
     border: 1px solid var(--rule); border-radius: 2px; background: var(--paper-2);
+    transition: box-shadow .15s ease;
+  }
+  .loupe { display: block; }
+  .loupe:hover :global(img), .loupe:focus-visible :global(img) {
+    box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px var(--ocean);
   }
   figcaption {
     margin-top: .6rem; font-family: var(--sans); font-size: .78rem;
     line-height: 1.55; color: var(--ink-2);
     display: flex; flex-direction: column; gap: .15rem;
   }
+  .planche.a-droite figcaption { font-size: .72rem; }
   .quoi { color: var(--ink); }
   /* La provenance se lit comme une note de bas de page : présente, discrète,
      jamais au même poids que la légende. Même geste que les marqueurs de
      statut en ligne dans la prose. */
   .prov { font-size: .72rem; color: var(--ink-2); opacity: .85; }
+  .planche.a-droite .prov { font-size: .68rem; }
   .prov a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* Sous 720 px la colonne est trop étroite pour envelopper quoi que ce soit. */
+  @media (max-width: 720px) {
+    .planche.a-droite { float: none; width: auto; max-width: none; margin: 2rem 0; }
+    .planche.a-droite figcaption, .planche.a-droite .prov { font-size: .78rem; }
+  }
 </style>

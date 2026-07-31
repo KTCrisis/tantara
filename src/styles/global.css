@@ -44,7 +44,10 @@ a:hover { color: var(--ocean); }
 
 h1, h2, h3 { font-family: var(--display); line-height: 1.15; letter-spacing: -0.005em; }
 h1 { font-size: 2.6rem; font-weight: 600; }
-h2 { font-size: 1.55rem; font-weight: 600; margin: 2.4rem 0 1rem; }
+/* clear : une planche posée en marge (Planche cote="droite") flotte à droite ;
+   sans cela le titre de la section suivante remonte à côté de sa légende et la
+   frontière entre sections disparaît. */
+h2 { font-size: 1.55rem; font-weight: 600; margin: 2.4rem 0 1rem; clear: both; }
 h3 { font-size: 1.15rem; font-weight: 600; margin: 1.6rem 0 0.6rem; }
 p { margin: 0 0 1rem; }
 
