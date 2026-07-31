@@ -1,0 +1,111 @@
+---
+// Les portes d'entrée de l'accueil.
+//
+// Le rail liste déjà ces destinations, et « Ce que ce site rassemble » énumère
+// déjà les sujets. Ces cartes ne se justifient donc qu'en portant ce que ni
+// l'un ni l'autre ne peut porter : la signature de preuve de chaque
+// destination. La géographie est du pur mesuré, les États sont majoritairement
+// du récit. Le lecteur sait dans quel régime de savoir il entre avant de
+// cliquer, et c'est la thèse du site rendue en navigation.
+//
+// Tout est dérivé des collections au build : ajouter un claim déplace les
+// barres, personne n'a de chiffre à tenir à jour.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { getCollection } from 'astro:content';
+import { STATUTS } from '../content.config';
+import { STATUT_COLOR } from '../lib/statuts';
+
+interface Porte {
+  href: string;
+  titre: string;
+  glose: string;
+  img: ImageMetadata;
+  alt: string;
+  /** Rattachement : par domaine (pages de récit) ou par type d'entité (pages d'acteurs). */
+  domain?: string;
+  kind?: string;
+}
+interface Props { portes: Porte[] }
+const { portes } = Astro.props;
+
+const claims = await getCollection('claims');
+const entities = await getCollection('entities');
+const kindOf = new Map(entities.map((e) => [e.id, e.data.kind]));
+
+function compte(p: Porte) {
+  const sel = p.domain
+    ? claims.filter((c) => c.data.domain === p.domain)
+    // Une assertion rattachée à plusieurs entités du même type ne compte qu'une
+    // fois ici ; en revanche elle compte dans chaque type qu'elle touche, donc
+    // les totaux des cartes ne s'additionnent pas au corpus. La légende le dit.
+    : claims.filter((c) => (c.data.scope ?? []).some((s: { id: string }) => kindOf.get(s.id) === p.kind));
+  const mix = STATUTS.map((s) => ({ statut: s, n: sel.filter((c) => c.data.statut === s).length }))
+                     .filter((x) => x.n > 0);
+  const entites = p.kind ? entities.filter((e) => e.data.kind === p.kind).length : 0;
+  return { total: sel.length, mix, entites };
+}
+const cartes = portes.map((p) => ({ ...p, ...compte(p) }));
+---
+<ul class="portes">
+  {cartes.map((c) => (
+    <li>
+      <a href={c.href}>
+        <Image src={c.img} alt={c.alt} widths={[240, 420, 640]}
+               sizes="(max-width: 560px) 100vw, (max-width: 900px) 45vw, 240px" />
+        <span class="titre">{c.titre}</span>
+        <span class="glose">{c.glose}</span>
+        <span class="barre" aria-hidden="true">
+          {c.mix.map((m) => (
+            <span style={`flex:${m.n};background:${STATUT_COLOR[m.statut] ?? 'var(--ink-2)'}`}></span>
+          ))}
+        </span>
+        <span class="compte">
+          {c.total} assertions{c.entites > 0 && <> · {c.entites} entités</>}
+        </span>
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .portes {
+    list-style: none; padding: 0; margin: 1.4rem 0 0;
+    display: grid; gap: 1.1rem;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  }
+  .portes a {
+    display: flex; flex-direction: column; gap: .35rem;
+    text-decoration: none; color: inherit;
+    background: var(--paper-2); border: 1px solid var(--rule); border-radius: 3px;
+    padding: 0 0 .75rem; overflow: hidden; height: 100%;
+    transition: border-color .14s ease, transform .14s ease;
+  }
+  .portes a:hover, .portes a:focus-visible {
+    border-color: var(--ocean); transform: translateY(-2px);
+  }
+  .portes :global(img) {
+    display: block; width: 100%; height: auto; aspect-ratio: 1 / 1;
+    object-fit: cover; border-bottom: 1px solid var(--rule);
+    margin-bottom: .55rem;
+  }
+  .titre {
+    font-family: var(--display); font-weight: 600; font-size: 1rem;
+    line-height: 1.2; padding: 0 .75rem;
+  }
+  .glose {
+    font-family: var(--sans); font-size: .8rem; line-height: 1.45;
+    color: var(--ink-2); padding: 0 .75rem; flex: 1;
+  }
+  /* La barre dit la composition, pas la quantité : elle est normalisée. Le
+     nombre absolu est juste en dessous, en chiffres. */
+  .barre {
+    display: flex; height: 3px; margin: .5rem .75rem 0;
+    border-radius: 2px; overflow: hidden; background: var(--rule);
+  }
+  .barre > span { display: block; }
+  .compte {
+    font-family: var(--mono); font-size: .66rem; letter-spacing: .04em;
+    color: var(--ink-2); padding: 0 .75rem; font-variant-numeric: tabular-nums;
+  }
+</style>

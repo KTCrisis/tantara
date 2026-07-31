@@ -3,9 +3,40 @@ import Base from '../layouts/Base.astro';
 import StatusBadge from '../components/StatusBadge.astro';
 import ExploreMap from '../components/ExploreMap.astro';
 import Planche from '../components/Planche.astro';
+import Portes from '../components/Portes.astro';
 import analakely from '../assets/planches/analakely.jpg';
 import objets from '../assets/planches/objets-synthese.png';
+import pGeographie from '../assets/portes/geographie.png';
+import pMegafaune from '../assets/portes/megafaune.png';
+import pPeuplement from '../assets/portes/peuplement.png';
+import pFoko from '../assets/portes/foko.png';
+import pEtats from '../assets/portes/etats.png';
+import pLieux from '../assets/portes/lieux.png';
 import { STATUTS } from '../content.config';
+
+// Chaque vignette figure un objet qu'un collecteur du XIXe siècle à Madagascar
+// aurait plausiblement monté sur une feuille de spécimen : l'anachronisme se
+// verrait autant qu'une faute de date.
+const portes = [
+  { href: '/geographie', titre: 'Le commencement : la géographie', glose: 'le décor avant les hommes.',
+    domain: 'geographie-physique', img: pGeographie,
+    alt: "Feuille de spécimen : un fragment de roche volcanique poreuse sanglé au papier, à côté d'une palme séchée." },
+  { href: '/megafaune', titre: "Le monde d'avant", glose: 'les géants disparus.',
+    domain: 'megafaune', img: pMegafaune,
+    alt: "Feuille de spécimen : un grand œuf d'oiseau-éléphant posé dans un berceau de cordage." },
+  { href: '/peuplement', titre: 'Le peuplement', glose: 'par la mer, en deux courants.',
+    domain: 'peuplement', img: pPeuplement,
+    alt: "Feuille de spécimen : un épi de riz, quelques graines sombres et une cordelette de fibre tressée." },
+  { href: '/peuples', titre: 'Les dix-huit foko', glose: 'et pourquoi « dix-huit ».',
+    kind: 'foko', img: pFoko,
+    alt: "Feuille de spécimen : un fragment d'étoffe tissée à rayures, effrangé sur un bord." },
+  { href: '/etats', titre: 'Les États', glose: 'royaumes côtiers et Imerina.',
+    kind: 'royaume', img: pEtats,
+    alt: "Feuille de spécimen : une petite pièce d'argent coupée en coin et un éclat de cire à cacheter." },
+  { href: '/lieux', titre: 'Les lieux', glose: 'des comptoirs morts aux capitales.',
+    kind: 'lieu', img: pLieux,
+    alt: "Feuille de spécimen : un tesson de poterie, un fragment de corail et un morceau de brique." },
+];
 
 const defs: Record<string, string> = {
   'mesuré': 'établi par la mesure : datations génétiques, archéobotanique.',
@@ -106,13 +137,16 @@ const defs: Record<string, string> = {
 
   <section class="wrap">
     <h2>Par où commencer</h2>
-    <p style="line-height:2;">
-      <a href="/geographie"><strong>→ Le commencement : la géographie</strong></a>, le décor avant les hommes.<br />
-      <a href="/megafaune"><strong>→ Le monde d'avant</strong></a>, les géants disparus.<br />
-      <a href="/peuplement"><strong>→ Le peuplement</strong></a>, par la mer, en deux courants.<br />
-      <a href="/peuples"><strong>→ Les dix-huit foko</strong></a>, et pourquoi « dix-huit ».<br />
-      <a href="/etats"><strong>→ Les États</strong></a>, royaumes côtiers et Imerina.<br />
-      <a href="/lieux"><strong>→ Les lieux</strong></a>, des comptoirs morts aux capitales.
+    <p>
+      Chaque porte annonce son régime de preuve : la barre donne la composition des
+      assertions rattachées, du mesuré au récit. La géographie est presque tout entière
+      mesurée ; les États reposent d'abord sur la tradition dynastique.
+    </p>
+    <Portes portes={portes} />
+    <p class="note-portes">
+      Une assertion rattachée à plusieurs axes compte dans chacun : ces totaux ne
+      s'additionnent donc pas au corpus. Les vignettes sont des images de synthèse,
+      décoratives ; elles n'illustrent aucune pièce réelle.
     </p>
   </section>
 
@@ -133,3 +167,10 @@ const defs: Record<string, string> = {
   </section>
 
 </Base>
+
+<style>
+  .note-portes {
+    margin-top: 1rem; font-family: var(--sans); font-size: .76rem;
+    line-height: 1.5; color: var(--ink-2);
+  }
+</style>
