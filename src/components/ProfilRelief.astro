@@ -1,0 +1,90 @@
+---
+// Le profil ouest-est du relief, tracé depuis des altitudes mesurées.
+//
+// Comme la carte des royaumes, cette figure ne représente rien qu'elle n'ait
+// mesuré : cent points échantillonnés au parallèle 20 degrés sud sur le modèle
+// Copernicus DEM GLO-90, figés dans src/data/profil-20s.json. Le relief ne
+// bouge pas, il n'y a donc aucune raison d'appeler une API au build.
+//
+// Elle dit d'un coup d'œil ce que le claim geo-asymetrie-relief énonce en
+// chiffres : la montée occidentale est trois fois plus longue que la chute
+// orientale.
+import profil from '../data/profil-20s.json';
+
+const alt: number[] = profil.altitudes_m;
+const lng = (i: number) => profil.longitude_debut + i * profil.pas_degres;
+
+const W = 100;
+const H = 30;
+const AMAX = Math.max(...alt);
+const px = (i: number) => (i / (alt.length - 1)) * W;
+const py = (a: number) => H - (a / AMAX) * (H - 3);
+
+const terre = `M${px(0).toFixed(2)} ${H} ` +
+  alt.map((a, i) => `L${px(i).toFixed(2)} ${py(a).toFixed(2)}`).join(' ') +
+  ` L${px(alt.length - 1).toFixed(2)} ${H} Z`;
+const ligne = alt.map((a, i) => `${i ? 'L' : 'M'}${px(i).toFixed(2)} ${py(a).toFixed(2)}`).join(' ');
+
+// Les trois repères sont dérivés, pas placés à la main.
+const iOuest = alt.findIndex((a) => a > 0);
+const iEst = alt.length - 1 - [...alt].reverse().findIndex((a) => a > 0);
+const iSommet = alt.indexOf(AMAX);
+// 0,94 : rétrécissement du degré de longitude à 20 degrés de latitude.
+const km = (a: number, b: number) => Math.round((lng(b) - lng(a)) * 111 * 0.94);
+const uid = 'pr';
+---
+<figure class="profil">
+  <svg viewBox={`0 0 ${W} ${H + 6}`} role="img"
+       aria-label={`Profil du relief au parallèle 20 degrés sud : la côte ouest monte jusqu'à ${AMAX} mètres sur ${km(iOuest, iSommet)} kilomètres, puis redescend à la mer sur ${km(iSommet, iEst)} kilomètres.`}>
+    <defs>
+      <linearGradient id={`${uid}-roche`} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c8a97e" />
+        <stop offset="1" stop-color="#e6d9bd" />
+      </linearGradient>
+    </defs>
+
+    {/* La mer, des deux côtés */}
+    <rect x="0" y={H - 1.2} width={W} height="1.2" fill="#8fb0b5" opacity="0.5" />
+
+    <path d={terre} fill={`url(#${uid}-roche)`} />
+    <path d={ligne} fill="none" stroke="#4a3c28" stroke-width="0.45" stroke-linejoin="round" />
+    <line x1="0" y1={H} x2={W} y2={H} stroke="#4a3c28" stroke-width="0.3" />
+
+    {/* Repères : les deux côtes et le sommet du plateau */}
+    {[iOuest, iSommet, iEst].map((i) => (
+      <line x1={px(i)} y1={py(alt[i])} x2={px(i)} y2={H} stroke="#a8492f"
+            stroke-width="0.25" stroke-dasharray="0.8 0.8" opacity="0.7" />
+    ))}
+    <text x={px(iSommet)} y={py(AMAX) - 1.2} class="cote" text-anchor="middle">{AMAX} m</text>
+    <text x={px(iOuest) + 1} y={H + 4} class="rive">ouest</text>
+    <text x={px(iEst) - 1} y={H + 4} class="rive" text-anchor="end">est</text>
+    <text x={(px(iOuest) + px(iSommet)) / 2} y={H + 4} class="dist" text-anchor="middle">{km(iOuest, iSommet)} km</text>
+    <text x={(px(iSommet) + px(iEst)) / 2} y={H + 4} class="dist" text-anchor="middle">{km(iSommet, iEst)} km</text>
+  </svg>
+  <figcaption>
+    <span class="quoi">
+      Le relief au parallèle 20 degrés sud. La montée occidentale prend {km(iOuest, iSommet)} kilomètres,
+      la chute orientale {km(iSommet, iEst)}. Échelle verticale forcée : à l'échelle vraie, le trait serait plat.
+    </span>
+    <span class="prov">
+      Cent altitudes échantillonnées sur le modèle
+      <a href={profil.source_doi} rel="noopener">Copernicus DEM 2021 GLO-90</a>, résolution 90 m,
+      via l'API d'élévation Open-Meteo.
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  .profil { margin: 2rem 0; }
+  .profil svg { display: block; width: 100%; height: auto; background: var(--paper-2);
+                border: 1px solid var(--rule); border-radius: 2px; }
+  .cote { font-family: var(--mono); font-size: 2px; fill: #4a3c28; }
+  .rive { font-family: var(--sans); font-size: 2.4px; fill: var(--ink-2); }
+  .dist { font-family: var(--mono); font-size: 2.2px; fill: #a8492f; }
+  figcaption { margin-top: .6rem; font-family: var(--sans); font-size: .78rem;
+               line-height: 1.55; color: var(--ink-2);
+               display: flex; flex-direction: column; gap: .15rem; }
+  .quoi { color: var(--ink); }
+  .prov { font-size: .72rem; opacity: .85; }
+  .prov a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+</style>
