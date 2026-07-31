@@ -9,6 +9,8 @@ description: "Avant les hommes, il y a la roche. Un bloc détaché du Gondwana, 
 import Claim from '../../components/Claim.astro';
 import Registre from '../../components/Registre.astro';
 import Ornement from '../../components/Ornement.astro';
+import Planche from '../../components/Planche.astro';
+import pangee from '../../assets/planches/pangee-usgs.png';
 
 <Ornement motif="ravenala" class="page-ravenala" />
 
@@ -18,6 +20,16 @@ Le mot fragment trompe sur la taille : il s'agit d'un bloc large comme un pays, 
 quatre cents kilomètres de mer séparent de l'Afrique. <Claim id="geo-taille-position" />
 Et le détachement n'est pas un événement mais une dérive, qui se compte en dizaines de
 millions d'années. <Claim id="geo-separation-afrique" />
+
+<Planche
+  src={pangee}
+  alt="Cinq vues du globe montrant l'éclatement de la Pangée et la dérive des continents jusqu'à leurs positions actuelles."
+  legende="L'éclatement de la Pangée et la dérive des continents jusqu'à leurs positions actuelles. Madagascar n'y est pas nommée : à cette échelle, elle se détache du bloc austral avec l'Inde."
+  source="Kious et Tilling, This Dynamic Earth: The Story of Plate Tectonics, U.S. Geological Survey ; version sans légendes par Llywelyn2000"
+  licence="domaine public"
+  href="https://pubs.usgs.gov/gip/dynamic/historical.html"
+  retouche="Habillage de planche ancienne appliqué par flux7.art : la matière et la couleur changent, les contours sont ceux de la base. Image d'appui, pas un document d'époque."
+/>
 
 ## La rupture avec l'Inde
 
