@@ -24,7 +24,7 @@ const parDiscipline = DISCIPLINES.map((d) => ({
 ---
 <p>
   Chaque démarche scientifique apporte sa pièce, et son degré de certitude.
-  La même histoire, vue par {parDiscipline.length} familles de preuves.
+  La même histoire, vue par {parDiscipline.length} famille{parDiscipline.length > 1 ? 's' : ''} de preuves.
 </p>
 {parDiscipline.map((g) => (
   <section class="registre-section">

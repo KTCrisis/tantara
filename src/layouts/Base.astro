@@ -54,9 +54,17 @@ const active = (href: string) => {
             leur façon. Puis le temps des hommes, celui de l'archive et de la
             tradition orale. « Le récit » ne pouvait pas rester : c'est aussi le
             nom d'un statut, celui qui veut dire « pas une preuve matérielle ». */}
-        <div class="nav-group">Avant les hommes</div>
+        {/* Le groupe porte la formule, les entrées portent le sujet. « Avant les
+            hommes » disait la même chose que « Le monde d'avant » en moins bien,
+            et scinder la page en deux obligeait de toute façon à trancher : le
+            titre ne pouvait plus tenir dans une entrée. */}
+        <div class="nav-group">Le monde d'avant</div>
         <a href="/geographie" class={active('/geographie')}>Géographie</a>
-        <a href="/megafaune" class={active('/megafaune')}>Le monde d'avant</a>
+        {/* Le monde d'avant tient en deux pages. Le rail les nomme au même
+            registre que Géographie, qui les précède ; la langue des titres
+            (« les bêtes », « les plantes ») reste sur les pages elles-mêmes. */}
+        <a href="/megafaune" class={active('/megafaune')}>Faune</a>
+        <a href="/megaflore" class={active('/megaflore')}>Flore</a>
         <div class="nav-group">L'arrivée</div>
         <a href="/peuplement" class={active('/peuplement')}>Peuplement</a>
         <a href="/traditions-origines" class={active('/traditions-origines')}>Traditions &amp; origines</a>
