@@ -70,13 +70,18 @@ const active = (href: string) => {
         <a href="/traditions-origines" class={active('/traditions-origines')}>Traditions &amp; origines</a>
         <div class="nav-group">Le temps des hommes</div>
         <a href="/geographie-historique" class={active('/geographie-historique')}>Géographie historique</a>
-        <a href="/imerina" class={active('/imerina')}>L'Imerina</a>
-        {/* L'Ouest a sa page à part, et pas une page « les autres royaumes » :
-            les quatre monarchies sakalava sortent d'une même lignée et tiennent
-            leur légitimité des mêmes objets. Les Antemoro et les Betsimisaraka
-            n'ont ni l'une ni les autres, et auront leurs propres pages plutôt
-            qu'une case définie par le fait de ne pas être merina. */}
+        {/* L'Ouest passe avant le plateau, et pas par militantisme : la page
+            précédente se termine sur l'Imerina qui conquiert l'île. Lire ensuite
+            l'Ouest qui se fait conquérir, puis le plateau qui conquiert et tombe,
+            suit le mouvement. L'ordre inverse donnait le vainqueur avant les
+            vaincus.
+            Et c'est « les Sakalava », pas « les autres royaumes » : les quatre
+            monarchies sortent d'une même lignée et tiennent leur légitimité des
+            mêmes objets. Les Antemoro et les Betsimisaraka n'ont ni l'une ni les
+            autres, et auront leurs propres pages plutôt qu'une case définie par
+            le fait de ne pas être merina. */}
         <a href="/sakalava" class={active('/sakalava')}>Les Sakalava</a>
+        <a href="/imerina" class={active('/imerina')}>L'Imerina</a>
         <div class="nav-group">Les acteurs</div>
         <a href="/peuples" class={active('/peuples')}>Les foko</a>
         <a href="/etats" class={active('/etats')}>Les États</a>
