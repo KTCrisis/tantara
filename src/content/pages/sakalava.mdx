@@ -7,6 +7,9 @@ intro: "Quatre monarchies nées d'une même lignée, qui ont tenu la côte ouest
 description: "Quatre monarchies d'une même lignée sur la côte ouest. Là où l'Imerina a laissé une archive, elles ont gardé des reliques, encore disputées aujourd'hui."
 ---
 import Claim from '../../components/Claim.astro';
+import Planche from '../../components/Planche.astro';
+import fitampoha from '../../assets/planches/fitampoha-menabe.jpg';
+import poteau from '../../assets/planches/poteau-funeraire-sakalava.jpg';
 import Timeline from '../../components/Timeline.astro';
 import Registre from '../../components/Registre.astro';
 
@@ -40,6 +43,30 @@ représentent pas le souverain, elles en sont un morceau, et elles restent activ
 <Claim id="trad-tromba" />
 
 Le rite le plus visible est un lavage. <Claim id="sk-fitampoha" />
+
+<Planche
+  src={fitampoha}
+  alt="Photographie en couleurs : une foule debout dans le lit peu profond d'un fleuve aux bancs de sable, sous un ciel dégagé. Les participants portent des lambas rouges et à motifs ; plusieurs hampes sont dressées au-dessus des têtes. Une rive boisée ferme l'horizon."
+  legende="Le fitampoha dans le Menabe, la foule dans le lit du fleuve. Ce que le site sait de cette image s'arrête là : elle a été versée sur Wikimedia Commons en 2022 et placée dans le domaine public par son auteur, sans que la date ni le lieu précis de la cérémonie photographiée soient déclarés."
+  source="Adansonia rayanne2, via Wikimedia Commons"
+  licence="CC0, domaine public volontaire"
+  href="https://commons.wikimedia.org/wiki/File:LE_FITAMPOHA_chez_les_Sakalava_du_menabe_01.jpg"
+  cote="droite"
+/>
+
+Une page qui affirme que le pouvoir tient à des objets devrait montrer ces objets. Elle
+ne le fera pas, et pas par négligence. Les reliquaires sont des *raha sarotra*, et leur
+exposition est elle-même l'enjeu d'un litige que la littérature savante documente. Ce
+que le site peut montrer, ce sont les objets sakalava qui ont quitté l'île.
+
+<Planche
+  src={poteau}
+  alt="Photographie d'un haut poteau de bois sculpté dressé sur un socle noir dans une salle de musée, devant une paroi vitrée. Le sommet porte deux figures humaines debout et une forme de vase ; le fût est orné d'une figure en relief."
+  legende="Poteau funéraire sakalava, XVIIe ou fin du XVIIIe siècle, côte sud-ouest de Madagascar. Il est aujourd'hui au pavillon des Sessions, au Louvre. La page n'a pas d'image d'un objet sakalava resté à Madagascar : celles dont elle dispose montrent ce qui en est parti."
+  source="Photographie de Ji-Elle, via Wikimedia Commons. Objet : pavillon des Sessions, Louvre, Paris."
+  licence="CC BY-SA 3.0"
+  href="https://commons.wikimedia.org/wiki/File:Poteau_fun%C3%A9raire_sakalava-Madagascar_(1).jpg"
+/>
 
 ## Ce que coûte de les perdre
 
