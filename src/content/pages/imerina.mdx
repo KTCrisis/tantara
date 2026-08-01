@@ -9,6 +9,10 @@ description: "Une dynastie des Hautes Terres qui, en trois siècles, passe d'une
 import Claim from '../../components/Claim.astro';
 import HypothesisCompare from '../../components/HypothesisCompare.astro';
 import Planche from '../../components/Planche.astro';
+import collines from '../../assets/planches/collines-sacrees-imerina.jpg';
+import maisonAndria from '../../assets/planches/ambohimanga-maison-andrianampoinimerina.jpg';
+import radamaTroupes from '../../assets/planches/radama-troupes-coppalle-1825.jpg';
+import rova from '../../assets/planches/rova-manjakamiadana.jpg';
 import Timeline from '../../components/Timeline.astro';
 import Registre from '../../components/Registre.astro';
 import pj1899 from '../../assets/planches/petit-journal-1899-alger.jpg';
@@ -31,11 +35,30 @@ Les deux règnes suivants ajoutent ce qui manque à un royaume pour en être un.
 Un nom, une armée, un culte, une capitale. La tradition retient d'un commencement
 exactement ce qu'il faut pour fonder une légitimité, et dans le bon ordre.
 
+<Planche
+  src={collines}
+  alt="Carte topographique détaillée des hautes terres autour d'Antananarivo, semée de dizaines de noms de collines et de villages avec leurs altitudes. Une quinzaine de points sont marqués d'un signe orange ; la légende les désigne comme collines sacrées de l'Imerina."
+  legende="Le pays merina et ses collines sacrées, signalées en orange. La tradition en compte douze et les rattache aux épouses d'Andrianampoinimerina ; ce que la carte montre, ce sont des sommets nommés à quelques kilomètres les uns des autres. Le royaume tient d'abord dans ce mouchoir de poche."
+  source="Redessinée par un contributeur de Wikimedia Commons d'après une gravure de Th. Dieudonné, 1901"
+  licence="CC BY-SA 3.0"
+  href="https://commons.wikimedia.org/wiki/File:Map_of_sacred_hills_of_Imerina_Madagascar.jpg"
+/>
+
 ## Ce que la tradition oublie
 
 La suite tient en deux gestes, et la tradition ne retient qu'eux : partager, puis
 recoudre. <Claim id="im-andriamasinavalona" /> <Claim id="im-division" />
 <Claim id="im-andrianampoinimerina" />
+
+<Planche
+  src={maisonAndria}
+  alt="Photographie d'une maison de bois sombre à haut toit de bardeaux, très pentu, dressée sur un socle de pierre au milieu d'arbres. Une porte étroite est ouverte, une personne s'y tient. Un panneau explicatif est fixé sur la façade."
+  legende="La maison d'Andrianampoinimerina, dans l'enceinte royale d'Ambohimanga. Le souverain à qui la tradition prête la réunification du royaume et la formule sur la mer habitait une case de bois d'une seule pièce. Le palais de pierre viendra un siècle plus tard, et il sera l'œuvre d'un Européen."
+  source="Photographie de Lemurbaby, via Wikimedia Commons"
+  licence="CC BY-SA 3.0"
+  href="https://commons.wikimedia.org/wiki/File:Madagascar_Rova_ambohimanga_house_of_andrianampoinimerina.JPG"
+  cote="droite"
+/>
 
 La frise plus bas porte un trou. Entre la fondation d'Antananarivo vers 1630 et l'apogée
 de 1675, quarante-cinq ans sans une seule assertion. Ce n'est pas que rien ne
@@ -73,6 +96,15 @@ ses propres documents, statut
 <strong style="color:var(--st-atteste)">attesté</strong>. <Claim id="im-radama1" />
 
 Le savoir ne devient pas plus vrai, il devient vérifiable.
+
+<Planche
+  src={radamaTroupes}
+  alt="Dessin panoramique en noir et blanc, au grain d'archive : de longues files de fantassins alignées vers l'horizon, un cavalier au centre passant devant elles, et sur la droite un groupe à cheval sous des parasols dressés."
+  legende="Radama Ier passant ses troupes en revue, d'après un croquis pris sur place en 1825 par le peintre André Coppalle. Le règne qui fait entrer le royaume dans l'archive est aussi le premier que des témoins dessinent : avant lui, aucun souverain merina n'a de visage. La reproduction est une image d'archive de provenance mince, versée en 2005 et sans mention de l'original."
+  source="D'après un croquis d'André Coppalle, 1825, via Wikimedia Commons"
+  licence="Domaine public"
+  href="https://commons.wikimedia.org/wiki/File:Armee_Radama.jpg"
+/>
 
 Une précision s'impose ici, sans quoi la formule promet trop. 1810 est l'entrée des
 Merina dans l'écrit, pas celle de Madagascar : [les Antemoro du Sud-Est](/antemoro)
@@ -173,6 +205,16 @@ terre des ancêtres et contraire à la tradition funéraire malgache, qui a rouv
 question deux décennies plus tard.
 
 Un objet a mis bien plus longtemps à revenir. <Claim id="im-couronne-dais" />
+
+<Planche
+  src={rova}
+  alt="Photographie d'un palais de pierre claire à deux étages d'arcades, flanqué de tours carrées à toits pointus, dressé sur une pelouse et bordé d'arbres, sous un ciel bleu."
+  legende="Le Rova de Manjakamiadana, palais royal d'Antananarivo, photographié en 2024. Ce que l'on voit est une reconstruction : le bâtiment a brûlé en 1995 et n'a rouvert qu'en novembre 2020, lors de la cérémonie où la couronne du dais est revenue de Paris."
+  source="Photographie de Juliannah23, via Wikimedia Commons"
+  licence="CC0, domaine public volontaire"
+  href="https://commons.wikimedia.org/wiki/File:Rova_Manjakamiadana_Antananarivo.jpg"
+  cote="gauche"
+/>
 
 Cent vingt-trois ans, donc, et un statut juridique qui n'est toujours pas celui d'une
 restitution au moment où la couronne rentre. La dynastie que cette page a suivie depuis
