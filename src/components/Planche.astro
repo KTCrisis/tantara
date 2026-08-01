@@ -74,8 +74,15 @@ const tailles = enMarge
   .planche:not(.en-marge) { max-width: 100%; margin-inline: auto; }
   /* En marge : le texte enveloppe la planche. Le float reste l'outil le plus
      sûr ici, une grille obligerait à découper la prose en colonnes, ce que le
-     MDX ne permet pas sans casser le flux des assertions. */
-  .planche.en-marge { width: 38%; max-width: 340px; }
+     MDX ne permet pas sans casser le flux des assertions.
+     `clear: both` est indispensable : nos légendes portent la provenance et la
+     licence, elles font souvent quinze lignes sous l'image, si bien qu'une
+     planche est plus haute que le paragraphe qu'elle borde. Sans clear, la
+     suivante flotte de l'autre côté avant que la première soit finie, et la
+     prose se retrouve étranglée dans une gouttière de trois mots. Les h2
+     dégagent déjà (global.css), il manquait ce cas-ci, à l'intérieur d'une
+     même section. */
+  .planche.en-marge { width: 38%; max-width: 340px; clear: both; }
   .planche.a-droite { float: right; margin: .4rem 0 1.2rem 1.8rem; }
   .planche.a-gauche { float: left;  margin: .4rem 1.8rem 1.2rem 0; }
   .planche :global(img) {
