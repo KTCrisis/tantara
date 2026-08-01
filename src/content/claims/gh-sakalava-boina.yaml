@@ -2,6 +2,7 @@ statement: "Le royaume sakalava du Boina, issu du Menabe, s'établit au nord-oue
 statut: récit
 discipline: histoire
 domain: geographie-historique
+axes: [sakalava]
 period: [1690, 1840]
 geo: { lat: -15.85, lng: 46.0, label: "Boina (Majunga)" }
 sources: [gha-v]

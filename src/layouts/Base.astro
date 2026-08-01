@@ -71,6 +71,12 @@ const active = (href: string) => {
         <div class="nav-group">Le temps des hommes</div>
         <a href="/geographie-historique" class={active('/geographie-historique')}>Géographie historique</a>
         <a href="/imerina" class={active('/imerina')}>L'Imerina</a>
+        {/* L'Ouest a sa page à part, et pas une page « les autres royaumes » :
+            les quatre monarchies sakalava sortent d'une même lignée et tiennent
+            leur légitimité des mêmes objets. Les Antemoro et les Betsimisaraka
+            n'ont ni l'une ni les autres, et auront leurs propres pages plutôt
+            qu'une case définie par le fait de ne pas être merina. */}
+        <a href="/sakalava" class={active('/sakalava')}>Les Sakalava</a>
         <div class="nav-group">Les acteurs</div>
         <a href="/peuples" class={active('/peuples')}>Les foko</a>
         <a href="/etats" class={active('/etats')}>Les États</a>

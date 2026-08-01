@@ -2,6 +2,7 @@ statement: "Le tromba, possession par les esprits des rois sakalava défunts à 
 statut: attesté
 discipline: ethnographie
 domain: traditions
+axes: [sakalava]
 geo: { lat: -16.1, lng: 45.6, route: bantou, label: "Pays sakalava (Nord-Ouest)" }
 sources: [sharp-1993]
 note: "Le mot, d'origine sakalava, désigne aujourd'hui par extension la possession dans toute l'île. Il maintient un lien vivant avec les dynasties du Nord-Ouest, héritières du premier empire malgache, de fondation africaine."

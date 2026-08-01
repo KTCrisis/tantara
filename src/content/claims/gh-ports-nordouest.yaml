@@ -2,6 +2,7 @@ statement: "Après Mahilaka, un chapelet de comptoirs islamisés (Antalaotra) ja
 statut: mesuré
 discipline: archéologie
 domain: geographie-historique
+axes: [sakalava]
 period: [1400, 1700]
 geo: { lat: -15.7, lng: 46.3, route: arabo-swahili, label: "Côte nord-ouest (Antalaotra)" }
 sources: [gha-iv, radimilahy-1998]
