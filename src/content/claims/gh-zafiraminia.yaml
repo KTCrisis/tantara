@@ -2,6 +2,7 @@ statement: "Les Zafiraminia, groupe islamisé porteur de l'écriture sorabe, s'i
 statut: récit
 discipline: histoire
 domain: geographie-historique
+axes: [antemoro]
 period: [1250, 1600]
 geo: { lat: -23.35, lng: 47.6, route: arabo-swahili, label: "Sud-Est (Zafiraminia)" }
 sources: [faublee-1970]

@@ -82,6 +82,11 @@ const active = (href: string) => {
             le fait de ne pas être merina. */}
         <a href="/sakalava" class={active('/sakalava')}>Les Sakalava</a>
         <a href="/imerina" class={active('/imerina')}>L'Imerina</a>
+        {/* Le Sud-Est ferme le groupe parce que sa thèse répond aux deux
+            précédentes : l'Imerina est connue par un livre écrit après coup,
+            l'Ouest par des objets, et les Antemoro écrivaient eux-mêmes. Placer
+            la page ici met les trois régimes de preuve à la suite. */}
+        <a href="/antemoro" class={active('/antemoro')}>Les Antemoro</a>
         <div class="nav-group">Les acteurs</div>
         <a href="/peuples" class={active('/peuples')}>Les foko</a>
         <a href="/etats" class={active('/etats')}>Les États</a>

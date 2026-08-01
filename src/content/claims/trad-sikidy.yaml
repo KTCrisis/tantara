@@ -2,6 +2,7 @@ statement: "Le sikidy, divination par disposition de graines lue en figures, dé
 statut: attesté
 discipline: histoire
 domain: traditions
+axes: [antemoro]
 geo: { lat: -22.8, lng: 47.8, route: arabo-swahili, label: "Pays antemoro (Sud-Est)" }
 sources: [faublee-1970, beaujard-2020]
 note: "Une tradition réputée « ancestrale » porte une origine datable et située : la science du sable, venue du monde arabo-musulman, naturalisée en malgache."

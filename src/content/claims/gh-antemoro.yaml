@@ -2,6 +2,7 @@ statement: "Le royaume antemoro, théocratie lettrée héritière des migrations
 statut: récit
 discipline: histoire
 domain: geographie-historique
+axes: [antemoro]
 period: [1450, 1850]
 geo: { lat: -22.4, lng: 47.85, route: arabo-swahili, label: "Royaume antemoro (Matitanana)" }
 sources: [faublee-1970, gha-v]

@@ -2,6 +2,7 @@ statement: "Chez les Antambahoaka de la région de Mananjary, la circoncision co
 statut: attesté
 discipline: ethnographie
 domain: foko
+axes: [antemoro]
 geo: { lat: -21.23, lng: 48.34, label: "Mananjary" }
 sources: [pacaud-2004]
 scope: [antambahoaka]

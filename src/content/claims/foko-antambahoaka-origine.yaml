@@ -2,6 +2,7 @@ statement: "La tradition d'origine des Antambahoaka du Sud-Est les rattache à d
 statut: attesté
 discipline: histoire
 domain: foko
+axes: [antemoro]
 period: [1200, 1500]
 geo: { lat: -21.23, lng: 48.34, label: "Mananjary / embouchure de la Matitanana" }
 sources: [beaujard-2020]
