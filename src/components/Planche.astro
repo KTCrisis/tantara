@@ -35,19 +35,27 @@ interface Props {
    * reste explicite plutôt que calculé : une planche pleine largeur au milieu
    * casserait une alternance automatique sans que personne le voie.
    */
-  cote?: 'pleine' | 'droite' | 'gauche';
+  cote?: 'pleine' | 'droite' | 'gauche' | 'centre';
 }
 const { src, alt, legende, source, licence, retouche, href, synthese, cote = 'pleine' } = Astro.props;
 const enMarge = cote === 'droite' || cote === 'gauche';
+// Troisième mode, pour les images en portrait. En marge elles sont trop hautes :
+// à 340 px de large, un format 3/4 fait déjà 450 px, la légende en ajoute cent, et
+// le flottant dépasse de loin le paragraphe qu'il borde, laissant un vide. En
+// pleine largeur elles sont écrasantes, 712 de large pour 1300 de haut. Un bloc
+// centré et étroit, qui ne flotte pas, est la seule géométrie qui leur convienne.
+const auCentre = cote === 'centre';
 // Largeurs rendues : la vignette suffit à la lecture, l'original reste servi
 // pour l'agrandissement. Pas de visionneuse JS — un lien vers le fichier fait
 // le même travail, fonctionne au clavier, et survit à un script bloqué.
-const rendus = enMarge ? [320, 560, 760] : [480, 800, 1200];
+const rendus = enMarge ? [320, 560, 760] : auCentre ? [400, 700, 900] : [480, 800, 1200];
 const tailles = enMarge
   ? '(max-width: 720px) 100vw, 38vw'
-  : '(max-width: 760px) 100vw, 712px';   // colonne .wrap : 760 moins 2 × 24 de marge
+  : auCentre
+    ? '(max-width: 760px) 100vw, 420px'
+    : '(max-width: 760px) 100vw, 712px';   // colonne .wrap : 760 moins 2 × 24 de marge
 ---
-<figure class:list={['planche', enMarge && 'en-marge', cote === 'droite' && 'a-droite', cote === 'gauche' && 'a-gauche']}>
+<figure class:list={['planche', enMarge && 'en-marge', cote === 'droite' && 'a-droite', cote === 'gauche' && 'a-gauche', auCentre && 'au-centre']}>
   <a href={src.src} class="loupe" title="Voir la planche en grand">
     <Image src={src} alt={alt} widths={rendus} sizes={tailles} />
   </a>
@@ -83,6 +91,8 @@ const tailles = enMarge
      dégagent déjà (global.css), il manquait ce cas-ci, à l'intérieur d'une
      même section. */
   .planche.en-marge { width: 38%; max-width: 340px; clear: both; }
+  /* Centré : ni flottant ni pleine largeur. Réservé aux formats en hauteur. */
+  .planche.au-centre { max-width: 420px; margin-inline: auto; float: none; clear: both; }
   .planche.a-droite { float: right; margin: .4rem 0 1.2rem 1.8rem; }
   .planche.a-gauche { float: left;  margin: .4rem 1.8rem 1.2rem 0; }
   .planche :global(img) {
