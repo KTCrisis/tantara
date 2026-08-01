@@ -109,6 +109,14 @@ const tailles = enMarge
     line-height: 1.55; color: var(--ink-2);
     display: flex; flex-direction: column; gap: .15rem;
   }
+  /* Plafond de hauteur en marge : un format en hauteur y devient sinon plus haut
+     que le paragraphe qu'il borde. L'image rétrécit à proportion et se centre
+     dans la colonne, la légende garde toute la largeur pour rester lisible. Le
+     lien de la loupe sert l'original, donc rien n'est perdu : la vignette est un
+     appel, pas la pièce. */
+  .planche.en-marge :global(img) {
+    max-height: 300px; width: auto; max-width: 100%; margin-inline: auto;
+  }
   .planche.en-marge figcaption { font-size: .72rem; }
   .quoi { color: var(--ink); }
   /* La provenance se lit comme une note de bas de page : présente, discrète,
