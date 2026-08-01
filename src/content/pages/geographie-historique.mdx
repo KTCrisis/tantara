@@ -10,6 +10,9 @@ import Claim from '../../components/Claim.astro';
 import MapChrono from '../../components/MapChrono.astro';
 import Timeline from '../../components/Timeline.astro';
 import Registre from '../../components/Registre.astro';
+import Planche from '../../components/Planche.astro';
+import carte1764 from '../../assets/planches/carte-madagascar-1764.jpg';
+import carteDuval from '../../assets/planches/carte-duval-1679.jpg';
 
 ## Ce que l'on peut fouiller
 
@@ -50,6 +53,15 @@ marchand. Ce qui unifiera l'île est sur un plateau sans port. Si la géographie
 la politique, la puissance se serait consolidée là où le commerce accostait. Elle ne l'a
 pas fait.
 
+<Planche
+  src={carte1764}
+  alt="Carte gravée du canal du Mozambique. À gauche, la côte africaine porte en capitales une dizaine de noms de royaumes et d'États répartis dans les terres. À droite, Madagascar ne porte que des noms de baies et de caps le long du littoral ; son intérieur n'est occupé que par des rivières, des reliefs et le mot MADAGASCAR."
+  legende="Une même feuille, deux traitements. Du côté africain, une dizaine de royaumes et d'États sont nommés dans les terres. Du côté malgache, aucun, alors qu'à cette date le Menabe, le Boina, la confédération betsimisaraka et l'Imerina existent tous. Le tracé s'arrête où s'arrête le commerce."
+  source="Wikimedia Commons (University of Illinois, via DPLA). La feuille ne déclare pas d'auteur ; son cartouche porte « Carte de l'Isle de Madagascar et du Canal de Mozambique », et ses longitudes sont comptées du méridien de Paris."
+  licence="Domaine public"
+  href="https://commons.wikimedia.org/wiki/File:Carte_de_l%27Isle_de_Madagascar_-_DPLA_-_77eb3cb69f3dde894a5b419f1f0e437e.jpg"
+/>
+
 ## Le Sud, qui ne ressemble à rien de tout cela
 
 Le tiers sud de l'île tient un monde politique à part, que les cartes des royaumes
@@ -73,6 +85,16 @@ qui n'a jamais existé. <Claim id="gh-libertalia" />
 L'Europe, de son côté, essaie et échoue. Le pays antanosy accueille la première tentative
 française. <Claim id="foko-antanosy-flacourt" /> Elle dure trente et un ans.
 <Claim id="gh-fort-dauphin" />
+
+<Planche
+  src={carteDuval}
+  alt="Carte gravée ancienne de Madagascar en noir et blanc. Le littoral est bordé de noms de baies, de caps et de forts sur tout son pourtour. L'intérieur ne porte aucun lieu : il est occupé par des hachures figurant une chaîne de montagnes. Deux cartouches ronds portent « Insula Madagascar dicta St Lavrens » et « nunc Insula Dauphine »."
+  legende="La côte est nommée sur tout son pourtour, l'intérieur ne porte rien qu'une chaîne de montagnes. Au sud de la feuille, Fortdauphin figure encore, alors que l'établissement avait fermé en 1674, cinq ans avant la date portée par la notice. Le second cartouche rebaptise l'île « Insula Dauphine »."
+  source="Pierre Duval (1619-1682), via Wikimedia Commons (University of Illinois, via DPLA)"
+  licence="Domaine public"
+  href="https://commons.wikimedia.org/wiki/File:Insula_Madagascar_dicta_StLavrens_-_DPLA_-_02a3f06a3a837c2af2a48371e8ea0f82.jpg"
+  cote="gauche"
+/>
 
 La première place que l'Europe tient vraiment est une base navale, et elle arrive tard.
 <Claim id="lieu-antsiranana-base" />
