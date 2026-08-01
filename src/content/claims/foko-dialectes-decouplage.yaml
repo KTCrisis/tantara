@@ -2,6 +2,7 @@ statement: "Le relevé de soixante variétés de malgache, douze mille quatre ce
 statut: mesuré
 discipline: linguistique
 domain: foko
+axes: [geographie-historique]
 period: [2018, 2019]
 sources: [serva-2020]
 scope: [ile-madagascar]

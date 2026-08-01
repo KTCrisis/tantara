@@ -2,7 +2,7 @@ statement: "Après sa prise en 1817 par Radama Ier, Toamasina (Tamatave) devient
 statut: attesté
 discipline: histoire
 domain: lieu
-axes: [geographie-physique]
+axes: [geographie-physique, geographie-historique]
 period: [1817, 1895]
 geo: { lat: -18.15, lng: 49.4, route: europeen, label: "Toamasina (Tamatave)" }
 sources: [columbia-encyclopedia]

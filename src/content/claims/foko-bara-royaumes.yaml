@@ -2,6 +2,7 @@ statement: "Au XIXe siècle, les Bara des plateaux du Centre-Sud étaient organi
 statut: attesté
 discipline: histoire
 domain: foko
+axes: [geographie-historique]
 period: [1800, 1900]
 geo: { lat: -22.4, lng: 46.12, label: "Ihosy, pays bara" }
 sources: [manjakahery-2019]

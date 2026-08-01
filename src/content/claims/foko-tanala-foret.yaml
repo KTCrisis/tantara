@@ -2,6 +2,7 @@ statement: "Le nom Tanala (ou Antanala) signifie « ceux de la forêt » (ala) ;
 statut: attesté
 discipline: histoire
 domain: foko
+axes: [geographie-historique]
 geo: { lat: -21.87, lng: 47.43, label: "Ikongo, lisière forestière orientale" }
 sources: [beaujard-1983]
 scope: [tanala]

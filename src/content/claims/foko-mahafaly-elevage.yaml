@@ -2,6 +2,7 @@ statement: "Le pays mahafaly, plateau du Sud-Ouest entre l'Onilahy et la Menaran
 statut: attesté
 discipline: histoire
 domain: foko
+axes: [geographie-historique]
 geo: { lat: -24.5, lng: 44.3, label: "Plateau mahafaly, Sud-Ouest" }
 sources: [escargueil-1936]
 scope: [mahafaly]

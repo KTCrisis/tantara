@@ -2,6 +2,7 @@ statement: "Face à l'expansion merina, le roi antakarana Tsimiaro conduisit son
 statut: attesté
 discipline: histoire
 domain: foko
+axes: [geographie-historique]
 period: [1837, 1838]
 geo: { lat: -12.9, lng: 49.1, label: "Massif de l'Ankarana, Nord" }
 sources: [campbell-2012]

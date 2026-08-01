@@ -2,6 +2,7 @@ statement: "La flotte française occupe la baie de Diego-Suarez (Antsiranana) en
 statut: attesté
 discipline: histoire
 domain: lieu
+axes: [geographie-historique]
 period: [1884, 1900]
 geo: { lat: -12.28, lng: 49.29, route: europeen, label: "Antsiranana (Diego-Suarez)" }
 sources: [rossi-1973]

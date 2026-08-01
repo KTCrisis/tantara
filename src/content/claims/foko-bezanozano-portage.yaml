@@ -2,6 +2,7 @@ statement: "Sous la domination merina au XIXe siècle, l'Ankay (pays bezanozano)
 statut: reconstruit
 discipline: histoire
 domain: foko
+axes: [geographie-historique]
 period: [1810, 1895]
 geo: { lat: -18.95, lng: 48.2, label: "Vallée du Mangoro / Ankay, Moramanga" }
 sources: [campbell-1980]

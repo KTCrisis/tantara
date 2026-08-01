@@ -2,6 +2,7 @@ statement: "Dans l'Androy, extrême sud aride de Madagascar, un pays difficileme
 statut: attesté
 discipline: histoire
 domain: foko
+axes: [geographie-historique]
 geo: { lat: -25.03, lng: 46.0, label: "Androy, extrême sud" }
 sources: [fierro-2009]
 scope: [antandroy]

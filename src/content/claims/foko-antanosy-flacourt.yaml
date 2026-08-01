@@ -2,6 +2,7 @@ statement: "Le pays antanosy (région de Tôlanaro / Fort-Dauphin) fut le théâ
 statut: attesté
 discipline: histoire
 domain: foko
+axes: [geographie-historique]
 period: [1642, 1674]
 geo: { lat: -25.03, lng: 46.99, label: "Fort-Dauphin / Tôlanaro" }
 sources: [faublee-1996, flacourt-1658]

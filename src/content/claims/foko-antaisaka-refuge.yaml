@@ -2,6 +2,7 @@ statement: "Au XIXe siècle, face à la conquête merina, des Antaisaka se réfu
 statut: attesté
 discipline: histoire
 domain: foko
+axes: [geographie-historique]
 period: [1800, 1895]
 geo: { lat: -23.35, lng: 47.6, label: "Pays antaisaka, Vangaindrano" }
 sources: [defos-du-rau-1959]

@@ -2,6 +2,7 @@ statement: "Les Makoa de l'Ouest malgache descendent d'esclaves importés d'Afri
 statut: attesté
 discipline: histoire
 domain: foko
+axes: [geographie-historique]
 period: [1800, 1900]
 geo: { lat: -16.0, lng: 44.5, label: "Ouest de Madagascar, pays sakalava" }
 sources: [boyer-rossol-2010]
