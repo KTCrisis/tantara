@@ -1,13 +1,16 @@
-statement: "Le trajet même de la traversée austronésienne reste débattu : route directe à travers l'océan Indien, ou cabotage le long des côtes de l'Inde et de l'Afrique de l'Est."
+statement: "Le trajet même de la traversée austronésienne reste débattu : route directe à travers l'océan Indien, cabotage le long des côtes, ou étape prolongée en Afrique de l'Est avant le dernier saut."
 statut: daté-débattu
 discipline: autre
 domain: peuplement
-note: "Aucune épave, aucun site d'étape n'atteste le chemin ; le débat se joue entre modélisations génétiques, indices linguistiques et archéologie du pourtour. Les deux itinéraires ont pu coexister."
+note: "Aucune épave, aucun site d'étape n'atteste le chemin ; le débat se joue entre modélisations génétiques, indices linguistiques et archéologie du pourtour. Les trois scénarios ne s'excluent pas entièrement, et plusieurs traversées ont pu emprunter des voies différentes. L'argument des proportions donné sous la route directe est celui de Serva & Pasquini."
 hypotheses:
   - label: "Route directe"
-    statement: "La génétique de population penche pour une traversée directe du sud-est de Bornéo vers les Comores et Madagascar : aucun flux génétique austronésien significatif n'est détecté ailleurs sur le pourtour de l'océan Indien occidental, ce qu'un long cabotage aurait laissé. Des modélisations de navigation à la mousson rendent le trajet direct plausible."
-    sources: [brucato-2019, adelaar-1995]
+    statement: "La traversée se serait faite d'un trait, du sud-est de Bornéo vers les Comores et Madagascar. Les proportions le suggèrent : la moitié du patrimoine génétique malgache est africaine quand la langue ne compte que deux pour cent de termes bantous, écart difficile à produire par un métissage préalable. Et le chromosome Y y est plus africain que l'ADN mitochondrial, soit l'inverse de ce qu'aurait laissé un équipage asiatique mêlé sur place à des populations africaines."
+    sources: [serva-2022, brucato-2019]
   - label: "Cabotage par les côtes"
     statement: "Le modèle classique fait longer les côtes (Inde, Maldives, côte swahilie), avec un métissage africain en chemin et les Comores comme relais. La terminologie de la pirogue à balancier, échelonnée de l'Insulinde au monde swahili, garde la trace de cet itinéraire côtier."
     sources: [beaujard-2007, corps-2019]
+  - label: "Étape en Afrique de l'Est"
+    statement: "Les locuteurs du barito auraient d'abord gagné la côte est-africaine, économiquement bien plus attirante que l'île, s'y seraient mêlés à des populations bantoues, et le groupe déjà mixte aurait ensuite franchi le canal. Le malgache emploie des mots bantous pour le bétail, la banane et le taro alors que des termes austronésiens existaient et que ces plantes viennent d'Asie : le vocabulaire du quotidien aurait été refait avant l'arrivée."
+    sources: [adelaar-2016]
 scope: [austronesiens, ile-madagascar]

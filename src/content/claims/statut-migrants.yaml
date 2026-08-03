@@ -1,0 +1,13 @@
+statement: "L'identité sociale de ceux qui ont embarqué reste débattue : une élite migrante venue tard avec son modèle de royauté, ou un seul groupe parti d'un coup et composé de plusieurs rangs."
+statut: daté-débattu
+discipline: linguistique
+domain: peuplement
+note: "Le débat ne porte pas sur l'origine, établie au sud-est de Bornéo, mais sur le nombre de départs et sur le rang de ceux qui partaient. Adelaar 2016 écarte pour sa part les captifs de guerre et le travail forcé : le malgache s'était déjà séparé du ma'anyan avant la traversée, ce qui suppose une communauté constituée et non une cargaison. La position d'Ottino est restituée ici d'après la discussion qu'Adelaar en donne, l'ouvrage de 1986 n'ayant pas été consulté directement."
+hypotheses:
+  - label: "Des vagues successives, dont une élite"
+    statement: "Plusieurs migrations se seraient succédé depuis l'Insulinde. La dernière, celle des Zafiraminia, serait le fait d'un groupe malais tardif qui apporta un canevas idéologique de la royauté, d'inspiration hindou-javanaise et adossé au mythe d'Ibonia, et qui joua un rôle central dans la fondation des royaumes de la côte est puis des Hautes Terres, dont l'Imerina."
+    sources: [ottino-1986, deschamps-1959, beaujard-2007]
+  - label: "Un seul départ, plusieurs rangs"
+    statement: "Un unique mouvement migratoire suffit à rendre compte de la diversité observée, à condition d'admettre que ses membres appartenaient à des strates sociales différentes. Aucune trace linguistique n'atteste de vagues successives, et l'historiographie insulindienne ne mentionne ni Madagascar ni aucun groupe qu'on puisse rattacher aux Zafiraminia."
+    sources: [simon-2006, adelaar-2016]
+scope: [austronesiens, ile-madagascar]
