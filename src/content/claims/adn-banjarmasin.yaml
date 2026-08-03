@@ -2,6 +2,6 @@ statement: "Les Malgaches partagent davantage d'ADN autosomique avec les habitan
 statut: reconstruit
 discipline: génétique
 domain: peuplement
-sources: [adelaar-2016]
-note: "Résultat de Brucato et al. 2016, rapporté et interprété par Adelaar 2016, dont le corpus ne conserve que la restitution. Les ports de Bornéo ont été fondés par des noyaux malophones qui absorbaient un afflux continu de gens de l'arrière-pays : une population de métropole, malaise de langue et de culture, mais apparentée aux populations du dehors. Le départ se serait fait depuis ce milieu portuaire, non depuis le village d'origine."
+sources: [adelaar-2016, adelaar-1995]
+note: "Résultat de Brucato et al. 2016, rapporté et interprété par Adelaar 2016, dont le corpus ne conserve que la restitution. Les ports de Bornéo ont été fondés par des noyaux malophones qui absorbaient un afflux continu de gens de l'arrière-pays : une population de métropole, malaise de langue et de culture, mais apparentée aux populations du dehors. Le départ se serait fait depuis ce milieu portuaire, non depuis le village d'origine. La langue avait désigné le même port avant les génomes : Adelaar relevait en 1995, d'après ses travaux de 1989, que le malgache porte des emprunts au malais de Banjarmasin. Deux disciplines, deux chemins indépendants, une seule ville."
 scope: [austronesiens, ile-madagascar]
