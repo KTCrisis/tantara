@@ -1,0 +1,9 @@
+statement: "La mesure de 1877 ne vaut que là où s'exerce le pouvoir d'Antananarivo : à Morondava, poste de garnison merina, des Makoa affranchis fondent des villages vers 1880, alors que dans les régions de l'Ouest qui échappent à ce pouvoir, comme celle de Maintirano, la traite se poursuit et les Makoa ne sont émancipés qu'à partir de 1896."
+statut: attesté
+discipline: histoire
+domain: economie
+axes: [sakalava]
+period: [1877, 1896]
+geo: { lat: -20.28, lng: 44.28, label: "Morondava" }
+sources: [boyer-rossol-2014]
+scope: [makoa, sakalava]

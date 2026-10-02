@@ -1,0 +1,10 @@
+statement: "Entre 1685 et 1726 environ, les pirates installés sur la côte nord-est se font courtiers de la traite : ils vendent des captifs malgaches aux Arabes du Boina, à des Anglais de Bristol, à des Hollandais de Batavia, à des Français de la Martinique ou à des négociants de New York."
+statut: attesté
+discipline: histoire
+domain: economie
+axes: [betsimisaraka]
+period: [1685, 1726]
+geo: { lat: -16.95, lng: 49.9, label: "Sainte-Marie (Nosy Boraha)" }
+sources: [filliot-1974]
+scope: [sainte-marie]
+note: "Filliot s'appuie sur la Collection des ouvrages anciens concernant Madagascar de Grandidier et sur Deschamps, Les pirates à Madagascar. Avant 1717, pirates et navires de passage n'apportent à Bourbon que quelques centaines d'esclaves en tout."

@@ -1,0 +1,9 @@
+statement: "L'esclavage est aboli à Madagascar par un arrêté du résident général Hippolyte Laroche, promulgué à Tananarive le 26 septembre 1896 à l'heure où il remet ses pouvoirs au général Gallieni : « Tous les habitans de Madagascar sont des personnes libres »."
+statut: attesté
+discipline: histoire
+domain: economie
+period: [1896, 1896]
+geo: { lat: -18.91, lng: 47.52, label: "Antananarivo" }
+sources: [lebon-1900, garan-2012]
+scope: [ile-madagascar]
+note: "Le 1er mai 1896, Laroche avait déjà fait proclamer par Ranavalona III l'émancipation des esclaves appartenant aux insurgés. Garan rapporte les tensions avec Gallieni, qui s'efforce de rendre la proclamation la moins visible possible. La date du 27 septembre, qui circule, n'a été trouvée dans aucune source lue."

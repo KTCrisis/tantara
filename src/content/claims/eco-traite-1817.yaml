@@ -1,0 +1,10 @@
+statement: "Par le traité de Tamatave du 23 octobre 1817, conclu au nom du gouverneur Farquhar, Radama Ier interdit dans tous ses territoires la vente d'esclaves destinés à quitter Madagascar, contre une rétribution annuelle de 1 000 dollars en or, 1 000 dollars en argent, cent barils de poudre, cent mousquets, dix mille pierres à fusil, des uniformes, des étoffes et deux chevaux."
+statut: attesté
+discipline: histoire
+domain: economie
+axes: [imerina-souverains]
+period: [1817, 1817]
+geo: { lat: -18.15, lng: 49.4, label: "Tamatave (Toamasina)" }
+sources: [ellis-1838-vol2, mutibwa-esoavelomandroso-unesco]
+scope: [royaume-imerina, toamasina]
+note: "Texte du traité reproduit par Ellis, missionnaire de la London Missionary Society engagé contre la traite. Farquhar y explique que Radama ne pourrait se maintenir, privé de « la grande source de son argent, de ses armes et de ses munitions, qui venait exclusivement de ce commerce ». Le chapitre de l'Histoire générale de l'Afrique écrit « 100 pierres à fusil » : le texte du traité dit dix mille."

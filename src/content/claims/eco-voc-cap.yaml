@@ -1,0 +1,9 @@
+statement: "Depuis Le Cap, la Compagnie néerlandaise des Indes orientales arme plus de cinquante expéditions de traite vers Madagascar, surtout vers la côte ouest, des années 1640 à 1786 ; selon les historiens, les esclaves importés à Cape Town se comptent entre 2 820 environ, pour trente-trois voyages connus, et 3 753."
+statut: reconstruit
+discipline: histoire
+domain: economie
+axes: [sakalava]
+period: [1654, 1786]
+sources: [reidy-2020, filliot-1974]
+scope: [ile-madagascar]
+note: "Les deux chiffres sont ceux d'Armstrong et de Worden, connus ici par Reidy 2020 et non lus dans leurs travaux. Filliot nomme les points d'achat : Saint-Augustin, Morondava, Bombetoka, Mahajamba."

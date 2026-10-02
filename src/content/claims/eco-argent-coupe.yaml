@@ -1,0 +1,9 @@
+statement: "En Imerina, dans les années 1830, les sommes inférieures à une piastre se règlent en argent coupé et pesé : les piastres sont découpées et pesées avec quatre poids de fer, la moitié, le quart, le huitième et le douzième (loso, kirobo, sikajy, roavoamena), et les plus petites sommes se comptent en grains de riz, jusqu'au sept cent vingtième de piastre ; changeurs et marchands de balances tiennent leur place au marché."
+statut: attesté
+discipline: histoire
+domain: economie
+axes: [imerina-souverains]
+period: [1820, 1838]
+geo: { lat: -18.91, lng: 47.52, label: "Antananarivo" }
+sources: [ellis-1838]
+scope: [royaume-imerina]

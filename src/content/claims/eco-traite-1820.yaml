@@ -1,0 +1,10 @@
+statement: "Le gouverneur intérimaire Hall ayant refusé de verser les subsides, l'accord est rompu, puis renouvelé à Antananarivo le 11 octobre 1820 par l'agent britannique Hastie, Radama exigeant que vingt jeunes sujets soient instruits, dix en Angleterre et dix à Maurice."
+statut: attesté
+discipline: histoire
+domain: economie
+axes: [imerina-souverains]
+period: [1818, 1820]
+geo: { lat: -18.91, lng: 47.52, label: "Antananarivo" }
+sources: [mutibwa-esoavelomandroso-unesco, ellis-1838-vol2]
+scope: [royaume-imerina]
+note: "Dans un document séparé, Radama autorise aussi les missionnaires anglais à travailler à Madagascar. Ellis rapporte la ratification le 14 octobre."

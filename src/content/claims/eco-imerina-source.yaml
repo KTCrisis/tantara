@@ -1,0 +1,10 @@
+statement: "À partir de 1775 environ, les textes français signalent des esclaves venus de l'Imerina sur la côte est ; en 1790, l'Imerina est donnée comme la région qui fournit le plus d'esclaves aux îles, et en 1807 un agent français estime à 2 000 par an ceux que Tamatave en tire."
+statut: attesté
+discipline: histoire
+domain: economie
+axes: [imerina-souverains]
+period: [1775, 1810]
+geo: { lat: -18.91, lng: 47.52, label: "Antananarivo" }
+sources: [filliot-1974]
+scope: [royaume-imerina, toamasina]
+note: "Filliot cite Dumaine (1790) : « La partie d'Hancove est celle de Madagascar qui fournit le plus d'esclaves à nos îles », et l'agent Roux à Decaen (16 octobre 1807). Mayeur écrivait dès 1777 d'Antananarivo que le commerce le plus considérable qui s'y fait est celui des esclaves."

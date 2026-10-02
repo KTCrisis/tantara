@@ -1,0 +1,10 @@
+statement: "Le 20 juin 1877, la reine Ranavalona II émancipe tous les « Mozambiques » (Masombika) issus de la traite extérieure ; le code des 101 articles de 1868 avait déjà interdit d'importer des esclaves d'Afrique, et une première libération partielle avait eu lieu en 1874."
+statut: attesté
+discipline: histoire
+domain: economie
+axes: [imerina-souverains]
+period: [1868, 1877]
+geo: { lat: -18.91, lng: 47.52, label: "Antananarivo" }
+sources: [boyer-rossol-2014, garan-2012, mutibwa-esoavelomandroso-unesco]
+scope: [makoa, royaume-imerina]
+note: "Le jour exact ne repose que sur Boyer-Rossol 2014 ; les deux autres sources donnent l'année. Garan refuse de lire ces décrets sous le seul angle de la pression britannique : ils augmentent aussi le nombre de sujets soumis aux corvées royales, dont les esclaves étaient exemptés."

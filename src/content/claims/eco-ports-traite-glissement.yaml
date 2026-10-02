@@ -1,0 +1,9 @@
+statement: "Au XVIIIe siècle, les postes français de traite de la côte est glissent vers le sud : la baie d'Antongil d'abord, alimentée par la puissance sakalava, puis Foulpointe, sur l'arrière-pays sihanaka et bezanozano, enfin Tamatave, débouché des Merina ; Fort-Dauphin ne fournit jamais beaucoup d'esclaves."
+statut: attesté
+discipline: histoire
+domain: economie
+axes: [geographie-historique, betsimisaraka]
+period: [1700, 1810]
+geo: { lat: -17.68, lng: 49.52, label: "Foulpointe (Mahavelona), côte est" }
+sources: [filliot-1974]
+scope: [ile-madagascar, toamasina]

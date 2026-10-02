@@ -1,0 +1,15 @@
+statement: "Le rôle de la corvée royale (fanompoana) dans l'économie merina reste débattu : l'esclavage la rendait-il possible en libérant les hommes libres de la terre, ou portait-elle elle-même l'économie impériale ?"
+statut: daté-débattu
+discipline: histoire
+domain: economie
+axes: [imerina-souverains]
+period: [1825, 1895]
+note: "Ce qui est établi des deux côtés : le fanompoana, à l'origine une prestation limitée due au souverain, est profondément restructuré pendant l'autarcie de 1825 à 1861, et les esclaves n'y sont pas soumis, puisqu'ils relèvent de leur maître et non de l'État. La position de Maurice Bloch n'est connue ici que par le résumé que Campbell en donne, et le livre de Campbell de 2005 par un compte rendu."
+hypotheses:
+  - label: "L'esclavage libère les hommes libres pour la corvée"
+    statement: "La législation royale interdit de vendre un esclave hors de l'Imerina afin que son maître puisse servir le souverain : les esclaves cultivent la terre, et les hommes libres ainsi dégagés forment une armée de réserve et une main-d'œuvre pour la corvée. L'économie impériale repose alors sur le travail servile."
+    sources: [ravelomanana-2016]
+  - label: "La corvée, plus que l'esclavage, porte l'économie"
+    statement: "La population servile de l'Imerina était plus faible qu'on ne l'a dit, et c'est la corvée restructurée qui fonde l'économie de l'autarcie et contribue à son échec ; la résistance au travail forcé, par la désertion et le brigandage, finit par détruire le système dont l'État dépendait."
+    sources: [campbell-1988, worden-campbell-2005]
+scope: [royaume-imerina]

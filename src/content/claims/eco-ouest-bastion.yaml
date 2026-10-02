@@ -1,0 +1,10 @@
+statement: "Les captifs venaient surtout du nord du Mozambique, pays makua et île de Moçambique, et arrivaient par la côte ouest, autour de Majunga ; dans la seconde moitié du siècle, la zone qui va de Morondava à Majunga, Maintirano compris, est un bastion de la traite illégale."
+statut: attesté
+discipline: histoire
+domain: economie
+axes: [sakalava, geographie-historique]
+period: [1850, 1896]
+geo: { lat: -18.06, lng: 44.03, label: "Maintirano, côte ouest" }
+sources: [boyer-rossol-2014, garan-2012]
+scope: [makoa, sakalava, mahajanga]
+note: "Garan précise que le commerce est assuré par des traitants européens, arabes, malgaches, comoriens et indiens, basés principalement sur la côte ouest."

@@ -2,6 +2,7 @@ statement: "Les communautés commerçantes d'origine indienne, dites Karana (mus
 statut: attesté
 discipline: histoire
 domain: peuplement
+axes: [economie]
 period: [1840, 1900]
 geo: { lat: -15.72, lng: 46.32, route: indien, label: "Mahajanga (comptoirs indiens)" }
 sources: [blanchy-1995]
