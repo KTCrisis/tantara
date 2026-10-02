@@ -50,10 +50,9 @@ const payload = JSON.stringify({ points, colors: STATUT_COLOR, min, max, start }
     const { points, colors, min, max, start } = JSON.parse(el.dataset.map);
 
     const map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5 });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
+        '&copy; contributeurs d’<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       maxZoom: 10,
     }).addTo(map);
     map.fitBounds([[-11.5, 42.0], [-26.0, 51.5]]);
